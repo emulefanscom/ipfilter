@@ -1,43 +1,3 @@
-1,2c1,2
-< #>> Ipfilter v142 (14-03-2010) by R3Qu13M
-< #>> [based on Meuh6879's ipfilter format]
----
-> #>> IPFilter v142 eMule-Fans.com (excluded false positive) (2010-04-21)
-> #>> by http://emule-fans.com/category/news/plugin/ipfilter/ host on http://code.google.com/p/ipfilter-emule/
-4,34c4
-< #>> Updated all lists (13-03-2009)
-< #>> Download no-bluetacklists: 
-< #> 060 - http://www.cidr-report.org/bogons/freespace-quads.txt
-< #> 070 - http://www.cidr-report.org/as2.0/bogus-as-advertisements.html
-< #> 080 - http://www.cidr-report.org/as2.0/indext.html#Bogons
-< #> 095 - http://www.mediafire.com/file/mdjnhqwjnon/095.txt
-< #
-< #>> Parsed lines/entries:267124  Found IP ranges:267124  Duplicate:0  Merged:0 
-< #
-< # FILTERED LEVEL               DESCRIPTION				DENY IP COUNT
-< #>     060		Unallocated (Free) Space on IPv4	1.254.757.976  (out of 4.294.967.296 IP's or 29,21461%)
-< #>     070		Bogus AS Advertisements		1.864.368  (out of 4.294.967.296 IP's or 0,04341%)
-< #>     080		Possible Bogus Routes		34.813.696  (out of 4.294.967.296 IP's or 00,81057%)
-< #>     090		Level1				775.212.137  (out of 4.294.967.296 IP's or 18,04931%)
-< #>     095		Fake Server			1.958.590  (out of 4.294.967.296 IP's or 00,0456%)
-< #>     097		Microsoft				1.101.427  (out of 4.294.967.296 IP's or 00,02564%)
-< #>     107		Tor, Proxy list			2.344  (out of 4.294.967.296 IP's or 00,00005%)
-< #>     109		Level2				319.978.438  (out of 4.294.967.296 IP's or 07,45008%)
-< #>     111		Spyware				270.726  (out of 4.294.967.296 IP's or 00,0063%)
-< #>     113		Ad Trackers			468.226  (out of 4.294.967.296 IP's or 00,0109%)
-< #>     115		Spider				1.064.962  (out of 4.294.967.296 IP's or 00,0248%)
-< #>     119		TempList				152.832  (out of 4.294.967.296 IP's or 00,00356%)
-< #>     160		Lan range				302.055.193  (out of 4.294.967.296 IP's or 07,03277%)
-< #
-< # Total IP Count = 2.348.618.300  (out of 4.294.967.296 IP's or 54,68303%)
-< #
-< #
-< #>> Builded to be used with eMule & a private ISP. Fight the Future.
-< #
-< #> Last ipfilter releases [thx Da GuRu]
-< # http://www.hostex.de/emule/ipfilter
----
-> #>> It is modified from R3Qu13M's IPFilter v142 (2010-03-14), TWNmango's version, and zmhleo's version. Level 60[EX] is used for some very bad IP. See or2ex.diff in SVN for the changing from R3Qu13M's IPFilter.
 14220a14191
 > 12.214.30.0     - 12.214.31.255   ,  60 , [EX]MEDIACOMCC-WEWAHITCHKA-FL
 14462a14434
@@ -456,32 +416,39 @@
 < 83.149.102.18   - 83.149.102.18   ,  95 , [FK]Leaseweb
 ---
 > 83.149.102.18   - 83.149.102.18   ,  60 , [EX]
-127322d127047
+127322c127048
 < 83.233.30.55    - 83.233.30.55    ,  90 , [FK]Serverconnect I Norrland | Master Server 1
-127327d127051
+---
+> 83.233.30.55    - 83.233.30.55    , 109 , [L2]Serverconnect I Norrland | Master Server 1
+127327c127053
 < 83.233.30.126   - 83.233.30.128   ,  90 , [FK]Serverconnect I Norrland | Master Server 5
-127337,127338d127060
+---
+> 83.233.30.126   - 83.233.30.128   , 109 , [L2]Serverconnect I Norrland | Master Server 5
+127337,127338c127063,127064
 < 83.233.165.55   - 83.233.165.62   ,  95 , [FK]Serverconnect I Norrland | MasterServers
 < 83.233.165.65   - 83.233.165.66   ,  95 , [FK]Serverconnect I Norrland | MasterServers
-128278c128000
+---
+> 83.233.165.55   - 83.233.165.62   , 109 , [L2]Serverconnect I Norrland | MasterServers
+> 83.233.165.65   - 83.233.165.66   , 109 , [L2]Serverconnect I Norrland | MasterServers
+128278c128004
 < 84.16.255.24    - 84.16.255.24    ,  95 , [FK]Netdirect-net-md-solution
 ---
 > 84.16.255.24    - 84.16.255.24    ,  60 , [EX]Netdirect-net-md-solution
-129155a128878
+129155a128882
 > 85.10.193.45    - 85.10.193.45    ,  60 , [EX]eMule Security No1
-129213,129216c128936
+129213,129216c128940
 < 85.17.7.13      - 85.17.7.13      ,  90 , [FK]Leaseweb | tribler.de
 < 85.17.7.17      - 85.17.7.17      ,  95 , [FK]Leaseweb-Antip2p | Tribler.de #01-#08
 < 85.17.7.51      - 85.17.7.51      ,  90 , [L1]AP2P Scum
 < 85.17.7.128     - 85.17.7.255     ,  90 , [L1]Leaseweb unknown emule servers
 ---
 > 85.17.7.0       - 85.17.7.255     ,  60 , [EX]Fake server|LeaseWeb
-129231,129232c128951
+129231,129232c128955
 < 85.17.40.71     - 85.17.40.71     ,  90 , [L1]oink.cd (seized)
 < 85.17.40.108    - 85.17.40.108    ,  90 , [FK]Nforce Razorback 2.0 * * ! - www Razorback 3.0 com - Razorback 4.0
 ---
 > 85.17.40.0      - 85.17.40.127    ,  60 , [EX]Fake server|NForce
-129239,129243c128958
+129239,129243c128962
 < 85.17.52.63     - 85.17.52.63     ,  95 , [FK]Nforce
 < 85.17.52.92     - 85.17.52.92     ,  95 , [FK]Nforce
 < 85.17.52.124    - 85.17.52.124    ,  95 , [FK]Nforce
@@ -489,22 +456,28 @@
 < 85.17.52.209    - 85.17.52.209    ,  90 , [FK]Nforce G GameSpot Server - Linda 2009
 ---
 > 85.17.52.0      - 85.17.52.255    ,  60 , [EX]Fake servers|NForce
-129717d129431
+129717c129436
 < 85.25.73.86     - 85.25.73.86     ,  95 , [FK]Storm Share 1
-129745,129747d129458
+---
+> 85.25.73.86     - 85.25.73.86     , 109 , [L2]www.StormSex.net Suspicious Server
+129745,129747c129464,129466
 < 85.25.184.34    - 85.25.184.34    ,  95 , [FK]Storm Share 4
 < 85.25.184.37    - 85.25.184.37    ,  95 , [FK]Storm Share 3
 < 85.25.184.50    - 85.25.184.50    ,  95 , [FK]Storm Share 2
-131689c131400
+---
+> 85.25.184.34    - 85.25.184.34    , 109 , [L2]www.StormSex.net Suspicious Server
+> 85.25.184.37    - 85.25.184.37    , 109 , [L2]www.StormSex.net Suspicious Server
+> 85.25.184.50    - 85.25.184.50    , 109 , [L2]www.StormSex.net Suspicious Server
+131689c131408
 < 85.125.193.122  - 85.125.193.124  ,  95 , [FK]Wulff D. Heiss Edv-dienst-leistungen & It-consulting | Imhotep
 ---
 > 85.125.193.122  - 85.125.193.124  ,  60 , [EX]ImHoTep|LeaseWeb
-131968a131680,131681
+131968a131688,131689
 > 85.159.232.80   - 85.159.232.95   ,  60 , [EX]La Cosa Nostra
 > 85.159.236.0    - 85.159.236.255  ,  60 , [EX]La Isla Del Tesoro
-132009a131723
+132009a131731
 > 85.177.214.146  - 85.177.214.146  ,  60 , [EX]RasierterEsel.de|HANSENET-ADSL
-133455,133548c133169
+133455,133548c133177
 < 87.98.128.61    - 87.98.128.61    , 109 , [L2]ems14.your-freedom.de
 < 87.98.132.79    - 87.98.132.79    ,  90 , [L1]Fake Torrents
 < 87.98.137.46    - 87.98.137.48    ,  90 , [L1]OVH SAS|Anti-p2p
@@ -601,17 +574,19 @@
 < 87.98.190.210   - 87.98.190.210   ,  90 , [L1]OVH SAS|Anti-p2p
 ---
 > 87.98.128.0     - 87.98.191.255   ,  60 , [EX]Anti-P2P|OVH SAS
-133622c133243
+133622c133251
 < 87.106.34.205   - 87.106.34.205   ,  95 , [FK]Schlund + Partner AG
 ---
 > 87.106.34.205   - 87.106.34.205   ,  60 , [EX]
-134430d134050
+134430d134058
 < 87.230.83.44    - 87.230.83.44    ,  90 , [L1]www.UseNeXT.to
-135064a134685
+135064a134693
 > 88.19.24.251    - 88.19.24.251    ,  60 , [EX]UnReq response packets
-137672d137292
+137672c137301
 < 88.80.28.48     - 88.80.28.48     ,  95 , [FK]PeRiQuito AB | !-= www.FreeSexBay.com =-! - !-= Porn Pit
-138654,139009c138274
+---
+> 88.80.28.48     - 88.80.28.48     , 109 , [L2]PeRiQuito AB | !-= www.FreeSexBay.com =-! - !-= Porn Pit
+138654,139009c138283
 < 88.191.11.12    - 88.191.11.12    ,  90 , [L1]Dedibox|Anti-p2p
 < 88.191.11.34    - 88.191.11.34    ,  90 , [L1]Dedibox|Anti-p2p
 < 88.191.11.45    - 88.191.11.45    ,  90 , [L1]Dedibox|Anti-p2p
@@ -970,11 +945,11 @@
 < 88.191.206.72   - 88.191.206.97   ,  90 , [L1]Dedibox|Anti-p2p
 ---
 > 88.191.3.0      - 88.191.248.255  ,  60 , [EX]Anti-P2P|Dedibox
-140246c139511
+140246c139520
 < 89.163.161.226  - 89.163.161.226  ,  95 , [FK]United-colo
 ---
 > 89.163.161.226  - 89.163.161.226  ,  60 , [EX]
-140627,140637c139892
+140627,140637c139901
 < 89.248.172.34   - 89.248.172.49   ,  90 , [L1]Ecatel|Anti-p2p
 < 89.248.172.50   - 89.248.172.50   ,  95 , [FK]Sharing Kingdom 2
 < 89.248.172.51   - 89.248.172.53   ,  90 , [L1]Ecatel|Anti-p2p
@@ -988,7 +963,7 @@
 < 89.248.172.225  - 89.248.172.229  ,  95 , [FK]Ecatel Ltd | Pirate Bay
 ---
 > 89.248.172.0    - 89.248.172.255  ,  60 , [EX]Sharing Kingdom
-141365,141688c140620
+141365,141688c140629
 < 91.121.0.17     - 91.121.0.17     ,  90 , [L1]OVH SAS|Anti-p2p
 < 91.121.0.51     - 91.121.0.51     , 109 , [L2]alexandre.inter-systeme.net
 < 91.121.0.172    - 91.121.0.172    , 109 , [L2]Tor.YoMan19
@@ -1315,26 +1290,26 @@
 < 91.121.205.117  - 91.121.205.117  ,  95 , [FK]Ovh Sas | Italia Donkey
 ---
 > 91.121.0.0      - 91.121.207.255  ,  60 , [EX]
-141829d140760
+141829d140769
 < 91.194.90.186  - 91.194.90.186    , 95 , [FK]eDonkey home 1
-141830a140762
+141830a140771
 > 91.194.90.186   - 91.194.90.186   ,  95 , [FK]eDonkey home 1
-141912c140844
+141912c140853
 < 91.204.208.225  - 91.204.208.225  ,  95 , [FK]Racksrv Communications Ltd | Sharing Kingdom 666
 ---
 > 91.204.208.225  - 91.204.208.225  ,  60 , [EX]Sharing Kingdom
-141915c140847
+141915c140856
 < 91.205.173.85   - 91.205.173.85   ,  95 , [FK]Michael Boelke Und Michael Herpich Gbr | splittshare.com
 ---
 > 91.205.173.85   - 91.205.173.85   ,  60 , [EX]Michael Boelke Und Michael Herpich Gbr | splittshare.com
-142483a141416
+142483a141425
 > 92.148.142.152  - 92.148.142.152  ,  60 , [EX]UnReq response packets
-142533a141467
+142533a141476
 > 92.224.49.13    - 92.224.49.13    ,  60 , [EX]
-142534a141469,141470
+142534a141478,141479
 > 92.224.57.140   - 92.224.57.140   ,  60 , [EX]RasierterEsel.de|HANSENET-ADSL
 > 92.224.59.245   - 92.224.59.245   ,  60 , [EX]RasierterEsel.de|HANSENET-ADSL
-142682,142691c141618
+142682,142691c141627
 < 93.174.93.27    - 93.174.93.27    ,  90 , [L1]Hot stuff
 < 93.174.93.53    - 93.174.93.53    ,  90 , [FK]Ecatel Ltd | ! + + ( Screwing Around
 < 93.174.93.81    - 93.174.93.81    , 119 , [TL]gnutella fake file
@@ -1347,7 +1322,7 @@
 < 93.174.93.250   - 93.174.93.250   ,  90 , [L1]moviex.info|p2p abusers
 ---
 > 93.174.93.0     - 93.174.93.255   ,  60 , [EX]
-142746,142754c141673
+142746,142754c141682
 < 94.23.4.222     - 94.23.4.222     ,  95 , [FK]Italia Donkey 3
 < 94.23.6.61      - 94.23.6.61      ,  90 , [L1]fake emule servers
 < 94.23.13.79     - 94.23.13.79     , 107 , [PT]Tor
@@ -1359,7 +1334,7 @@
 < 94.23.49.48     - 94.23.49.48     ,  95 , [FK]Ovh Sas | Real Sharing No3
 ---
 > 94.23.0.0       - 94.23.63.255    ,  60 , [EX]www.StormSex.net
-142766,142773c141685
+142766,142773c141694
 < 94.23.200.122   - 94.23.200.123   ,  95 , [FK]Ovh Sas | Real Sharing No1&2
 < 94.23.201.170   - 94.23.201.170   ,  95 , [FK]Ovh Sas | OpenJoke
 < 94.23.203.17    - 94.23.203.17    ,  95 , [FK]Ovh Sas | Real Sharing No4
@@ -1370,79 +1345,81 @@
 < 94.23.232.63    - 94.23.232.63    , 107 , [PT]Proxy
 ---
 > 94.23.192.0     - 94.23.255.255   ,  60 , [EX]www.StormSex.net
-142835,142836c141747
+142835,142836c141756
 < 94.102.51.38    - 94.102.51.38    ,  90 , [FK]GET LAID
 < 94.102.51.41    - 94.102.51.41    ,  90 , [L1]fake emule servers
 ---
 > 94.102.51.0     - 94.102.51.255   ,  60 , [EX]www.thesexhill.com
-143018,143019c141929
+143018,143019c141938
 < 96.31.94.145    - 96.31.94.147    ,  90 , [FK]Tampa Noc4hosts Inc | icupid
 < 96.31.94.162    - 96.31.94.163    ,  90 , [L1]Fake eMule and gnutella Servers
 ---
 > 96.31.64.0      - 96.31.95.255    ,  60 , [EX]iCupid|NOC4Hosts
-145243c144153
+145243c144162
 < 114.108.145.7   - 114.108.145.8   ,  95 , [FK]LG DACOM Corporation | Edonkey Server No1 | edonkeyserverno2
 ---
 > 114.108.145.7   - 114.108.145.8   ,  60 , [EX]edonkeyserverno2&no1|LG DACOM KIDC
-145422a144333,144334
+145422a144342,144343
 > 116.21.137.57   - 116.21.137.57   ,  60 , [EX]sent more data then expected while negotiating(CN) 
 > 116.27.216.154  - 116.27.216.154  ,  60 , [EX]sent more data then expected while negotiating(CN)
-145424a144337
+145424a144346
 > 116.48.40.1     - 116.48.40.1     ,  60 , [EX]UnReq response packets
-145497a144411
+145497a144420
 > 116.224.152.156 - 116.224.152.156 ,  60 , [EX]Kad invalid key(CN)
-145564a144479
+145564a144488
 > 117.40.112.214  - 117.40.112.214  ,  60 , [EX]UnReq KAD packet flood2|CHINANET-JX
-145575d144489
+145575d144498
 < 117.72.0.0      - 117.73.255.255  ,  90 , [L1]Beijing Founder Broadband Network Technology Co.,Ltd
-145595d144508
+145595c144518
 < 117.135.137.108 - 117.135.137.108 ,  95 , [FK]Mobile Communications Co.,Ltd. | IA 1.8 ED2K SERVER NO.1
-145826a144740
+---
+> 117.135.137.108 - 117.135.137.108 , 109 , [L2]Mobile Communications Co.,Ltd. | IA 1.8 ED2K SERVER NO.1
+145826a144750
 > 119.100.145.242 - 119.100.145.242 ,  60 , [EX]KAD floods|CHINANET-HB
-145832a144747,144748
+145832a144757,144758
 > 119.120.94.201  - 119.120.94.201  ,  60 , [EX]Request floods(CN)
 > 119.127.141.160 - 119.127.141.160 ,  60 , [EX]Kad wrong sender key(CN)
-145898d144813
+145898d144823
 < 121.4.0.0       - 121.5.255.255   ,  90 , [L1]Beijing Founder Broadband Network Technology Co.,Ltd
-145950a144866
-> 121.30.203.180  - 121.30.203.180  ,  60 , [EX]CNCGROUP China169 Backbone datong shanxi
-146058c144974
+145950a144876
+> 121.30.203.180  - 121.30.203.180  ,  60 , [EX]Abuse Senders CNCGROUP China169 Backbone datong shanxi
+146058c144984
 < 121.134.40.68   - 121.134.40.68   ,  95 , [FK]Korea Telecom | -= eMuleServer No1
 ---
 > 121.134.40.68   - 121.134.40.68   ,  60 , [EX](KR)
-146301a145218
+146301a145228
 > 122.96.156.252  - 122.96.156.252  ,  60 , [EX]All kind eMule errors|ShenZhenAoSiDa
-146304a145222
+146304a145232
 > 122.100.220.93  - 122.100.220.93  ,  60 , [EX]Fake uTorrent
-146331c145249
+146331c145259
 < 122.116.166.144 - 122.116.166.144 ,  95 , [FK]panda-server1
 ---
 > 122.116.166.144 - 122.116.166.144 ,  60 , [EX]panda-server1
-146333c145251
+146333c145261
 < 122.116.209.201 - 122.116.209.201 ,  95 , [FK]Telecom Data Communication Business Group | www.clicke-world.com
 ---
 > 122.116.209.201 - 122.116.209.201 ,  60 , [EX]Telecom Data Communication Business Group | www.clicke-world.com
-146684a145603
+146684a145613
 > 123.53.152.46   - 123.53.152.46   ,  60 , [EX]No Senderkey|MAINT-CHINANET-HA
-146695c145614
+146695c145624
 < 123.108.224.70  - 123.108.224.70  ,  95 , [FK]Honesty Net Solutions (india) Pvt Ltd | hub.DynoISP.com:3466
 ---
 > 123.108.224.70  - 123.108.224.70  ,  60 , [EX]Fake server
-146789a145709
+146789a145719
 > 124.11.65.62    - 124.11.65.62    ,  60 , [EX]magicvalue Mismatch|TFN-NET(TW)
-147327c146247
+147327c146257
 < 124.126.0.0     - 124.127.255.255 , 109 , [L2]Research Institution of Telecom
 ---
-> 124.126.0.0     - 124.127.255.255 ,  60 , [EX]Research Institution of Telecom
-148132c147052
+> 124.126.0.0     - 124.127.255.255 ,  60 , [EX]Abuse Senders Research Institution of Telecom
+148132c147062
 < 125.46.65.72    - 125.46.65.72    ,  95 , [FK]Cncgroup Henan Province Network | flashget
 ---
 > 125.46.65.72    - 125.46.65.72    ,  60 , [EX]flashget(CN)
-149924a148845
+149924a148855
 > 139.175.55.249  - 139.175.55.249  ,  60 , [EX]Seednet news server
-149968a148890
+149968a148900
 > 140.130.31.41   - 140.130.31.41   ,  60 , [EX](TW)
-154540,154545c153462
+154540,154545c153472
 < 173.45.75.146   - 173.45.75.146   ,  90 , [FK]Enet Inc | Xx/Bb/Gg Italy Free Music Server 3 xX/1 bB/2 gG
 < 173.45.76.226   - 173.45.76.226   ,  90 , [L1]Fake eDonkeyServer No2 - antiP2P owned
 < 173.45.100.74   - 173.45.100.74   ,  90 , [FK]eDonkeyServer No3 | Master Server 12
@@ -1451,27 +1428,27 @@
 < 173.45.114.42   - 173.45.114.42   ,  90 , [FK]QualityShare | SafeNet | Europe 02
 ---
 > 173.45.64.0     - 173.45.127.255  ,  60 , [EX]xlhost|eNet
-154660c153577
+154660c153587
 < 174.36.164.12   - 174.36.164.12   ,  90 , [L1]Fake Emule Server - Donkey Kingdom
 ---
 > 174.36.164.12   - 174.36.164.12   ,  60 , [EX]Fake Emule Server - Donkey Kingdom
-154753c153670
+154753c153680
 < 174.136.192.0   - 174.136.255.255 ,  90 , [L1]Suavemente, INC, MediaDefender-Suavemente
 ---
 > 174.136.192.0   - 174.136.255.255 ,  60 , [EX]Suavemente, INC, MediaDefender-Suavemente
-154963a153881
+154963a153891
 > 187.45.206.161  - 187.45.206.161  ,  60 , [EX]
-160344c159262
+160344c159272
 < 193.19.210.2    - 193.19.210.2    ,  95 , [FK]Enix Network
 ---
 > 193.19.210.2    - 193.19.210.2    ,  60 , [EX]
-160557c159475
+160557c159485
 < 193.37.152.88   - 193.37.152.88   ,  90 , [L1]Fake eMule Server on Giga-Hosting.biz GbR
 ---
 > 193.37.152.88   - 193.37.152.88   ,  60 , [EX]
-161789a160708
+161789a160718
 > 193.104.186.62  - 193.104.186.64  ,  60 , [EX]www.StormSex.net
-163076,163090c161995,161996
+163076,163090c162005,162006
 < 193.138.205.25  - 193.138.205.25  ,  95 , [FK]Kdis Network
 < 193.138.221.5   - 193.138.221.5   ,  95 , [FK]Euroaccess
 < 193.138.221.210 - 193.138.221.210 ,  95 , [FK]Euroaccess
@@ -1490,64 +1467,74 @@
 ---
 > 193.138.205.25  - 193.138.205.25  ,  60 , [EX]
 > 193.138.220.0   - 193.138.231.255 ,  60 , [EX]
-163616c162522
+163616c162532
 < 193.164.131.173 - 193.164.131.173 ,  95 , [FK]Michael Boelke Und Michael Herpich Gbr | Top Soft Share Plato - yYy
 ---
 > 193.164.131.173 - 193.164.131.173 ,  60 , [EX]
-168813,168815d167718
+168813,168815c167729,167731
 < 194.126.175.106 - 194.126.175.106 ,  95 , [FK] | Sharing Kingdom 3
 < 194.126.175.170 - 194.126.175.170 ,  95 , [FK] | Sharing Kingdom 4
 < 194.126.175.202 - 194.126.175.202 ,  95 , [FK] | Sharing Kingdom 5
-179389d178291
+---
+> 194.126.175.106 - 194.126.175.106 , 109 , [L2] | Sharing Kingdom 3
+> 194.126.175.170 - 194.126.175.170 , 109 , [L2] | Sharing Kingdom 4
+> 194.126.175.202 - 194.126.175.202 , 109 , [L2] | Sharing Kingdom 5
+179389d178304
 < 195.229.0.0     - 195.230.31.255  ,  90 , [L1]Emirates Telecommunications Corporation
-179658d178559
+179658c178573
 < 195.242.152.138 - 195.242.152.138 ,  95 , [FK] | Sharing Kingdom 6
-179660d178560
+---
+> 195.242.152.138 - 195.242.152.138 , 109 , [L2] | Sharing Kingdom 6
+179660c178575
 < 195.242.153.66  - 195.242.153.67  ,  95 , [FK]Eureka Solutions Sp Z O.o | Sharing Kingdom 1-2
-185145a184046
+---
+> 195.242.153.66  - 195.242.153.67  , 109 , [L2]Eureka Solutions Sp Z O.o | Sharing Kingdom 1-2
+185145a184061
 > 200.70.58.98    - 200.70.58.98    ,  60 , [EX]Wrong size packets|Telefonica Data Argentina
-185602c184503
+185602c184518
 < 201.20.20.59    - 201.20.20.59    ,  95 , [FK]Comite Gestor Da Internet No Brasil | Goa - Tupiniquim
 ---
 > 201.20.20.59    - 201.20.20.59    ,  60 , [EX]Comite Gestor Da Internet No Brasil | Goa - Tupiniquim
-186793a185695
+186793a185710
 > 202.39.162.0    - 202.39.162.255  ,  90 , [L1]CHUNGHWA-TELECOM-TP-TW
-188521a187424
+188521a187439
 > 202.86.128.205  - 202.86.128.205  ,  60 , [EX]Kad invalid key(CN)
-189449d188351
+189449d188366
 < 202.103.240.224 - 202.103.241.31  ,  90 , [L1]Nanning, Guangxi Static Bureau, government organi
-189867c188769
+189867c188784,188786
 < 202.108.211.0   - 202.108.212.255 , 109 , [L2]Beijing Netparent Information Technology Co.Ltd
 ---
-> 202.108.211.0   - 202.108.212.255 ,  90 , [L1]Beijing Netparent Information Technology Co.Ltd
-190352d189253
+> 202.108.211.0   - 202.108.212.140 ,  90 , [L1]Beijing Netparent Information Technology Co.Ltd
+> 202.108.211.141 - 202.108.211.155 ,  60 , [EX]Abuse Senders Beijing Netparent Information Technology Co.Ltd
+> 202.108.211.156 - 202.108.212.255 ,  90 , [L1]Beijing Netparent Information Technology Co.Ltd
+190352d189270
 < 202.131.48.0    - 202.131.63.255  ,  90 , [L1]Eastchina Broadcasting network Co.,Ltd
-190531c189432
+190531c189449
 < 202.141.162.27  - 202.141.162.27  ,  95 , [FK]SG-USTC | eDonkeyServer Nol
 ---
 > 202.141.162.27  - 202.141.162.27  ,  60 , [EX]
-191390a190292
+191390a190309
 > 202.171.254.26  - 202.171.254.26  ,  60 , [EX]
-194119a193022
+194119a193039
 > 203.56.128.10   - 203.56.128.10   ,  60 , [EX]Australian P2P Research Server
-194291a193195
+194291a193212
 > 203.66.88.0     - 203.66.88.255   ,  90 , [L1]HINET-NET(Network center)
-194317a193222
+194317a193239
 > 203.69.40.160   - 203.69.40.191   ,  60 , [EX]kuro(TW)
-194512c193417
+194512c193434
 < 203.79.253.33   - 203.79.253.33   ,  95 , [FK]Asia Pacific Online Service Inc
 ---
 > 203.79.253.33   - 203.79.253.33   ,  60 , [EX](TW)
-199759a198665
+199759a198682
 > 203.218.210.134 - 203.218.210.134 ,  60 , [EX]Kad invalid key(HK)
-203099a202006
+203099a202023
 > 205.177.215.223 - 205.177.215.223 ,  60 , [EX]Anti-P2P|Beyond The Network America
-207445c206352,206353
+207445c206369,206370
 < 207.170.192.0   - 207.171.127.255 ,  90 , [L1]Time Warner Telecom
 ---
 > 207.170.192.0   - 207.170.255.255 ,  90 , [L1]tw telecom holdings
 > 207.171.0.0     - 207.171.63.255  ,  60 , [EX]Fake Servers|Phyber Communications
-207586,207601c206494
+207586,207601c206511
 < 207.182.81.0    - 207.182.81.31   , 109 , [L2]Direct Lenders
 < 207.182.88.0    - 207.182.88.255  , 109 , [L2]Open Solutions
 < 207.182.96.0    - 207.182.127.255 , 109 , [L2]Network Enhanced Technologies
@@ -1566,15 +1553,15 @@
 < 207.182.157.130 - 207.182.157.130 ,  90 , [FK]Enet Inc | Chinese Free Porno Server 1 * ! * - M Chinese Free Porno
 ---
 > 207.182.0.0     - 207.182.159.255 ,  60 , [EX]Fake servers
-209927c208820
+209927c208837
 < 208.43.137.122  - 208.43.137.122  ,  95 , [FK]Softlayer Technologies Inc | Ceres - Pluto - Uranus
 ---
 > 208.43.137.122  - 208.43.137.122  ,  60 , [EX]Softlayer Technologies Inc | Ceres - Pluto - Uranus
-209931c208824
+209931c208841
 < 208.43.211.26   - 208.43.211.26   ,  95 , [FK]Usa Donkey - UltraUploader - MegaMule
 ---
 > 208.43.211.26   - 208.43.211.26   ,  60 , [EX]
-211249,211286c210142
+211249,211286c210159
 < 208.109.11.2    - 208.109.11.2    ,  90 , [L1]famous-pictures.com
 < 208.109.14.25   - 208.109.14.25   , 111 , [SW]tryspywareremover.com
 < 208.109.51.71   - 208.109.51.71   ,  90 , [L1]fake emule servers
@@ -1615,11 +1602,11 @@
 < 208.109.242.32  - 208.109.242.36  ,  90 , [L1]GoDaddy.com|Anti-p2p
 ---
 > 208.109.0.0     - 208.109.255.255 ,  60 , [EX]MediaDefender|GoDaddy software
-214760c213616
+214760c213633
 < 209.44.103.19   - 209.44.103.19   ,  95 , [FK]! * * * ONLY SEX
 ---
 > 209.44.103.19   - 209.44.103.19   ,  60 , [EX]! * * * ONLY SEX
-217639,217653c216495
+217639,217653c216512
 < 209.190.4.202   - 209.190.4.202   , 109 , [L2]vpn1.findnot.com
 < 209.190.5.106   - 209.190.5.106   , 111 , [SW]exp.wmf|hijack|BT
 < 209.190.7.50    - 209.190.7.50    , 109 , [L2]vpn13.findnot.com
@@ -1637,84 +1624,84 @@
 < 209.190.122.186 - 209.190.122.186 , 119 , [TL]P2P Fake files
 ---
 > 209.190.0.0     - 209.190.127.255 ,  60 , [EX]xlhost|eNet
-219780d218621
+219780d218638
 < 210.12.226.0    - 210.12.226.255  ,  90 , [L1]Beijing Haidian Broadcasting & TV Network Co.,Ltd
-220294a219136
+220294a219153
 > 210.51.14.201   - 210.51.14.201   ,  60 , [EX]haha|Yahoo!BB(JP)
-224255c223097
+224255c223114
 < 211.33.88.226   - 211.33.88.226   ,  95 , [FK]Republic Of Seoul Thrunet Co. Ltd | TK donkey Server
 ---
 > 211.33.88.226   - 211.33.88.226   ,  60 , [EX]Republic Of Seoul Thrunet Co. Ltd | TK donkey Server
-224375c223217,223218
+224375c223234,223235
 < 211.44.183.92   - 211.44.183.92   ,  95 , [FK]Republic Of Seoul Krnic | donkeyserver
 ---
 > 211.44.183.92   - 211.44.183.92   ,  60 , [EX]donkeyserver(KR)|SK broadband
 > 211.44.183.96   - 211.44.183.96   ,  60 , [EX]donkeyserverno?(KR)|SK broadband
-224460c223303
+224460c223320
 < 211.52.142.61   - 211.52.142.61   ,  95 , [FK]Thrunet Co. Ltd | edonkeyserverno1
 ---
 > 211.52.142.61   - 211.52.142.61   ,  60 , [EX]edonkeyserverno1(KR)|SK broadband
-224584d223426
+224584d223443
 < 211.68.71.81    - 211.68.71.81    ,  95 , [FK]
-225303c224145
+225303c224162
 < 211.148.160.0   - 211.148.191.255 ,  90 , [L1]TIANJIN BROADCAST &TV NETWORK CO.~~LTD
 ---
 > 211.148.191.0   - 211.148.191.255 ,  60 , [EX]Euro and America Network
-225321d224162
+225321d224179
 < 211.156.128.0   - 211.156.159.255 ,  90 , [L1]China Broadcasting TV Net
-225538c224379
+225538c224396
 < 211.191.177.215 - 211.191.177.216 ,  95 , [FK]Republic Of Seoul Shinbiro-xpeed-seokkwandoosanwevapt | edonkeyserv
 ---
 > 211.191.160.0   - 211.191.191.255 ,  60 , [EX]edonkeyserverno2(KR)|ONSE Telecom
-225756d224596
+225756d224613
 < 211.245.230.0   - 211.245.252.255 ,  90 , [L1]Thrunet Co., Ltd (THRUNET)
-229413c228253
+229413c228270
 < 212.112.243.146 - 212.112.243.146 ,  95 , [FK]Ipx Server Gmbh
 ---
 > 212.112.243.146 - 212.112.243.146 ,  60 , [EX]Ipx Server Gmbh
-229583c228423
+229583c228440
 < 212.117.162.152 - 212.117.162.152 ,  95 , [FK]Root Esolutions
 ---
 > 212.117.162.152 - 212.117.162.152 ,  60 , [EX]Sharing Europe 1
-239021c237861
+239021c237878
 < 213.137.61.230  - 213.137.61.230  ,  95 , [FK]Mc-21 Ltd
 ---
 > 213.137.61.230  - 213.137.61.230  ,  60 , [EX]Mc-21 Ltd
-239756a238597
+239756a238614
 > 213.155.20.16   - 213.155.20.23   ,  60 , [EX]eMule Security No2
-240821c239662
+240821c239679
 < 213.186.44.181  - 213.186.44.181  ,  95 , [FK]Ovh Sas|Anti-p2p
 ---
 > 213.186.44.181  - 213.186.44.181  ,  60 , [EX]
-240823c239664
+240823c239681
 < 213.186.45.91   - 213.186.45.91   ,  95 , [FK]Ovh Sas|Anti-p2p
 ---
 > 213.186.45.91   - 213.186.45.91   ,  60 , [EX]
-243027c241868
+243027c241885
 < 213.251.133.129 - 213.251.133.129 ,  95 , [FK]Ovh Sas|Anti-p2p
 ---
 > 213.251.133.129 - 213.251.133.129 ,  60 , [EX]Ovh Sas|Anti-p2p
-243049c241890
+243049c241907
 < 213.251.161.69  - 213.251.161.69  ,  95 , [FK]Ovh Sas|Anti-p2p
 ---
 > 213.251.161.69  - 213.251.161.69  ,  60 , [EX]
-246380d245220
+246380d245237
 < 216.95.160.0    - 216.95.160.255  ,  90 , [L1]Coop Tel
-260542a259383
+260542a259400
 > 218.4.17.17     - 218.4.17.17     ,  60 , [EX]Wrong size packets|CHINANET-JS
-260791c259632
+260791c259649
 < 218.16.123.195  - 218.16.123.195  ,  95 , [FK]Chinanet Guangdong Province Network | DataLive Server
 ---
 > 218.16.123.195  - 218.16.123.195  ,  60 , [EX]Chinanet Guangdong Province Network | DataLive Server
-260853a259695
+260853a259712
 > 218.25.226.93   - 218.25.226.93   ,  60 , [EX]Kad Request floodsCN)
-262529d261370
+262529d261387
 < 218.98.0.0      - 218.98.223.255  ,  90 , [L1]Shandong Beelink Information Technology Co., Ltd
-262784a261626
+262784a261643
 > 218.103.244.13  - 218.103.244.13  ,  60 , [EX]File faker(HK)
-263380a262223
+263380a262240
 > 219.77.161.236  - 219.77.161.236  ,  60 , [EX]send Corrupted data|NETVIGATOR(HK)
-263407,263409c262250,262252
+263407,263409c262267,262269
 < 219.84.160.0    - 219.84.175.255  ,  90 , [L1]Sony Network Taiwan Limited
 < 219.84.192.0    - 219.84.219.255  ,  90 , [L1]Sony Network Taiwan Limited
 < 219.85.64.0     - 219.85.255.255  ,  90 , [L1]Sony Network Taiwan Limited
@@ -1722,48 +1709,48 @@
 > 219.84.175.192  - 219.84.175.255  ,  60 , [EX]INTUMIT Technology
 > 219.84.192.0    - 219.84.192.255  ,  60 , [EX]WaYi Inter-digi-Entertainment|So-Net(TW)
 > 219.84.215.0    - 219.84.216.255  ,  60 , [EX]Anti-P2P|SO-NET(TW)
-263573d262415
+263573d262432
 < 219.106.224.0   - 219.106.255.255 ,  90 , [L1]SONY Corporation
-263857c262699
+263857c262716
 < 219.139.192.0   - 219.140.255.255 ,  90 , [L1]Chinanet network in Wuhan city Hubei province
 ---
 > 219.141.210.160 - 219.141.210.179 ,  60 , [EX]Abuse Senders CCIDConsulting CNNIC beijing
-263867a262710,262712
+263867a262727,262729
 > 219.143.87.173  - 219.143.87.173  ,  60 , [EX]Abuse Senders China Networks Inter-Exchange beijing
 > 219.143.88.8    - 219.143.88.8    ,  60 , [EX]Abuse Senders China Networks Inter-Exchange beijing
 > 219.143.95.204  - 219.143.95.204  ,  60 , [EX]Abuse Senders China Networks Inter-Exchange beijing
-264292d263136
+264292d263153
 < 219.232.48.0    - 219.232.63.255  ,  90 , [L1]Beijing Founder Broadband Network Technology Co.,Ltd
-264755c263599
+264755c263616
 < 220.132.141.99  - 220.132.141.99  ,  95 , [FK]Chunghwa Telecom Data Communication Business Group
 ---
 > 220.132.141.99  - 220.132.141.99  ,  60 , [EX]Chunghwa Telecom Data Communication Business Group
-264757c263601,263602
+264757c263618,263619
 < 220.133.191.188 - 220.133.191.188 ,  95 , [FK]Chunghwa Telecom Data Communication Business Group | panda-server1
 ---
 > 220.133.60.56   - 220.133.60.56   ,  60 , [EX]panda|HiNet(TW)
 > 220.133.191.188 - 220.133.191.188 ,  60 , [EX]panda-Server1|HiNet(TW)
-265449d264293
+265449d264310
 < 221.129.0.0     - 221.129.255.255 ,  90 , [L1]TIANJIN BROADCAST & TV NETWORK CO. LTD
-265474a264319
+265474a264336
 > 221.131.34.178  - 221.131.34.178  ,  60 , [EX]UnReq response packets|CMNET(CN)
-265570c264415
+265570c264432
 < 221.148.166.205 - 221.148.166.205 ,  95 , [FK]Korea Telecom | -= eMuleServer No1
 ---
 > 221.148.166.205 - 221.148.166.205 ,  60 , [EX]-=eMuleServer No1=-|KOREA TELECOM
-265592c264437
+265592c264454
 < 221.181.65.211  - 221.181.65.211  ,  95 , [FK]China Mobile Communications Corp
 ---
 > 221.181.65.211  - 221.181.65.211  ,  60 , [EX]www.iamalex.net|CMNet
-265816a264662
+265816a264679
 > 221.192.237.65  - 221.192.237.94  ,  60 , [EX]Baoding-Software College
-266530a265377
+266530a265394
 > 222.70.180.108  - 222.70.180.108  ,  60 , [EX]Abuse Senders China Telecom (Group) Shanghai
-266570d265416
+266570d265433
 < 222.88.0.0      - 222.89.255.255  ,  90 , [L1]CHINANET henan province network
-266654a265501
+266654a265518
 > 222.122.81.31   - 222.122.81.31   ,  60 , [EX]cyworld.com/fimmboy(KR)
-266901c265748
+266901c265765
 < 222.155.121.91  - 222.155.121.91  ,  95 , [FK]
 ---
 > 222.155.121.91  - 222.155.121.91  ,  60 , [EX]
