@@ -1,1446 +1,978 @@
-*** C:/Users/Administrator/Desktop/SVN/ipfilter-emule/branches/ipfilter/ipfilter.dat	Tue Apr 20 16:34:52 2010
---- C:/Users/Administrator/Desktop/SVN/ipfilter-emule/trunk/ipfilter-ex/ipfilter.dat	Wed Jul 21 20:58:36 2010
+*** C:/Users/Administrator/Desktop/SVN/ipfilter-emule/branches/ipfilter/ipfilter.dat	Sun Aug 08 13:45:09 2010
+--- C:/Users/Administrator/Desktop/SVN/ipfilter-emule/trunk/ipfilter-ex/ipfilter.dat	Sun Aug 08 16:46:06 2010
 ***************
-*** 1,38 ****
-! #>> Ipfilter v143 (19-04-2010) by R3Qu13M
-! #>> [based on Meuh6879's ipfilter format]
-! #
-! #>> Updated all lists (18-04-2010)
-! #
-! #>> Download no-bluetacklists: 
-! #> 060 - http://www.cidr-report.org/bogons/freespace-quads.txt
-! #> 070 - http://www.cidr-report.org/as2.0/bogus-as-advertisements.html
-! #> 080 - http://www.cidr-report.org/as2.0/indext.html#Bogons
-! #> 095 - http://www.mediafire.com/file/wnvmrwkryyg/FK.txt
+*** 1,91 ****
+! #-0---(main title)---Ipfilter v144 (2010-08-01).
+! #>> http://forum.emule-project.net/index.php?showtopic=19247
+! #>> Builded to be used with eMule/Bitorrent Software & a private ISP.
+! #>> Fight the Futur.
 ! #
 ! #
-! #>> Parsed lines/entries:270037  Found IP ranges:270037  Duplicate:0  Merged:0
 ! #
-! # FILTERED LEVEL               DESCRIPTION				DENY IP COUNT
-! #>     060		Unallocated (Free) Space on IPv4	675.278.136  (out of 4.294.967.296 IP's or 15,72254%)
-! #>     070		Bogus AS Advertisements		1.085.712  (out of 4.294.967.296 IP's or 00,02528%)
-! #>     080		Possible Bogus Routes		34.673.152  (out of 4.294.967.296IP's or 00,8073%)
-! #>     090		Level1				775.492.191  (out of 4.294.967.296 IP's or 18,05583%)
-! #>     095		Fake Server			1.958.612  (out of 4.294.967.296 IP's or 00,0456%)
-! #>     097		Microsoft				1.101.427  (out of 4.294.967.296 IP's or 00,02564%)
-! #>     107		Tor, Proxy list			1.980  (out of 4.294.967.296 IP's or 00,00005%)
-! #>     109		Level2				319.951.353  (out of 4.294.967.296 IP's or 07,44945%)
-! #>     111		Spyware				270.984  (out of 4.294.967.296 IP's or 00,00631%)
-! #>     113		Ad Trackers			475.644  (out of 4.294.967.296 IP's or 0,01107%)
-! #>     115		Spider				1.066.506  (out of 4.294.967.296 IP's or 00,02483%)
-! #>     119		TempList				153.269  (out of 4.294.967.296 IP's or 00,00357%)
-! #>     160		Lan range				302.055.193  (out of 4.294.967.296 IP's or 07,03277%)
-! #
-! # Total IP Count = 2.056.174.918  (out of 4.294.967.296 IP's or 47,87405%)
+! #-1---(3 lists)------BOGON list (2010-08-01).
+! #>> [BG]FreeSP: Unallocated (Free) Address Space
+! #   http://www.cidr-report.org/bogons/
+! #>> [BG]AS-12345: Bogus AS Advertisements (Source: IANA AS Registry)
+! #   http://www.cidr-report.org/as2.0/bogus-as-advertisements.html
+! #>> [BG]Routes-ABCDEF: Possible Bogus Routes
+! #   http://www.cidr-report.org/as2.0/indext.html#Bogons
 ! #
 ! #
-! #>> Builded to be used with eMule & a private ISP. Fight the Future.
+! #
+! #-2---(15 lists)------Bluetack (BISS) Personal-Build of IPFilter (2010-08-01).
+! #>> Includes: Level1[L1], Level2[L2], Level3[L3], Spyware[SW], DShield[DS],
+! #   Microsoft[MS], Ad Trackers[AD], Spider[SD], RangeTestList[RT], Hijacked[HJ],
+! #   BadPeers[BD], ForumSpam [SP], WebExploit[WE], MultiCast[MC], IANA[BG].
+! #>> Many cosmetics corrections during import process.
+! #>> http://www.bluetack.co.uk/forums/index.php?showtopic=11719
+! #>> http://blocklistpro.com/faqs/biss-ip-blocklists-faq.html
+! #>> http://blocklistpro.com/download-center/blocklist-pro-blocklists-mirror/
 ! #
 ! #
-  0.0.0.1         - 0.255.255.255   , 160 , [LN]Invalid ips
-  1.0.1.0         - 1.1.0.255       ,  60 , [BG]freespace-quads
-  1.1.2.0         - 1.2.2.255       ,  60 , [BG]freespace-quads
---- 1,8 ----
-! #>> IPFilter v143 emule-fans (2010-05-06)
-! #>> Home http://emule-fans.com/category/news/plugin/ipfilter/
+! #
+! #-3---(1 list)-------Fakes Server List from eMule-Project (2010-08-02).
+! #>> http://forum.emule-project.net/index.php?showtopic=139609&st=100
+! #>> Fake server list[FK] updated by users feedbacks in eMule-Project Forum.
+! #
+! #
+! #
+! #-4---(main tool)----Merged by BlockList Manager 2.7.7 (2009-01-11).
+! #>> http://blocklistpro.com/the-blocklist-manager-2.7.7.html
+! #>> all lists are imported manually (not by BLM) one by one in (a.a.a.a-b.b.b.b,000,c) format.
+! #>> IPFilter v144 : 2?67?11?67  (out of 4?94?67?96 IP's or 57,43959%)
+! #>> Please, feedback to emule-project or Bluetack forum (links are on top, section -0-, -2- and -3-).
+! #
+! #
+! #
+! #-5---(warning !)----If you uses this ipfilter, you will know this:
+! #>> 10.0.0.0-10.255.255.255, 127.0.0.0-127.255.255.255,
+! # 172.16.0.0-172.31.255.255 and 192.168.0.0-192.168.255.255 are (not by eMule) filtered.
+! # It's the LanCast[LN] feature of eMule and it have the level 160. Be careful without eMule.
+! #>> "MultiCast" ranges are filtered.
+! #>> "Test Port" is filtered. It's a feature of eMule.
+! #>> Somes ED2K servers will be filtered when you update the ED2K server list.
+! #>> This IPFilter would be not used with a firewall...some many web site will be filtered.
+! #>> You can adjust the level of IPFilter.dat in eMule (default: all numbers before 127 are filtered)
+! # 60 = [BG] = FreeSP.
+! # 65 = [BG] = IANA.
+! # 70 = [BG] = AS.
+! # 80 = [BG] = Routes.
+! # 90 = [L1] = Level1.
+! # 92 = [FK] = FakeServer.
+! # 94 = [MS] = Microsoft.
+! # 100 = [L2] = Level2.
+! # 102 = [SW] = Spyware.
+! # 104 = [AD] = Ad Trackers.
+! # 106 = [SD] = Spider.
+! # 108 = [HJ] = HiJacked.
+! # 110 = [L3] = Level3.
+! # 112 = [DS] = Dshield.
+! # 114 = [WE] = WebExploit.
+! # 116 = [BD] = BadPeers.
+! # 118 = [SP] = ForumSpam.
+! # 120 = [RT] = RangeTestList.
+! # 122 = [MC] = MultiCast.
+! # 160 = [LN] = Lan range.
+! # Example: if you wants filtered all except L2 & SW & AD & SD & HJ & L3, you must set 108.
+! # -------- if you wants filtered only Bogon, you must set 65.
+! #   http://forum.emule-project.net/index.php?showtopic=10128
+! #   http://forum.emule-project.net/index.php?showtopic=19247&view=findpost&p=747806
+! #>> more you decreases level in eMule, more the security of IPFilter decreases.
+! #   standard setting = 95. recommanded setting = 109. paranoid setting = 127.
+! #
+! #
+! #
+! #-6---(Add & Remove)-Changes from the original lists or Features added.
+! #>> 2010-08-01: project reloaded with v143.
+! #   http://forum.emule-project.net/index.php?showtopic=142299
+! #>> 2010-08-01: add of HJ, L3, DS, BD, SP, WE and rename TL in RT.
+! #>> 2010-08-01: Levels modified.
+! #
+! #
+! #
+  0.0.0.0         - 0.255.255.255   ,  60 , [BG]FreeSP, [LN]IANA-Local Identif
+  1.0.1.0         - 1.1.0.255       ,  60 , [BG]FreeSP
+  1.1.2.0         - 1.2.2.255       ,  60 , [BG]FreeSP
+--- 1,7 ----
+! #>> IPFilter v144 eMuleFans (2010-08-08)
+! #>> Home http://emulefans.com/news/plugin/ipfilter/
 ! #>> Source http://ipfilter-emule.googlecode.com/svn/trunk/ipfilter-ex/ipfilter.dat
-! #>> Compressed version http://ipfilter-emule.googlecode.com/files/ipfilter.zip
-! #>> It is modified from R3Qu13M's IPFilter v143 (2010-04-19), zmhleo's version and tetris's list. Level 60[EX] is used for some very bad IP. See or2ex.diff in SVN for the changing from R3Qu13M's IPFilter. Thx R3Qu13M, zmhleo and tetris.
-  0.0.0.1         - 0.255.255.255   , 160 , [LN]Invalid ips
-  1.0.1.0         - 1.1.0.255       ,  60 , [BG]freespace-quads
-  1.1.2.0         - 1.2.2.255       ,  60 , [BG]freespace-quads
+! #>> It is modified from Meuh6879/R3Qu13M's IPFilter v144 (2010-08-01), zmhleo's version and tetris's list. Level 60[EX] is used for some very bad IP. See or2ex.diff in SVN for the changing from Meuh6879/R3Qu13M's IPFilter. Thx Meuh6879, R3Qu13M, zmhleo and tetris.
+  0.0.0.0         - 0.255.255.255   ,  60 , [BG]FreeSP, [LN]IANA-Local Identif
+  1.0.1.0         - 1.1.0.255       ,  60 , [BG]FreeSP
+  1.1.2.0         - 1.2.2.255       ,  60 , [BG]FreeSP
 ***************
-*** 15692,15697 ****
---- 15662,15669 ----
-  58.32.191.136   - 58.32.191.143   ,  90 , [L1]U.S.A Shengzhi Lawyer Office Shangha Rep. Office
-  58.32.232.32    - 58.32.232.39    ,  90 , [L1]U.S.A BOEN, KAIWU Lawyer Office Shanghai Rep. Office
-  58.32.235.240   - 58.32.235.255   ,  90 , [L1]Shanghai UBI Computer Co.,Ltd
-+ 58.34.152.31    - 58.34.152.31    ,  60 , [EX](XunleiOffline)
-+ 58.39.95.57     - 58.39.95.57     ,  60 , [EX](XunleiOffline)
-  58.49.58.20     - 58.49.58.20     , 111 , [SW]trojans
-  58.53.128.77    - 58.53.128.77    , 111 , [SW]m.c5x8.com
-  58.53.128.151   - 58.53.128.151   , 111 , [SW]ddd151.kitmama.cn
+*** 11759,11764 ****
+--- 11675,11682 ----
+  58.56.87.2      - 58.56.87.2      , 104 , [AD]Comment spammer
+  58.60.13.0      - 58.60.14.255    , 120 , [RT]CHINANET
+  58.60.60.189    - 58.60.60.189    , 116 , [BD]P2P Fake files
++ 58.61.39.209    - 58.61.39.255    ,  60 , [EX](XunleiOffline)
++ 58.61.152.69    - 58.61.152.69    ,  60 , [EX](XunleiOffline)
+  58.61.155.0     - 58.61.155.255   , 120 , [RT]CHINANET, [L2]www.wantsfly.com
+  58.61.157.6     - 58.61.157.6     , 100 , [L2]Abuse
+  58.62.172.192   - 58.62.172.207   , 100 , [L2]ZHONGSHAN UNIVERSITY
 ***************
-*** 15703,15712 ****
---- 15675,15691 ----
-  58.57.60.26     - 58.57.60.26     , 107 , [PT]Proxy
-  58.57.181.11    - 58.57.181.11    , 107 , [PT]Proxy
-  58.60.60.189    - 58.60.60.189    , 119 , [TL]P2P Fake files
-+ 58.60.67.252    - 58.60.67.252    ,  60 , [EX](XunleiOffline)
-+ 58.61.39.208    - 58.61.39.209    ,  60 , [EX](XunleiOffline)
-+ 58.61.39.211    - 58.61.39.214    ,  60 , [EX](XunleiOffline)
-+ 58.61.39.216    - 58.61.39.216    ,  60 , [EX](XunleiOffline)
-+ 58.61.39.225    - 58.61.39.225    ,  60 , [EX](XunleiOffline)
-+ 58.61.39.231    - 58.61.39.231    ,  60 , [EX](XunleiOffline)
-  58.61.155.13    - 58.61.155.13    , 109 , [L2]www.wantsfly.com
-  58.61.157.6     - 58.61.157.6     , 109 , [L2]Abuse
-  58.62.172.192   - 58.62.172.207   , 109 , [L2]ZHONGSHAN UNIVERSITY ATTACHED FIRST HOSPITAL
-  58.62.173.0     - 58.62.173.31    , 109 , [L2]SHANGHAI AORONG THE INFORMATION AND TECHNOLOGY SERVICE LIMITED COMPANY
-+ 58.62.225.226   - 58.62.225.226   ,  60 , [EX](XunleiOffline)
-  58.63.109.32    - 58.63.109.39    ,  90 , [L1]GUANGZHOU JUSTICE SCHOOL
-  58.65.194.32    - 58.65.194.47    ,  90 , [L1]Motrolla Pakistan
-  58.65.204.0     - 58.65.204.127   ,  90 , [L1]FEDERAL Department of Complaint Handling , Government of
-***************
-*** 16406,16411 ****
---- 16385,16391 ----
-  58.193.128.0    - 58.193.143.255  ,  90 , [L1]Jiangsu Police Institute
-  58.210.109.198  - 58.210.109.198  , 119 , [TL]p2p Corrupt Data Senders
-  58.210.126.40   - 58.210.126.47   ,  90 , [L1]Suzhou Yuanqu Rengming law court Co.,ltc
-+ 58.210.181.143  - 58.210.181.143  ,  60 , [EX](XunleiOffline)
-  58.210.233.236  - 58.210.233.239  ,  90 , [L1]Suzhou Changjiang intellectual property Co.,ltd
-  58.210.235.40   - 58.210.235.47   ,  90 , [L1]Suzhou Police Bureau 110
-  58.210.235.80   - 58.210.235.87   ,  90 , [L1]Nuo Ji Ya Su Zhou Co.,ltd
-***************
-*** 16427,16432 ****
---- 16407,16413 ----
-  58.211.84.0     - 58.211.84.255   ,  70 , [BG]Bogus AS Advertisements
-  58.211.97.144   - 58.211.97.151   ,  90 , [L1]Changshu People Court
-  58.211.97.208   - 58.211.97.215   ,  90 , [L1]Wuhan Admiralty Court Changshu Circuit Court
-+ 58.211.98.252   - 58.211.98.252   ,  60 , [EX](XunleiOffline)
-  58.211.99.64    - 58.211.99.79    ,  90 , [L1]Kunshan Public Security Bureau
-  58.211.103.8    - 58.211.103.15   ,  90 , [L1]Suzhou Dijie Software Develop Co.,ltd
-  58.211.108.32   - 58.211.108.63   ,  70 , [BG]Bogus AS Advertisements
-***************
-*** 16439,16445 ****
-  58.211.186.104  - 58.211.186.111  ,  90 , [L1]Jiangsu Jujitsu Telecom Tech. CO.,LTd
-  58.211.197.8    - 58.211.197.15   ,  90 , [L1]Zhangjiagang city Party committee co.,ltd
-  58.211.200.168  - 58.211.200.175  ,  90 , [L1]Kunshan Statistics Bureau
-! 58.211.230.0    - 58.211.230.127  , 109 , [L2]Suzhou Industrial Park SIPIS Co.,LTd
-  58.211.233.136  - 58.211.233.143  ,  90 , [L1]Public Secuity Bureau office  Wujiang city
-  58.211.233.224  - 58.211.233.231  ,  90 , [L1]WUJIANG  Qidu GOVERNMENT
-  58.211.234.0    - 58.211.234.127  ,  90 , [L1]Public Secuity Bureau office  Wujiang city of Wujiang Economic Development Z
---- 16420,16428 ----
-  58.211.186.104  - 58.211.186.111  ,  90 , [L1]Jiangsu Jujitsu Telecom Tech. CO.,LTd
-  58.211.197.8    - 58.211.197.15   ,  90 , [L1]Zhangjiagang city Party committee co.,ltd
-  58.211.200.168  - 58.211.200.175  ,  90 , [L1]Kunshan Statistics Bureau
-! 58.211.230.0    - 58.211.230.84   , 109 , [L2]Suzhou Industrial Park SIPIS Co.,LTd
-! 58.211.230.85   - 58.211.230.85   ,  60 , [EX](XunleiOffline)
-! 58.211.230.86   - 58.211.230.127  , 109 , [L2]Suzhou Industrial Park SIPIS Co.,LTd
-  58.211.233.136  - 58.211.233.143  ,  90 , [L1]Public Secuity Bureau office  Wujiang city
-  58.211.233.224  - 58.211.233.231  ,  90 , [L1]WUJIANG  Qidu GOVERNMENT
-  58.211.234.0    - 58.211.234.127  ,  90 , [L1]Public Secuity Bureau office  Wujiang city of Wujiang Economic Development Z
-***************
-*** 16459,16464 ****
---- 16442,16448 ----
-  58.211.247.24   - 58.211.247.31   ,  90 , [L1]Suzhou Police Office Xietang Branch
-  58.211.247.40   - 58.211.247.47   ,  90 , [L1]Suzhou Fujutsi Film Electronic Metal Co.,Ltd
-  58.211.253.216  - 58.211.253.223  ,  90 , [L1]WU ZHOU XIN YOU Law Firm  of  SU ZHOU JIANG SU PROVINCE
-+ 58.212.139.20   - 58.212.139.20   ,  60 , [EX](XunleiOffline)
-  58.213.113.208  - 58.213.113.215  ,  90 , [L1]Jiangsu Television Station
-  58.213.154.192  - 58.213.154.199  ,  90 , [L1]Nanjing Public Security Bureau
-  58.213.155.64   - 58.213.155.95   ,  90 , [L1]Jiangsu Provincial Department of Justice
-***************
-*** 16478,16483 ****
---- 16462,16468 ----
-  58.215.87.10    - 58.215.87.10    , 109 , [L2]mx.wassecurity.com
-  58.215.96.0     - 58.215.126.255  ,  70 , [BG]Bogus AS Advertisements
-  58.216.195.96   - 58.216.195.99   ,  90 , [L1]Jintan City Public Security Bureau
-+ 58.216.213.50   - 58.216.213.50   ,  60 , [EX](XunleiOffline)
-  58.216.216.192  - 58.216.216.199  ,  90 , [L1]wujin publicize department
-  58.216.219.96   - 58.216.219.103  ,  90 , [L1]changzhou police station peace zhidui
-  58.216.225.220  - 58.216.225.223  ,  90 , [L1]XiXiaShu Police Station
-***************
-*** 16614,16620 ****
+*** 12527,12538 ****
   58.241.125.200  - 58.241.125.207  ,  90 , [L1]Optibase
-  58.241.255.34   - 58.241.255.34   , 111 , [SW]helpsl.ru - trojan
-  58.246.32.200   - 58.246.32.203   ,  90 , [L1]Zhong Lu Warner Home Entertainment Co., Ltd
-! 58.247.5.230    - 58.247.5.230    ,  95 , [FK]Usa-acventure-sh
-  58.251.211.28   - 58.251.211.28   , 107 , [PT]Proxy
-  58.252.14.248   - 58.252.14.255   ,  90 , [L1]BaoLi-Video, Dongguan, Guangdong province
-  58.253.68.65    - 58.253.68.65    , 111 , [SW]bm-740.cn
---- 16599,16606 ----
+  58.241.255.34   - 58.241.255.34   , 102 , [SW]helpsl.ru-trojan
+  58.246.32.200   - 58.246.32.203   ,  90 , [L1]Zhong Lu Warner Home
+! 58.247.5.230    - 58.247.5.230    ,  92 , [FK]Usa-acventure-sh
+  58.251.147.57   - 58.251.147.57   , 118 , [SP]www.etemall.com
+  58.252.14.248   - 58.252.14.255   ,  90 , [L1]BaoLi-Video, Donggua
+  58.253.68.65    - 58.253.68.65    , 102 , [SW]bm-740.cn
+  58.253.68.79    - 58.253.68.79    , 102 , [SW]www.wdswe.com
+  58.253.210.248  - 58.253.210.255  , 100 , [L2]video network manage
+  59.3.43.8       - 59.3.43.8       , 116 , [BD]p2p corrupt data sen
+  59.5.108.140    - 59.5.108.140    , 116 , [BD]p2p corrupt data sen
+  59.5.113.225    - 59.5.113.225    , 116 , [BD]gnutella hitmorpher
+--- 12445,12462 ----
   58.241.125.200  - 58.241.125.207  ,  90 , [L1]Optibase
-  58.241.255.34   - 58.241.255.34   , 111 , [SW]helpsl.ru - trojan
-  58.246.32.200   - 58.246.32.203   ,  90 , [L1]Zhong Lu Warner Home Entertainment Co., Ltd
-! 58.251.60.34    - 58.251.60.34    ,  60 , [EX](XunleiOffline)
-! 58.251.63.113   - 58.251.63.113   ,  60 , [EX](XunleiOffline)
-  58.251.211.28   - 58.251.211.28   , 107 , [PT]Proxy
-  58.252.14.248   - 58.252.14.255   ,  90 , [L1]BaoLi-Video, Dongguan, Guangdong province
-  58.253.68.65    - 58.253.68.65    , 111 , [SW]bm-740.cn
+  58.241.255.34   - 58.241.255.34   , 102 , [SW]helpsl.ru-trojan
+  58.246.32.200   - 58.246.32.203   ,  90 , [L1]Zhong Lu Warner Home
+! 58.251.57.66    - 58.251.57.125   ,  60 , [EX](XunleiOffline)
+! 58.251.57.162   - 58.251.57.174   ,  60 , [EX](XunleiOffline)
+! 58.251.59.4     - 58.251.59.6     ,  60 , [EX](XunleiOffline)
+  58.251.147.57   - 58.251.147.57   , 118 , [SP]www.etemall.com
+  58.252.14.248   - 58.252.14.255   ,  90 , [L1]BaoLi-Video, Donggua
++ 58.252.209.2    - 58.252.209.31   ,  60 , [EX](XunleiOffline)
+  58.253.68.65    - 58.253.68.65    , 102 , [SW]bm-740.cn
+  58.253.68.79    - 58.253.68.79    , 102 , [SW]www.wdswe.com
+  58.253.210.248  - 58.253.210.255  , 100 , [L2]video network manage
++ 58.254.134.201  - 58.254.134.253  ,  60 , [EX](XunleiOffline)
++ 58.255.249.130  - 58.255.249.165  ,  60 , [EX](XunleiOffline)
++ 58.255.253.130  - 58.255.253.156  ,  60 , [EX](XunleiOffline)
+  59.3.43.8       - 59.3.43.8       , 116 , [BD]p2p corrupt data sen
+  59.5.108.140    - 59.5.108.140    , 116 , [BD]p2p corrupt data sen
+  59.5.113.225    - 59.5.113.225    , 116 , [BD]gnutella hitmorpher
 ***************
-*** 16639,16648 ****
---- 16625,16636 ----
-  59.32.28.132    - 59.32.28.135    ,  90 , [L1]HP
-  59.34.198.108   - 59.34.198.109   , 111 , [SW]trojans
-  59.35.192.160   - 59.35.192.191   ,  90 , [L1]CHAOAN COUNTY GOVERNMENT INFORMATION INDUSTRY BUREAU
-+ 59.36.97.33     - 59.36.97.33     ,  60 , [EX](XunleiOffline)
-  59.37.4.16      - 59.37.4.47      ,  90 , [L1]GUANGZHOU U.S. CONSULATE
-  59.37.5.16      - 59.37.5.31      ,  90 , [L1]AI RUI SOFTWARE DEVELOPMENT LIMITED COMPANY
-  59.37.10.240    - 59.37.10.255    , 109 , [L2]HUAWEI TECHNOLOGIES CO.,LTD
-  59.37.15.112    - 59.37.15.127    ,  97 , [MS]CHINESE LIMITED COMPANY IN MICROSOFT SHENZHEN OFFICE
-+ 59.37.235.139   - 59.37.235.139   ,  60 , [EX](XunleiOffline)
-  59.39.61.80     - 59.39.61.83     ,  90 , [L1]FOSHAN POLICE STATION CHANCHENG OFFICE
-  59.39.62.140    - 59.39.62.143    ,  90 , [L1]GUANGDONG DADI MOVIE STATION CO.LTD
-  59.39.62.148    - 59.39.62.151    ,  90 , [L1]SANSHUI BOARDCAST TV UNIVERSITY
-***************
-*** 16653,16658 ****
---- 16641,16647 ----
-  59.41.158.224   - 59.41.158.255   ,  90 , [L1]SOUTH LI JIN RECORDS THE LIMITED COMPANY
-  59.41.187.180   - 59.41.187.180   , 107 , [PT]Proxy
-  59.41.187.192   - 59.41.187.199   ,  90 , [L1]GUANGZHOU NOKIA CHINA INVEST LTD. GUANGZHOU BRANCH
-+ 59.41.235.120   - 59.41.235.120   ,  60 , [EX](XunleiOffline)
-  59.41.239.88    - 59.41.239.95    ,  90 , [L1]HUADU GOVERNMENT INFOMATION CENTER A
-  59.42.177.200   - 59.42.177.207   , 109 , [L2]UNIVERCITY HUANANNONGYE JIAOCAI CENTER
-  59.42.214.80    - 59.42.214.95    ,  90 , [L1]GUANGZHOU GUANGDONG RADIO & TV UNIVERSITY
-***************
-*** 16666,16678 ****
-  59.44.117.168   - 59.44.117.171   ,  90 , [L1]DL-HP-CORPORATION
-  59.44.126.16    - 59.44.126.31    ,  90 , [L1]DL-DIANYEJU-GOVERNMENT
-  59.44.126.56    - 59.44.126.63    ,  90 , [L1]DL-YINJIANHUI-GOVERNMENT
-  59.50.32.186    - 59.50.32.193    ,  90 , [L1]XieHong Software Development Co., Ltd
-  59.50.35.0      - 59.50.35.127    ,  90 , [L1]HaiNan Hilton-Sanya-Resort-Spa,Haikou city
-  59.57.14.229    - 59.57.14.229    , 111 , [SW]db3.wwads.cn
+*** 12588,12594 ****
   59.57.249.128   - 59.57.249.255   ,  90 , [L1]DELL CHINA corp
-  59.57.251.0     - 59.57.251.15    ,  90 , [L1]Xiamen city hall Binbei
-  59.57.253.128   - 59.57.253.143   ,  90 , [L1]Huli District Peoples Government
-- 59.60.30.0      - 59.60.31.255    ,  90 , [L1]CHINANET|Anti-p2p
-  59.60.93.102    - 59.60.93.102    , 119 , [TL]CHINANET fujian province network virus gnufakes
-  59.64.124.0     - 59.64.127.255   ,  90 , [L1]Beijing Education Examinations Authority
-  59.65.128.0     - 59.65.143.255   ,  90 , [L1]Central Conservatory of Music
---- 16655,16671 ----
-  59.44.117.168   - 59.44.117.171   ,  90 , [L1]DL-HP-CORPORATION
-  59.44.126.16    - 59.44.126.31    ,  90 , [L1]DL-DIANYEJU-GOVERNMENT
-  59.44.126.56    - 59.44.126.63    ,  90 , [L1]DL-YINJIANHUI-GOVERNMENT
-+ 59.45.106.97    - 59.45.106.97    ,  60 , [EX](XunleiOffline)
-+ 59.49.74.155    - 59.49.74.155    ,  60 , [EX](XunleiOffline)
-+ 59.49.198.52    - 59.49.198.52    ,  60 , [EX](XunleiOffline)
-  59.50.32.186    - 59.50.32.193    ,  90 , [L1]XieHong Software Development Co., Ltd
-  59.50.35.0      - 59.50.35.127    ,  90 , [L1]HaiNan Hilton-Sanya-Resort-Spa,Haikou city
-+ 59.52.5.103     - 59.52.5.103     ,  60 , [EX](XunleiOffline)
-+ 59.56.82.54     - 59.56.82.54     ,  60 , [EX](XunleiOffline)
-  59.57.14.229    - 59.57.14.229    , 111 , [SW]db3.wwads.cn
-  59.57.249.128   - 59.57.249.255   ,  90 , [L1]DELL CHINA corp
-  59.57.251.0     - 59.57.251.15    ,  90 , [L1]Xiamen city hall Binbei
-  59.57.253.128   - 59.57.253.143   ,  90 , [L1]Huli District Peoples Government
-  59.60.93.102    - 59.60.93.102    , 119 , [TL]CHINANET fujian province network virus gnufakes
-  59.64.124.0     - 59.64.127.255   ,  90 , [L1]Beijing Education Examinations Authority
-  59.65.128.0     - 59.65.143.255   ,  90 , [L1]Central Conservatory of Music
+  59.57.251.0     - 59.57.251.15    ,  90 , [L1]Xiamen city hall Bin
+  59.57.253.128   - 59.57.253.143   ,  90 , [L1]Huli District People
+- 59.60.0.0       - 59.60.63.255    , 120 , [RT]CHINANET fujian prov, [L1]CHINANET|Anti-p2p, [FK]
+  59.60.93.102    - 59.60.93.102    , 116 , [BD]CHINANET fujian prov
+  59.63.41.141    - 59.63.41.141    , 102 , [SW]x1.518mk.cn
+  59.64.124.0     - 59.64.127.255   ,  90 , [L1]Beijing Education Ex
+--- 12512,12517 ----
 ***************
-*** 17184,17194 ****
---- 17177,17192 ----
-  60.15.31.0      - 60.15.31.7      ,  90 , [L1]Yichun jin shan tun police bureau
-  60.15.40.128    - 60.15.40.159    ,  90 , [L1]Yichun tie li government
-  60.15.83.162    - 60.15.83.162    , 119 , [TL]CNCGROUP Heilongjiang gnu viruses
-+ 60.21.219.86    - 60.21.219.97    ,  60 , [EX](XunleiOffline)
-  60.22.128.142   - 60.22.128.142   ,  95 , [FK]Cncgroup Liaoning Province Network | R3233567
-  60.24.103.167   - 60.24.103.167   , 119 , [TL]p2p Corrupt Data Senders
-+ 60.28.14.45     - 60.28.14.45     ,  60 , [EX](XunleiOffline)
-+ 60.28.14.158    - 60.28.14.158    ,  60 , [EX](XunleiOffline)
-  60.28.51.0      - 60.28.51.255    ,  90 , [L1]TV Station Hebei City,Tianjin Province
-  60.28.150.200   - 60.28.150.203   ,  90 , [L1]WuQing Municipal Bureau Of Radio & Television
-  60.28.222.154   - 60.28.222.154   , 109 , [L2]Abuse
-+ 60.28.232.13    - 60.28.232.13    ,  60 , [EX](XunleiOffline)
-+ 60.28.232.21    - 60.28.232.21    ,  60 , [EX](XunleiOffline)
-  60.28.237.0     - 60.28.237.255   , 109 , [L2]Beijing Zhongdianhuatong Limited company
-  60.28.249.128   - 60.28.249.191   ,  90 , [L1]KingSoft-CORP
-  60.28.252.32    - 60.28.252.63    ,  90 , [L1]NetMovie.com.cn
+*** 13096,13101 ****
+--- 13019,13028 ----
+  60.15.31.0      - 60.15.31.7      ,  90 , [L1]Yichun jin shan tun
+  60.15.40.128    - 60.15.40.159    ,  90 , [L1]Yichun tie li govern
+  60.15.83.162    - 60.15.83.162    , 116 , [BD]CNCGROUP Heilongjian
++ 60.18.146.201   - 60.18.146.219   ,  60 , [EX](XunleiOffline)
++ 60.18.147.194   - 60.18.147.211   ,  60 , [EX](XunleiOffline)
++ 60.19.64.35     - 60.19.64.62     ,  60 , [EX](XunleiOffline)
++ 60.21.219.66    - 60.21.219.108   ,  60 , [EX](XunleiOffline)
+  60.22.128.142   - 60.22.128.142   ,  92 , [FK]Cncgroup Liaoning Province Network | R3233567
+  60.24.103.167   - 60.24.103.167   , 116 , [BD]p2p Corrupt Data Sen
+  60.28.51.0      - 60.28.51.255    ,  90 , [L1]TV Station Hebei Cit
 ***************
-*** 17551,17561 ****
---- 17549,17566 ----
-  60.160.182.96   - 60.160.182.127  ,  90 , [L1]Spam and malware servers on CHINANET yunnan province network, intoplink.com
-  60.160.183.2    - 60.160.183.2    , 109 , [L2]Abuse
-  60.161.34.251   - 60.161.34.251   , 111 , [SW]wyt.com - trojans
-+ 60.165.214.1    - 60.165.214.1    ,  60 , [EX](XunleiOffline)
-  60.166.210.223  - 60.166.210.223  ,  95 , [FK]Chinanet Anhui Province Network
-  60.169.0.166    - 60.169.0.166    , 111 , [SW]www.microsofttw.com
-+ 60.171.159.172  - 60.171.159.172  ,  60 , [EX](XunleiOffline)
-  60.172.228.100  - 60.172.228.100  , 113 , [AD]Ultimate Replica
-  60.173.11.50    - 60.173.11.50    , 111 , [SW]www.52cps.com
-+ 60.176.47.194   - 60.176.47.194   ,  60 , [EX](XunleiOffline)
-+ 60.176.120.145  - 60.176.120.145  ,  60 , [EX](XunleiOffline)
-+ 60.176.127.173  - 60.176.127.173  ,  60 , [EX](XunleiOffline)
-+ 60.178.56.210   - 60.178.56.210   ,  60 , [EX](XunleiOffline)
-  60.180.72.24    - 60.180.72.24    , 119 , [TL]Zhejiang Telecom fake files
-+ 60.186.239.81   - 60.186.239.81   ,  60 , [EX](XunleiOffline)
-  60.190.1.208    - 60.190.1.223    ,  90 , [L1]Zhonggong Ningbo Ministry of Politics
-  60.190.3.32     - 60.190.3.35     ,  90 , [L1]Cixi police bureau
-  60.190.16.164   - 60.190.16.167   ,  90 , [L1]Ningbo Dubang Film Co.,ltd
-***************
-*** 17719,17725 ****
-  60.190.137.20   - 60.190.137.23   , 109 , [L2]Jiaxing Telecom Co.,LTD
-  60.190.137.152  - 60.190.137.155  ,  90 , [L1]Jiaxing Police station Economic development zone sub-bureau
-  60.190.137.232  - 60.190.137.239  ,  90 , [L1]Jiaxing Public Security Bureau
-- 60.190.138.0    - 60.190.139.255  , 109 , [L2]Jiaxing Telecom CO.,LTD Value-added Business Department
-  60.190.143.200  - 60.190.143.203  ,  90 , [L1]Haining Dingqiao People\'s government
-  60.190.143.208  - 60.190.143.215  ,  90 , [L1]Haining People\\
-  60.190.144.0    - 60.190.147.255  , 109 , [L2]Jiaxing Telecom CO.,LTD Value-added Business Department
---- 17724,17729 ----
-***************
-*** 17876,17881 ****
---- 17880,17886 ----
-  60.191.11.88    - 60.191.11.91    ,  90 , [L1]Chunan county Weiping Town people\'s government
-  60.191.11.224   - 60.191.11.255   ,  90 , [L1]The people\'s court of Chunan City
-  60.191.12.104   - 60.191.12.111   ,  90 , [L1]HangZhou City XiaoShan District HeZhuang Town Government
-+ 60.191.14.67    - 60.191.14.67    ,  60 , [EX](XunleiOffline)
-  60.191.14.128   - 60.191.14.159   ,  90 , [L1]Webex.China Software Co.,LTD HangZhou Branch
-  60.191.15.56    - 60.191.15.63    , 109 , [L2]ZheJiang University Management Institute
-  60.191.15.96    - 60.191.15.111   ,  90 , [L1]HangZhou City XiaCheng District Government Office
-***************
-*** 18015,18020 ****
---- 18020,18026 ----
-  60.191.207.136  - 60.191.207.139  ,  90 , [L1]Jinhua Public Security Bureau
-  60.191.210.8    - 60.191.210.11   ,  90 , [L1]Jinhua Chuangxin Law Office
-  60.191.210.200  - 60.191.210.203  ,  90 , [L1]Jinhua People Aerial Defence Office
-+ 60.191.211.18   - 60.191.211.18   ,  60 , [EX](XunleiOffline)
-  60.191.213.52   - 60.191.213.55   , 109 , [L2]Yongkang Zhongda Stock Broker Co.,ltd  Yongkang Business department
-  60.191.214.64   - 60.191.214.67   ,  90 , [L1]Yiwu Justice Bureau
-  60.191.216.88   - 60.191.216.91   , 109 , [L2]Zhejiang Yongan Futures Broker Co.,ltd Jinhua Sales Department
-***************
-*** 18106,18111 ****
---- 18112,18118 ----
+*** 13510,13515 ****
+--- 13437,13443 ----
   60.213.189.196  - 60.213.189.199  ,  90 , [L1]taian court
-  60.213.189.228  - 60.213.189.231  , 109 , [L2]taian cnc xinxihuajianshe proxy
+  60.213.189.228  - 60.213.189.231  , 100 , [L2]taian cnc xinxihuaji
   60.213.191.120  - 60.213.191.123  ,  90 , [L1]taian postal office
-+ 60.214.64.140   - 60.214.64.190   ,  60 , [EX](XunleiOffline)
-  60.214.112.88   - 60.214.112.95   ,  90 , [L1]Zaozhuang-Tengzhou Shannan Town Police Station
-  60.214.120.24   - 60.214.120.27   ,  90 , [L1]Zaozhuang-Traffic Police Station
-  60.214.178.181  - 60.214.178.181  , 107 , [PT]Proxy
++ 60.214.64.131   - 60.214.64.198   ,  60 , [EX](XunleiOffline)
+  60.214.112.88   - 60.214.112.95   ,  90 , [L1]Zaozhuang-Tengzhou S
+  60.214.120.24   - 60.214.120.27   ,  90 , [L1]Zaozhuang-Traffic Po
+  60.215.145.16   - 60.215.145.23   ,  90 , [L1]Laiwu FangXia Police
 ***************
-*** 18142,18147 ****
---- 18149,18155 ----
-  60.217.204.240  - 60.217.204.247  ,  90 , [L1]shandong reporter station of china central radio and TV
-  60.217.232.51   - 60.217.232.72   ,  90 , [L1]Spambot farm on China Unicom Shandong province network
-  60.218.184.136  - 60.218.184.136  , 119 , [TL]p2p Corrupt Data Senders
-+ 60.221.254.150  - 60.221.254.175  ,  60 , [EX](XunleiOffline)
-  60.226.2.229    - 60.226.2.229    , 119 , [TL]Telstra Internet virus gnufakes
-  60.228.45.135   - 60.228.45.135   , 119 , [TL]Telstra Internet gnufakes
-  60.229.188.98   - 60.229.188.98   , 119 , [TL]Telstra Internet gnu viruses
+*** 13545,13550 ****
+--- 13473,13480 ----
+  60.217.204.240  - 60.217.204.247  ,  90 , [L1]shandong reporter st
+  60.217.232.0    - 60.217.255.255  , 120 , [RT]Range Test on China, [L1]Spambot farm on Chin, [L1]Detected AP2P on Chi
+  60.218.184.136  - 60.218.184.136  , 116 , [BD]p2p Corrupt Data Sen
++ 60.221.254.158  - 60.221.254.200  ,  60 , [EX](XunleiOffline)
++ 60.221.254.221  - 60.221.254.253  ,  60 , [EX](XunleiOffline)
+  60.226.2.229    - 60.226.2.229    , 116 , [BD]Telstra Internet vir
+  60.228.45.135   - 60.228.45.135   , 116 , [BD]Telstra Internet gnu
+  60.229.188.98   - 60.229.188.98   , 116 , [BD]Telstra Internet gnu
 ***************
-*** 18217,18223 ****
-  60.253.115.48   - 60.253.115.55   ,  90 , [L1]WIZ Game Center
-  60.253.118.32   - 60.253.118.47   ,  90 , [L1]WGZ Game Center1
+*** 13620,13626 ****
   60.253.118.240  - 60.253.118.255  ,  90 , [L1]WGZ Game Center 2
-- 60.255.0.0      - 60.255.255.255  ,  90 , [L1]SiChuan Broadcasting & TV Net Co.,LTD
-  61.1.207.27     - 61.1.207.27     , 107 , [PT]Proxy
-  61.4.64.0       - 61.4.79.255     ,  60 , [BG]freespace-quads
-  61.4.84.0       - 61.4.95.255     ,  60 , [BG]freespace-quads
---- 18225,18230 ----
+  60.254.63.0     - 60.254.63.255   , 120 , [RT]Hathway IP Over Cabl
+  60.254.128.0    - 60.254.191.255  , 110 , [L3]Akamai Technologies,
+- 60.255.0.0      - 60.255.255.255  ,  90 , [L1] SiChuan Broadcastin
+  61.4.64.0       - 61.4.79.255     ,  60 , [BG]FreeSP
+  61.4.84.0       - 61.4.95.255     ,  60 , [BG]FreeSP
+  61.4.176.0      - 61.4.191.255    , 100 , [L2]BeiJing FeiHuaLingHa, [L1]Abuse
+--- 13550,13555 ----
 ***************
-*** 19870,19883 ****
-  61.128.0.0      - 61.128.31.255   , 109 , [L2]CNINFONET Backbone
-  61.128.96.0     - 61.128.127.255  , 109 , [L2]CNINFONET Xingjiang province network, Urumqi Commercial Bank ,Urumqi,Xinjia
-  61.128.162.210  - 61.128.162.210  , 111 , [SW]wyt.com - trojans
-- 61.128.167.0    - 61.128.167.127  ,  90 , [L1]CHINANET|Anti-p2p
-  61.128.179.208  - 61.128.179.215  , 109 , [L2]ChongQing Information Security Product Evaluating Centre
-  61.128.197.64   - 61.128.197.79   ,  90 , [L1]ChongQing Gold Abacus Company
-  61.128.197.128  - 61.128.197.135  , 109 , [L2]ChongQing LongHua Company
-  61.128.197.240  - 61.128.197.255  ,  90 , [L1]ChongQing Justice Bureau
-  61.128.219.180  - 61.128.219.180  ,  90 , [L1]trw
-  61.128.225.82   - 61.128.225.82   , 109 , [L2]CQ Winners Netbar
-- 61.128.234.192  - 61.128.235.255  ,  90 , [L1]CHINANET|Anti-p2p
-  61.128.252.32   - 61.128.252.63   ,  90 , [L1]china-telecom|Anti-p2p
-  61.129.32.0     - 61.129.35.255   , 109 , [L2]Green Power Bar
-  61.129.36.96    - 61.129.36.127   ,  90 , [L1]Shanghai Zhengquan Tongxin Youxian Zeren Gongsi
---- 19877,19888 ----
+*** 14100,14105 ****
+--- 14029,14035 ----
+  61.49.24.128    - 61.49.24.255    ,  90 , [L1]Central Internationa
+  61.49.38.0      - 61.49.38.127    ,  90 , [L1]Haidian Goverment Be
+  61.51.170.189   - 61.51.170.189   , 116 , [BD]p2p Corrupt Data Sen
++ 61.54.12.130    - 61.54.12.151    ,  60 , [EX](XunleiOffline)
+  61.55.135.57    - 61.55.135.57    , 102 , [SW]177a.com|hijack
+  61.56.0.0       - 61.56.15.255    ,  90 , [L1]GSN, Taiwan Governme
+  61.56.48.0      - 61.56.63.255    , 100 , [L2] Chinese Internet Wo
 ***************
-*** 20583,20589 ****
-  61.142.69.0     - 61.142.69.15    ,  90 , [L1]ZHONGSHAN INDUSTRY DEVELOPMENT BUREAU
-  61.142.69.128   - 61.142.69.143   ,  90 , [L1]ZHONGSHAN INDUSTRY DEVELOPMENT BUREAU
-  61.142.70.0     - 61.142.70.31    , 109 , [L2]ZHONGSHAN JIANBANK FINACIAL BANK
-- 61.142.111.0    - 61.142.111.255  ,  90 , [L1]CHINANET|Anti-p2p
-  61.142.168.224  - 61.142.168.255  ,  90 , [L1]FOSHAN FSPERSONWITHABILITYCENTER INFORMATION GOVE
-  61.142.169.176  - 61.142.169.191  ,  90 , [L1]FOSHAN TAOCHENGNEWSPAPEROFFICE INFORMATION GOVERN
-  61.142.169.224  - 61.142.169.239  , 109 , [L2]FOSHAN INDUSTRIALANDCOMMERCIALBANKOFCHINAFOSHANPA
---- 20588,20593 ----
+*** 15130,15136 ****
+  61.127.250.144  - 61.127.250.159  ,  90 , [L1]Kikusui machi town o
+  61.127.251.208  - 61.127.251.215  ,  90 , [L1]Hirado Chamber of Co
+  61.127.255.112  - 61.127.255.119  ,  90 , [L1]The Agency of Nuclea
+- 61.128.0.0      - 61.129.255.255  , 100 , [L2] CNINFONET Backbone, [RT]Data Communication D, [L2] CNINFONET Xingjiang, [L1] Dushanzi Governmen
+  61.130.0.96     - 61.130.0.103    , 100 , [L2] The standardized re
+  61.130.0.128    - 61.130.0.143    ,  90 , [L1] ZHEJIANG ADMINISTRA
+  61.130.0.228    - 61.130.0.231    ,  90 , [L1]ZHEJIANG ADMINISTRAT
+--- 15060,15065 ----
 ***************
-*** 20720,20725 ****
---- 20724,20730 ----
-  61.146.115.64   - 61.146.115.95   ,  90 , [L1]HEYUAN POLICE BUREAU
-  61.146.117.244  - 61.146.117.251  ,  90 , [L1]FIRST CISCO COMMUNICATION
-  61.146.118.0    - 61.146.118.31   , 109 , [L2]UNIVERCITY CITY
-+ 61.146.118.99   - 61.146.118.99   ,  60 , [EX](XunleiOffline)
-  61.146.119.176  - 61.146.119.191  ,  90 , [L1]QUALITY PROSECUTION HEYUAN
-  61.146.127.40   - 61.146.127.47   ,  90 , [L1]JIEYANG BROADCAST TV UNIVERCITY
-  61.146.139.32   - 61.146.139.35   ,  90 , [L1]QINGYUAN NEWCITYTONGLIANNETBAR COMMUNICATION NETB
+*** 15649,15654 ****
+--- 15578,15584 ----
+  61.137.119.88   - 61.137.119.95   , 100 , [L2] Industry & Commerce
+  61.137.121.96   - 61.137.121.127  ,  90 , [L1] YongZhou City Gover
+  61.137.122.0    - 61.137.122.7    ,  90 , [L1] LengShuiTan County
++ 61.137.191.66   - 61.137.191.94   ,  60 , [EX](XunleiOffline)
+  61.138.10.128   - 61.138.10.143   ,  90 , [L1] Hua Nan City Govern
+  61.138.15.0     - 61.138.15.63    , 100 , [L2] Da Qing city financ
+  61.138.17.128   - 61.138.17.191   ,  90 , [L1] Da Qing city Long F
 ***************
-*** 20812,20817 ****
---- 20817,20823 ----
-  61.153.2.228    - 61.153.2.231    , 109 , [L2]HANGZHOU NATIONAL REVENUE BUREAU,Hangzhou, Zhejia
-  61.153.4.104    - 61.153.4.111    ,  90 , [L1]Hangzhou Lianbang Software Co.,Ltd
-  61.153.6.144    - 61.153.6.151    , 109 , [L2]YUHANG NATIONAL REVENUE BUREAU,Hangzhou, Zhejiang
-+ 61.153.6.178    - 61.153.6.178    ,  60 , [EX](XunleiOffline)
-  61.153.6.196    - 61.153.6.199    , 109 , [L2]YUHANG NATIONAL REVENUE BUREAU,Hangzhou, Zhejiang
-  61.153.6.208    - 61.153.6.223    , 109 , [L2]Zhejiang Province Building Design And Research In
-  61.153.7.128    - 61.153.7.143    , 109 , [L2]Hangzhou LvNong Agriculture economic Information
+*** 15731,15737 ****
+  61.142.69.0     - 61.142.69.15    ,  90 , [L1] ZHONGSHAN INDUSTRY
+  61.142.69.128   - 61.142.69.143   ,  90 , [L1] ZHONGSHAN INDUSTRY
+  61.142.70.0     - 61.142.70.31    , 100 , [L2] ZHONGSHAN JIANBANK
+- 61.142.111.0    - 61.142.111.255  ,  90 , [L1]CHINANET|Anti-p2p, [RT]CHINANET Guangdong p
+  61.142.168.224  - 61.142.168.255  ,  90 , [L1] FOSHAN FSPERSONWITH
+  61.142.169.176  - 61.142.169.191  ,  90 , [L1] FOSHAN TAOCHENGNEWS
+  61.142.169.224  - 61.142.169.239  , 100 , [L2] FOSHAN INDUSTRIALAN
+--- 15661,15666 ----
 ***************
-*** 21198,21203 ****
---- 21204,21210 ----
-  61.154.45.232   - 61.154.45.239   ,  90 , [L1]Xin yi netbar  of Ningde city of Fujian province
-  61.154.121.192  - 61.154.121.199  ,  90 , [L1]Public road bureau of Quanzhou
-  61.154.122.184  - 61.154.122.191  , 109 , [L2]Fujian Xunxing Group
-+ 61.154.122.212  - 61.154.122.212  ,  60 , [EX](XunleiOffline)
-  61.154.128.0    - 61.154.128.127  ,  90 , [L1]State fire and electricity company in Fujian Prov
-  61.155.4.184    - 61.155.4.191    , 109 , [L2]china economic developoment trust invest Co., Ltd
-  61.155.21.0     - 61.155.21.63    ,  90 , [L2]Suzhou Kunshan Economic & Trade Committee
+*** 15873,15878 ****
+--- 15802,15808 ----
+  61.146.139.32   - 61.146.139.35   ,  90 , [L1] QINGYUAN NEWCITYTON
+  61.146.233.112  - 61.146.233.127  ,  90 , [L1] HUAZHOU CITY HALL C
+  61.146.237.48   - 61.146.237.51   ,  90 , [L1] MAOMING GAOZHOU POL
++ 61.147.76.2     - 61.147.76.93    ,  60 , [EX](XunleiOffline)
+  61.147.116.16   - 61.147.116.16   , 102 , [SW]pc.sl195.cn-trojan
+  61.147.251.80   - 61.147.251.87   ,  90 , [L1] Suqian suyu public
+  61.147.251.88   - 61.147.251.95   , 100 , [L2] SUQIAN MARITIME SAF
 ***************
-*** 21491,21496 ****
---- 21498,21504 ----
-  61.167.112.32   - 61.167.112.63   ,  90 , [L1]DXAL city government
-  61.167.123.128  - 61.167.123.255  ,  90 , [L1]MDJ city government LAN
-  61.171.177.186  - 61.171.177.186  , 107 , [PT]Proxy
-+ 61.172.120.238  - 61.172.120.238  ,  60 , [EX](XunleiOffline)
-  61.172.193.0    - 61.172.193.63   ,  90 , [L1]THE THIRDWAVE SOFT COMPANY
-  61.172.193.232  - 61.172.193.255  ,  90 , [L1]THE THIRDWAVE SOFT COMPANY
-  61.172.194.83   - 61.172.194.84   , 109 , [L2]Kodak Co.,Ltd
+*** 16924,16929 ****
+--- 16854,16860 ----
+  61.183.18.168   - 61.183.18.175   , 100 , [L2] The YingCheng divis
+  61.183.18.176   - 61.183.18.179   ,  90 , [L1] The FeiSha Internet
+  61.183.22.0     - 61.183.22.7     , 100 , [L2] DongFen Exact Found
++ 61.183.55.211   - 61.183.55.227   ,  60 , [EX](XunleiOffline)
+  61.183.120.4    - 61.183.120.7    ,  90 , [L1] Wuhan Data Communic
+  61.183.120.84   - 61.183.120.87   , 100 , [L2] The num701 shipping
+  61.183.120.104  - 61.183.120.107  , 100 , [L2] The Wuhan division
 ***************
-*** 21527,21532 ****
---- 21535,21541 ----
-  61.172.253.160  - 61.172.253.191  , 109 , [L2]CROSSRUNNER SOFTWARE ENGINEENING LTD
-  61.172.255.13   - 61.172.255.17   ,  90 , [L1]Tatech Cyberlink Co.,Ltd
-  61.173.42.155   - 61.173.42.155   , 119 , [TL]p2p Corrupt Data Sender
-+ 61.173.123.26   - 61.173.123.26   ,  60 , [EX](XunleiOffline)
-  61.173.221.148  - 61.173.221.148  ,  90 , [L1]security sites abuser
-  61.174.18.254   - 61.174.18.254   ,  95 , [FK]Fenghua Yisui Network Technology Co. Ltd
-  61.174.209.244  - 61.174.209.247  ,  90 , [L1]Shaoxing Dongpu cinema Internet Bar
+*** 18584,18590 ****
+  61.224.52.242   - 61.224.52.242   , 116 , [BD]Fake p2p Clients
+  61.228.193.174  - 61.228.193.174  , 116 , [BD]Fake p2p Clients
+  61.229.129.221  - 61.229.129.221  , 116 , [BD]Chunghwa Telecom/HIN
+! 61.234.99.0     - 61.234.99.255   ,  90 , [L1]Jiangmen Broadcastin
+  61.235.117.64   - 61.235.117.91   ,  90 , [L1]Shared hosting in Ch, [L1]almasto.net, [WE]bintus-bahi.cn, [SW]xapaxapa.ru
+  61.238.46.176   - 61.238.46.179   , 100 , [L2] C & L Business Fina
+  61.238.46.236   - 61.238.46.239   , 100 , [L2]HCLSERVICESLTD
+--- 18515,18521 ----
+  61.224.52.242   - 61.224.52.242   , 116 , [BD]Fake p2p Clients
+  61.228.193.174  - 61.228.193.174  , 116 , [BD]Fake p2p Clients
+  61.229.129.221  - 61.229.129.221  , 116 , [BD]Chunghwa Telecom/HIN
+! 61.235.71.73    - 61.235.71.73    ,  60 , [EX](XunleiOffline)
+  61.235.117.64   - 61.235.117.91   ,  90 , [L1]Shared hosting in Ch, [L1]almasto.net, [WE]bintus-bahi.cn, [SW]xapaxapa.ru
+  61.238.46.176   - 61.238.46.179   , 100 , [L2] C & L Business Fina
+  61.238.46.236   - 61.238.46.239   , 100 , [L2]HCLSERVICESLTD
 ***************
-*** 21705,21710 ****
---- 21714,21720 ----
-  61.177.62.136   - 61.177.62.143   ,  90 , [L1]Jiangsu Zhongli Photoelectricity Group Co., Ltd
-  61.177.63.64    - 61.177.63.127   ,  90 , [L1]Philips Consumer Electronics CO. of Suzhou LTD
-  61.177.75.224   - 61.177.75.231   ,  90 , [L1]changzhou police brueau
-+ 61.177.75.244   - 61.177.75.244   ,  60 , [EX](XunleiOffline)
-  61.177.95.125   - 61.177.95.125   , 111 , [SW]MS Word Exploit|BT
-  61.177.134.112  - 61.177.134.119  ,  90 , [L1]Wuxi Jiangyin CITY GOVERNMENT
-  61.177.134.188  - 61.177.134.191  ,  90 , [L1]Wuxi Jiangying customs P.R.C
-***************
-*** 21832,21837 ****
---- 21842,21849 ----
-  61.183.18.168   - 61.183.18.175   , 109 , [L2]The YingCheng division of China Telecom , in Xiao
-  61.183.18.176   - 61.183.18.179   ,  90 , [L1]The FeiSha Internet Bar of YingCheng county in Xi
-  61.183.22.0     - 61.183.22.7     , 109 , [L2]DongFen Exact Foundry Company, Shiyan city, Hubei
-+ 61.183.55.218   - 61.183.55.218   ,  60 , [EX](XunleiOffline)
-+ 61.183.55.225   - 61.183.55.225   ,  60 , [EX](XunleiOffline)
-  61.183.120.4    - 61.183.120.7    ,  90 , [L1]Wuhan Data Communication Bureau of Hubei telecom
-  61.183.120.84   - 61.183.120.87   , 109 , [L2]The num701 shipping research of material administ
-  61.183.120.104  - 61.183.120.107  , 109 , [L2]The Wuhan division ZHONGXIN industry bank, in Han
-***************
-*** 23567,23573 ****
-  61.224.52.242   - 61.224.52.242   , 119 , [TL]Fake p2p Clients
-  61.228.193.174  - 61.228.193.174  , 119 , [TL]Fake p2p Clients
-  61.229.129.221  - 61.229.129.221  , 119 , [TL]Chunghwa Telecom/HINET ed2k hitmorpher
-- 61.234.99.0     - 61.234.99.255   ,  90 , [L1]Jiangmen Broadcasting & TV Network Co.,Ltd
-  61.235.117.64   - 61.235.117.91   ,  90 , [L1]Shared hosting in China Railcom Guangdong Shenzhen Subbranch, almasto.net
-  61.238.46.176   - 61.238.46.179   , 109 , [L2]C & L Business Financial Management Co - Hon Kwok
-  61.238.46.236   - 61.238.46.239   , 109 , [L2]HCLSERVICESLTD
---- 23579,23584 ----
-***************
-*** 51618,51624 ****
-  65.51.81.0      - 65.51.81.255    ,  90 , [L1]Gannett Corporation
-  65.51.87.160    - 65.51.87.223    ,  90 , [L1]Greenburgh Town Hall
-  65.51.88.144    - 65.51.88.159    ,  90 , [L1]Brotmann Law Group
-! 65.52.0.0       - 65.55.255.255   ,  97 , [MS]Microsoft Corp
-  65.56.64.0      - 65.56.67.255    ,  97 , [MS]Microsoft
-  65.57.83.0      - 65.57.83.255    ,  90 , [L1]Macromedia Inc
-  65.57.86.32     - 65.57.86.63     ,  90 , [L1]Savvis
---- 51629,51637 ----
-  65.51.81.0      - 65.51.81.255    ,  90 , [L1]Gannett Corporation
-  65.51.87.160    - 65.51.87.223    ,  90 , [L1]Greenburgh Town Hall
-  65.51.88.144    - 65.51.88.159    ,  90 , [L1]Brotmann Law Group
-! 65.52.0.0       - 65.55.137.199   ,  97 , [MS]Microsoft Corp
-! 65.55.137.200   - 65.55.137.200   ,  60 , [EX](XunleiOffline)
-! 65.55.137.201   - 65.55.255.255   ,  97 , [MS]Microsoft Corp
-  65.56.64.0      - 65.56.67.255    ,  97 , [MS]Microsoft
-  65.57.83.0      - 65.57.83.255    ,  90 , [L1]Macromedia Inc
-  65.57.86.32     - 65.57.86.63     ,  90 , [L1]Savvis
-***************
-*** 103949,103954 ****
---- 103962,103968 ----
-  78.56.76.194    - 78.56.76.194    ,  95 , [FK]RIPE | _VIDEOTEKA_Ru
-  78.57.120.38    - 78.57.120.38    , 119 , [TL]p2p Corrupt Data Sender
-  78.58.52.11     - 78.58.52.11     ,  95 , [FK]Vilnius Lietuvos | _VIDEOTEKA_RUS
-+ 78.61.39.211    - 78.61.39.211    ,  60 , [EX](XunleiOffline)
-  78.62.36.158    - 78.62.36.158    ,  95 , [FK]Vilnius Lietuvos - Cy~~~][-][~n~~~~z
-  78.68.87.205    - 78.68.87.205    , 119 , [TL]gnutella hitmorpher
-  78.70.79.72     - 78.70.79.72     , 107 , [PT]Tor
-***************
-*** 113403,113409 ****
+*** 84086,84092 ****
   80.237.3.200    - 80.237.3.207    ,  90 , [L1]PTC-NETWORK
-  80.237.33.160   - 80.237.33.191   ,  90 , [L1](RS000066) State Institution Tuapse port Authority,
-  80.237.72.160   - 80.237.72.167   ,  90 , [L1]Nizhnevartovsk Goverment Power Plant Network
-- 80.237.156.72   - 80.237.156.72   ,  90 , [FK]He-ds-156-cgn2-net | www.UseNeXT.to 2
+  80.237.33.160   - 80.237.33.191   ,  90 , [L1](RS000066) State Ins
+  80.237.72.160   - 80.237.72.167   ,  90 , [L1]Nizhnevartovsk Gover
+- 80.237.156.72   - 80.237.156.72   ,  90 , [L1]www.UseNeXT.to 2, [FK]He-ds-156-cgn2-net | www.UseNeXT.to 2
   80.237.159.23   - 80.237.159.23   ,  90 , [L1]softeam.pl
-  80.237.184.46   - 80.237.184.46   ,  90 , [L1]loop.at
-  80.237.196.0    - 80.237.196.63   ,  90 , [L1]Dirk Engling und David Schalig GbR
---- 113417,113422 ----
+  80.237.184.0    - 80.237.184.127  , 120 , [RT]Hosteurope GmbH, [L1]loop.at
+  80.237.196.0    - 80.237.196.63   ,  90 , [L1]Dirk Engling und Dav
+--- 84017,84022 ----
 ***************
-*** 128392,128403 ****
-  83.231.205.32   - 83.231.205.39   ,  90 , [L1]Capgemini Sud
-  83.233.28.104   - 83.233.28.115   , 109 , [L2]Bredband2 - Test network EP1
-  83.233.30.40    - 83.233.30.40    ,  90 , [FK]eDonkey 2.000 - EDK 3000
-! 83.233.30.55    - 83.233.30.55    ,  90 , [FK]Serverconnect I Norrland | Master Server 1
-  83.233.30.98    - 83.233.30.98    ,  90 , [L1]fake emule servers
-  83.233.30.101   - 83.233.30.101   ,  95 , [FK]Serverconnect I Norrland | Master Server
-  83.233.30.103   - 83.233.30.103   ,  90 , [FK]Serverconnect I Norrland | Master Server 3
-  83.233.30.108   - 83.233.30.108   ,  90 , [FK]Serverconnect I Norrland | Master Server 4
-! 83.233.30.126   - 83.233.30.128   ,  90 , [L1]fake emule servers
-  83.233.30.154   - 83.233.30.154   ,  95 , [FK]Serverconnect I Norrland | Master Server 4
-  83.233.30.247   - 83.233.30.251   ,  95 , [FK]Serverconnect I Norrland | Master Server 8-11
-  83.233.60.0     - 83.233.63.255   , 109 , [L2]Bredband2 - Grand Hotell Stockholm
---- 128405,128416 ----
-  83.231.205.32   - 83.231.205.39   ,  90 , [L1]Capgemini Sud
-  83.233.28.104   - 83.233.28.115   , 109 , [L2]Bredband2 - Test network EP1
-  83.233.30.40    - 83.233.30.40    ,  90 , [FK]eDonkey 2.000 - EDK 3000
+*** 92354,92365 ****
+  83.233.28.104   - 83.233.28.115   , 100 , [L2]Bredband2-Test net
+  83.233.30.32    - 83.233.30.32    , 114 , [WE]Massive Spammer
+  83.233.30.40    - 83.233.30.40    ,  90 , [L1]fake emule servers, [FK]Bredband2-net, [FK]eDonkey 2.000-EDK 3000
+! 83.233.30.55    - 83.233.30.55    ,  90 , [L1]fake emule servers, [FK]Serverconnect I Norrland | Master Server 1
+  83.233.30.98    - 83.233.30.98    ,  90 , [L1]fake emule servers, [FK]Serverconnect I Norrland | Master Server 2
+  83.233.30.101   - 83.233.30.101   ,  92 , [FK]Serverconnect I Norrland | Master Server
+  83.233.30.103   - 83.233.30.103   ,  90 , [L1]fake emule servers, [FK]Serverconnect I Norrland | Master Server 3
+  83.233.30.108   - 83.233.30.108   ,  90 , [L1]fake emule servers, [FK]Serverconnect I Norrland | Master Server 4
+! 83.233.30.126   - 83.233.30.128   ,  92 , [FK]Serverconnect I Norrland | Master Server 5, [L1]fake emule servers, [FK]Serverconnect I Norrland
+  83.233.30.154   - 83.233.30.154   ,  92 , [FK]Serverconnect I Norrland | Master Server 4
+  83.233.30.247   - 83.233.30.251   ,  92 , [FK]Serverconnect I Norrland | Master Server 8-11
+  83.233.60.0     - 83.233.63.255   , 100 , [L2]Bredband2-Grand Ho
+--- 92284,92295 ----
+  83.233.28.104   - 83.233.28.115   , 100 , [L2]Bredband2-Test net
+  83.233.30.32    - 83.233.30.32    , 114 , [WE]Massive Spammer
+  83.233.30.40    - 83.233.30.40    ,  90 , [L1]fake emule servers, [FK]Bredband2-net, [FK]eDonkey 2.000-EDK 3000
 ! 83.233.30.55    - 83.233.30.55    , 109 , [L2](ef)www.StormSex.net
-  83.233.30.98    - 83.233.30.98    ,  90 , [L1]fake emule servers
-  83.233.30.101   - 83.233.30.101   ,  95 , [FK]Serverconnect I Norrland | Master Server
-  83.233.30.103   - 83.233.30.103   ,  90 , [FK]Serverconnect I Norrland | Master Server 3
-  83.233.30.108   - 83.233.30.108   ,  90 , [FK]Serverconnect I Norrland | Master Server 4
+  83.233.30.98    - 83.233.30.98    ,  90 , [L1]fake emule servers, [FK]Serverconnect I Norrland | Master Server 2
+  83.233.30.101   - 83.233.30.101   ,  92 , [FK]Serverconnect I Norrland | Master Server
+  83.233.30.103   - 83.233.30.103   ,  90 , [L1]fake emule servers, [FK]Serverconnect I Norrland | Master Server 3
+  83.233.30.108   - 83.233.30.108   ,  90 , [L1]fake emule servers, [FK]Serverconnect I Norrland | Master Server 4
 ! 83.233.30.126   - 83.233.30.128   , 109 , [L2](ef)www.StormSex.net
-  83.233.30.154   - 83.233.30.154   ,  95 , [FK]Serverconnect I Norrland | Master Server 4
-  83.233.30.247   - 83.233.30.251   ,  95 , [FK]Serverconnect I Norrland | Master Server 8-11
-  83.233.60.0     - 83.233.63.255   , 109 , [L2]Bredband2 - Grand Hotell Stockholm
+  83.233.30.154   - 83.233.30.154   ,  92 , [FK]Serverconnect I Norrland | Master Server 4
+  83.233.30.247   - 83.233.30.251   ,  92 , [FK]Serverconnect I Norrland | Master Server 8-11
+  83.233.60.0     - 83.233.63.255   , 100 , [L2]Bredband2-Grand Ho
 ***************
-*** 128406,128413 ****
-  83.233.87.208   - 83.233.87.215   ,  90 , [L1]Egmont
-  83.233.88.80    - 83.233.88.87    , 109 , [L2]tryggare
-  83.233.160.208  - 83.233.160.223  ,  90 , [L1]SF Anytime
-! 83.233.165.55   - 83.233.165.62   ,  95 , [FK]Serverconnect I Norrland | MasterServers
-! 83.233.165.65   - 83.233.165.66   ,  95 , [FK]Serverconnect I Norrland | MasterServers
-  83.233.165.234  - 83.233.165.234  ,  90 , [L1]fake emule servers
-  83.233.168.0    - 83.233.170.255  , 109 , [L2]Relakks security services
-  83.233.180.0    - 83.233.183.255  , 109 , [L2]Relakks security services
---- 128419,128426 ----
-  83.233.87.208   - 83.233.87.215   ,  90 , [L1]Egmont
-  83.233.88.80    - 83.233.88.87    , 109 , [L2]tryggare
-  83.233.160.208  - 83.233.160.223  ,  90 , [L1]SF Anytime
-! 83.233.165.55   - 83.233.165.62   , 109 , [L2](ef)www.StormSex.net
-! 83.233.165.65   - 83.233.165.66   , 109 , [L2](ef)www.StormSex.net
-  83.233.165.234  - 83.233.165.234  ,  90 , [L1]fake emule servers
-  83.233.168.0    - 83.233.170.255  , 109 , [L2]Relakks security services
-  83.233.180.0    - 83.233.183.255  , 109 , [L2]Relakks security services
+*** 96940,96946 ****
+  87.229.109.0    - 87.229.109.255  , 120 , [RT]Online Technologies
+  87.229.111.0    - 87.229.111.255  , 120 , [RT]SZERVERNET Kft
+  87.229.127.0    - 87.229.127.255  , 120 , [RT]SZERVERNET Kft
+- 87.230.0.0      - 87.230.127.255  , 120 , [RT]Hosteurope GmbH, [L2]Tor.Creo, [L2]Tor.tor4ccc, [L2]Tor.n0trace, [L1]www.heads-ltd.de, [L1]www.U
+  87.230.138.27   - 87.230.138.27   , 116 , [BD]SPSNET gnu viruses
+  87.231.57.97    - 87.231.57.97    , 116 , [BD]Numericable gnu viru
+  87.231.131.102  - 87.231.131.102  , 116 , [BD]Numericable gnu spam
+--- 96870,96875 ----
 ***************
-*** 130799,130805 ****
-  85.25.61.5      - 85.25.61.5      , 107 , [PT]Tor
-  85.25.62.36     - 85.25.62.36     , 107 , [L2]Tor.kemna
-  85.25.66.161    - 85.25.66.161    , 109 , [L2]Tor.knalltuete
-! 85.25.73.86     - 85.25.73.86     ,  95 , [FK]Storm Share 1
-  85.25.83.0      - 85.25.83.127    , 109 , [L2]wunderLOOP media services GmbH
-  85.25.129.180   - 85.25.129.180   ,  90 , [L1]BT Fakes
-  85.25.131.10    - 85.25.131.10    ,  90 , [L1]Server4You|Anti-p2p
---- 130812,130818 ----
-  85.25.61.5      - 85.25.61.5      , 107 , [PT]Tor
-  85.25.62.36     - 85.25.62.36     , 107 , [L2]Tor.kemna
-  85.25.66.161    - 85.25.66.161    , 109 , [L2]Tor.knalltuete
-! 85.25.73.86     - 85.25.73.86     , 109 , [L2](ef)Storm Share 1
-  85.25.83.0      - 85.25.83.127    , 109 , [L2]wunderLOOP media services GmbH
-  85.25.129.180   - 85.25.129.180   ,  90 , [L1]BT Fakes
-  85.25.131.10    - 85.25.131.10    ,  90 , [L1]Server4You|Anti-p2p
+*** 103389,103394 ****
+--- 103318,103324 ----
+  111.125.89.160  - 111.125.89.160  , 116 , [BD]gnufake
+  111.125.95.82   - 111.125.95.82   , 116 , [BD]gnufake
+  111.125.176.0   - 111.125.191.255 ,  60 , [BG]FreeSP
++ 111.161.24.2    - 111.161.24.28   ,  60 , [EX](XunleiOffline)
+  111.171.134.49  - 111.171.134.49  , 116 , [BD]gnufake
+  111.188.3.194   - 111.188.3.194   , 116 , [BD]gnufake
+  111.188.8.210   - 111.188.8.210   , 116 , [BD]gnufake
 ***************
-*** 130828,130836 ****
-  85.25.150.94    - 85.25.150.94    , 109 , [L2]Tor.bmwanon
-  85.25.151.22    - 85.25.151.22    , 109 , [L2]Tor.SlickLittleGirl
-  85.25.153.181   - 85.25.153.181   , 107 , [PT]Tor
-! 85.25.184.34    - 85.25.184.34    ,  95 , [FK]Storm Share 4
-! 85.25.184.37    - 85.25.184.37    ,  95 , [FK]Storm Share 3
-! 85.25.184.50    - 85.25.184.50    ,  95 , [FK]Storm Share 2
-  85.25.184.125   - 85.25.184.125   , 107 , [PT]Tor
-  85.25.251.254   - 85.25.251.254   , 107 , [PT]Tor
-  85.25.253.104   - 85.25.253.104   , 109 , [L2]Tor.BARACUDA
---- 130841,130849 ----
-  85.25.150.94    - 85.25.150.94    , 109 , [L2]Tor.bmwanon
-  85.25.151.22    - 85.25.151.22    , 109 , [L2]Tor.SlickLittleGirl
-  85.25.153.181   - 85.25.153.181   , 107 , [PT]Tor
-! 85.25.184.34    - 85.25.184.34    , 109 , [L2](ef)Storm Share 4
-! 85.25.184.37    - 85.25.184.37    , 109 , [L2](ef)Storm Share 3
-! 85.25.184.50    - 85.25.184.50    , 109 , [L2](ef)Storm Share 2
-  85.25.184.125   - 85.25.184.125   , 107 , [PT]Tor
-  85.25.251.254   - 85.25.251.254   , 107 , [PT]Tor
-  85.25.253.104   - 85.25.253.104   , 109 , [L2]Tor.BARACUDA
+*** 104292,104298 ****
+  115.187.46.204  - 115.187.46.204  , 116 , [BD]Alliance Broadband S
+  115.187.54.175  - 115.187.54.175  , 116 , [BD]gnufake
+  115.190.0.0     - 115.191.255.255 ,  60 , [BG]FreeSP
+- 115.239.228.194 - 115.239.228.194 ,  92 , [FK]Ninbo Lanzhong Network Ltd | eserver.no1
+  115.240.33.148  - 115.240.33.148  , 116 , [BD]gnufake
+  115.240.215.73  - 115.240.215.73  , 116 , [BD]gnufake
+  115.242.183.44  - 115.242.183.44  , 116 , [BD]gnufake
+--- 104222,104227 ----
 ***************
-*** 135573,135579 ****
-  87.230.11.166   - 87.230.11.166   , 107 , [L2]Tor.n0trace
-  87.230.14.31    - 87.230.14.31    ,  90 , [L1]www.heads-ltd.de
-  87.230.17.230   - 87.230.17.230   , 107 , [PT]Tor
-- 87.230.83.44    - 87.230.83.44    ,  90 , [FK]He-dedic-83-cgn3-net | www.UseNeXT.to - Trueserver
-  87.230.100.25   - 87.230.100.25   ,  90 , [L1]bigmouthmedia.de
-  87.230.138.27   - 87.230.138.27   , 119 , [TL]SPSNET gnu viruses
-  87.231.57.97    - 87.231.57.97    , 119 , [TL]Numericable gnu viruses
---- 135586,135591 ----
+*** 104395,104400 ****
+--- 104324,104330 ----
+  116.50.32.0     - 116.50.47.255   , 110 , [L3]DongFong Technology
+  116.50.56.0     - 116.50.63.255   ,  90 , [L1]SurfControl On-Deman
+  116.50.64.0     - 116.50.127.255  , 100 , [L2]WAN Network for back
++ 116.55.230.131  - 116.55.230.211  ,  60 , [EX](XunleiOffline)
+  116.58.144.0    - 116.58.159.255  , 110 , [L3]C-Tech CORPORATION
+  116.58.191.240  - 116.58.191.255  ,  90 , [L1]Australian Embassy,
+  116.59.133.164  - 116.59.133.164  , 116 , [BD]gnufake
 ***************
-*** 138971,138977 ****
-  88.79.243.0     - 88.79.243.31    , 109 , [L2]Deutscher Genossenschafts-Verlag eG
-  88.80.6.210     - 88.80.6.210     ,  90 , [L1]Annabelleigh.net a.k.a. Girlchat
-  88.80.28.3      - 88.80.28.3      , 107 , [PT]Tor
-! 88.80.28.48     - 88.80.28.48     ,  95 , [FK]PeRiQuito AB | !-= www.FreeSexBay.com =-! - !-= Porn Pit
-  88.80.163.32    - 88.80.163.63    , 109 , [L2]TeleCityGroup - IP Range for York Consulting
-  88.80.169.0     - 88.80.169.255   ,  90 , [L1]TeleCityGroup - IP Range for Fujitsu Siemens IT
-  88.80.180.242   - 88.80.180.242   , 107 , [PT]Tor
---- 138983,138989 ----
-  88.79.243.0     - 88.79.243.31    , 109 , [L2]Deutscher Genossenschafts-Verlag eG
-  88.80.6.210     - 88.80.6.210     ,  90 , [L1]Annabelleigh.net a.k.a. Girlchat
-  88.80.28.3      - 88.80.28.3      , 107 , [PT]Tor
-! 88.80.28.48     - 88.80.28.48     , 109 , [L2](ef)PeRiQuito AB | !-= www.FreeSexBay.com =-! - !-= Porn Pit
-  88.80.163.32    - 88.80.163.63    , 109 , [L2]TeleCityGroup - IP Range for York Consulting
-  88.80.169.0     - 88.80.169.255   ,  90 , [L1]TeleCityGroup - IP Range for Fujitsu Siemens IT
-  88.80.180.242   - 88.80.180.242   , 107 , [PT]Tor
+*** 104580,104586 ****
+  117.55.208.0    - 117.55.223.255  , 100 , [L2]KVH Co., Ltd, [L1]Ropes & Gray GJBJ
+  117.56.0.0      - 117.56.255.255  ,  90 , [L1]GSN, Taiwan Governme
+  117.58.251.44   - 117.58.251.44   , 104 , [AD]needcare.com.au
+- 117.72.0.0      - 117.73.255.255  ,  90 , [L1]Beijing Founder Broa
+  117.74.35.87    - 117.74.35.87    , 116 , [BD]gnufake
+  117.74.80.0     - 117.74.95.255   ,  60 , [BG]FreeSP
+  117.76.0.0      - 117.79.255.255  , 100 , [L2]BeiJing Sincerity-ti
+--- 104510,104515 ----
 ***************
-*** 146687,146693 ****
-  115.186.24.185  - 115.186.24.185  , 119 , [TL]Worldcall Telecom static gnu adware
-  115.187.33.230  - 115.187.33.230  , 119 , [TL]Alliance Broadband Services gnu viruses
-  115.190.0.0     - 115.191.255.255 ,  60 , [BG]freespace-quads
-- 115.239.228.194 - 115.239.228.194 ,  95 , [FK]Ninbo Lanzhong Network Ltd | eserver.no1
-  115.249.204.71  - 115.249.204.71  , 119 , [TL]Reliance Communications gnufakes
-  116.0.8.0       - 116.0.15.255    ,  60 , [BG]freespace-quads
-  116.0.24.0      - 116.0.31.255    ,  60 , [BG]freespace-quads
---- 146699,146704 ----
+*** 104606,104612 ****
+  117.121.214.88  - 117.121.214.95  ,  90 , [L1]Siam Premier Interna
+  117.121.248.0   - 117.121.255.255 ,  90 , [L1]Limelight Networks A
+  117.122.128.0   - 117.122.255.255 , 120 , [RT]Beijing Primezone Te
+- 117.135.137.108 - 117.135.137.108 ,  92 , [FK]Mobile Communications Co.,Ltd. | IA 1.8 ED2K SERVER NO.1
+  117.164.54.70   - 117.164.54.70   , 116 , [BD]China Mobile gnufake
+  117.192.244.78  - 117.192.244.78  ,  90 , [L1]Detected AP2P on BSN
+  117.194.160.62  - 117.194.160.62  , 116 , [BD]gnufake
+--- 104535,104540 ----
 ***************
-*** 146766,146771 ****
---- 146777,146783 ----
-  116.14.71.21    - 116.14.71.21    , 119 , [TL]SingNet static gnu viruses
-  116.15.103.170  - 116.15.103.170  , 119 , [TL]SingNet static gnu viruses
-  116.18.127.149  - 116.18.127.149  ,  90 , [L1]CHINANET Guangdong province network gnufakes
-+ 116.21.170.34   - 116.21.170.34   ,  60 , [EX](XunleiOffline)
-  116.42.51.21    - 116.42.51.21    , 119 , [TL]LG Powercomm broadband gnu viruses
-  116.44.152.47   - 116.44.152.47   , 119 , [TL]LG Powercomm broadband gnu viruses
-  116.46.75.19    - 116.46.75.19    , 119 , [TL]LG Powercomm static gnu viruses
+*** 104804,104809 ****
+--- 104732,104739 ----
+  118.107.152.0   - 118.107.159.255 ,  60 , [BG]FreeSP
+  118.107.160.0   - 118.107.175.255 , 100 , [L2]CDNetworks
+  118.108.0.0     - 118.111.255.255 , 110 , [L3]NEC BIGLOBE Ltd, [BD]gnufake
++ 118.122.36.130  - 118.122.36.185  ,  60 , [EX](XunleiOffline)
++ 118.122.87.18   - 118.122.87.23   ,  60 , [EX](XunleiOffline)
+  118.126.1.51    - 118.126.1.51    ,  92 , [FK]Shanghai Geis Technology Co. Ltd | ~~~~~~
+  118.127.96.0    - 118.127.159.255 ,  60 , [BG]FreeSP
+  118.128.5.137   - 118.128.5.137   , 116 , [BD]gnufake
 ***************
-*** 146777,146782 ****
---- 146789,146795 ----
-  116.50.0.0      - 116.50.15.255   ,  60 , [BG]freespace-quads
-  116.50.56.0     - 116.50.63.255   ,  90 , [L1]SurfControl On-Demand - Asia Pacific region
-  116.50.64.0     - 116.50.127.255  , 109 , [L2]WAN Network for backbone connectivity,
-+ 116.55.230.130  - 116.55.230.150  ,  60 , [EX](XunleiOffline)
-  116.58.191.240  - 116.58.191.255  ,  90 , [L1]Australian Embassy, Tokyo
-  116.64.104.54   - 116.64.104.54   , 119 , [TL]AtHome Japan gnu viruses
-  116.64.192.103  - 116.64.192.103  , 119 , [TL]AtHome Japan gnu spammer
+*** 105073,105078 ****
+--- 105003,105011 ----
+  119.112.19.103  - 119.112.19.103  , 116 , [BD]CNC Group Liaoning p
+  119.116.127.133 - 119.116.127.133 , 116 , [BD]CNC Group Liaoning b
+  119.119.176.100 - 119.119.176.100 , 116 , [BD]gnutella hitmorpher
++ 119.120.94.51   - 119.120.94.70   ,  60 , [EX](XunleiOffline)
++ 119.120.94.130  - 119.120.94.228  ,  60 , [EX](XunleiOffline)
++ 119.147.41.141  - 119.147.41.152  ,  60 , [EX](XunleiOffline)
+  119.148.88.0    - 119.148.95.255  ,  60 , [BG]FreeSP
+  119.148.176.0   - 119.148.191.255 ,  60 , [BG]FreeSP
+  119.148.250.17  - 119.148.250.17  , 116 , [BD]gnufake
 ***************
-*** 146845,146850 ****
---- 146858,146864 ----
-  116.213.20.0    - 116.213.31.255  ,  60 , [BG]freespace-quads
-  116.214.0.0     - 116.214.15.255  , 115 , [SD]Yahoo! Taiwan, Teipei, Taiwan
-  116.214.24.0    - 116.214.31.255  , 109 , [L2]IPVPN/INTERNET SERVICE PROVIDER
-+ 116.227.24.132  - 116.227.24.132  ,  60 , [EX](XunleiOffline)
-  116.228.3.128   - 116.228.3.143   ,  90 , [L1]SANDISK SEMICONDUCTOR SHANGHAI CO., LTD
-  116.228.5.132   - 116.228.5.135   ,  90 , [L1]SIEMENS LTD., CHINA
-  116.228.7.32    - 116.228.7.39    ,  90 , [L1]Dalian Toshiba TV Co.,Ltd Shanghai Branch
+*** 105100,105105 ****
+--- 105033,105040 ----
+  119.172.205.6   - 119.172.205.6   , 116 , [BD]gnufake
+  119.175.5.104   - 119.175.5.104   , 116 , [BD]gnufake
+  119.175.166.238 - 119.175.166.238 , 116 , [BD]gnufake
++ 119.178.12.2    - 119.178.12.23   ,  60 , [EX](XunleiOffline)
++ 119.188.12.23   - 119.188.12.59   ,  60 , [EX](XunleiOffline)
+  119.192.176.19  - 119.192.176.19  , 116 , [BD]gnutella hitmorpher
+  119.193.27.207  - 119.193.27.207  , 116 , [BD]gnufake
+  119.193.113.194 - 119.193.113.194 , 116 , [BD]gnufake
 ***************
-*** 146925,146933 ****
-  117.53.152.0    - 117.53.159.255  ,  60 , [BG]freespace-quads
-  117.55.208.0    - 117.55.223.255  , 109 , [L2]KVH Co., Ltd
-  117.56.0.0      - 117.56.255.255  ,  90 , [L1]GSN, Taiwan Government Service Network
-- 117.72.0.0      - 117.73.255.255  ,  90 , [L1]Beijing Founder Broadband Network Technology Co.,Ltd
-  117.74.80.0     - 117.74.95.255   ,  60 , [BG]freespace-quads
-  117.76.0.0      - 117.79.255.255  , 109 , [L2]BeiJing Sincerity-times Network Technology Project Ltd
-  117.93.11.203   - 117.93.11.203   , 107 , [PT]Proxy
-  117.102.83.16   - 117.102.83.23   , 109 , [L2]Pertamina Gas
-  117.102.91.6    - 117.102.91.6    , 107 , [PT]Proxy
---- 146939,146947 ----
-  117.53.152.0    - 117.53.159.255  ,  60 , [BG]freespace-quads
-  117.55.208.0    - 117.55.223.255  , 109 , [L2]KVH Co., Ltd
-  117.56.0.0      - 117.56.255.255  ,  90 , [L1]GSN, Taiwan Government Service Network
-  117.74.80.0     - 117.74.95.255   ,  60 , [BG]freespace-quads
-  117.76.0.0      - 117.79.255.255  , 109 , [L2]BeiJing Sincerity-times Network Technology Project Ltd
-+ 117.88.214.74   - 117.88.214.74   ,  60 , [EX](XunleiOffline)
-  117.93.11.203   - 117.93.11.203   , 107 , [PT]Proxy
-  117.102.83.16   - 117.102.83.23   , 109 , [L2]Pertamina Gas
-  117.102.91.6    - 117.102.91.6    , 107 , [PT]Proxy
+*** 105187,105210 ****
+  121.1.167.191   - 121.1.167.191   , 116 , [BD]gnufake
+  121.1.231.55    - 121.1.231.55    , 116 , [BD]ASAHI Net,Inc. gnu v
+  121.2.0.0       - 121.3.255.255   , 110 , [L3]So-net Entertainment, [BD]gnutella hitmorpher, [BD]gnufake, [L1]So-net Entertainment, [L2]So-net
+- 121.4.0.0       - 121.5.255.255   ,  90 , [L1]Beijing Founder Broa
+  121.6.25.163    - 121.6.25.163    , 116 , [BD]Macrovision Test
+  121.6.32.0      - 121.6.32.255    , 120 , [RT]SingNet test range, [BD]Macrovision Test
+  121.7.1.223     - 121.7.1.223     , 116 , [BD]gnutella hitmorpher
+  121.7.86.43     - 121.7.86.43     , 116 , [BD]gnufake
+  121.7.199.192   - 121.7.199.192   , 116 , [BD]SingNet Pte Ltd stat
+  121.9.253.15    - 121.9.253.15    , 100 , [L2]Abuse
+  121.10.112.139  - 121.10.112.139  , 102 , [SW]down.kitmama.cn
+  121.10.112.154  - 121.10.112.154  , 102 , [SW]trojans
+  121.10.112.157  - 121.10.112.157  , 102 , [SW]down.51sf.com
+  121.10.117.18   - 121.10.117.18   , 102 , [SW]hi.814e.com-trojan
+  121.10.137.100  - 121.10.137.100  ,  92 , [FK]ZHANJIANG WANJIAN | Donkey Control Server
+  121.11.76.85    - 121.11.76.85    , 114 , [WE](Mass injection atta, [SW]www.plgou.com
+  121.12.125.85   - 121.12.125.85   , 102 , [SW]go.chajian01.cn
+  121.12.170.39   - 121.12.170.39   , 102 , [SW]sdfwe45.cn
+  121.12.170.230  - 121.12.170.230  , 102 , [SW]a.baidu-6661.com
+  121.14.37.196   - 121.14.37.196   , 100 , [L2]Abuse
+  121.14.51.6     - 121.14.51.6     , 102 , [SW]skype.tom.com
+  121.14.96.0     - 121.14.96.255   , 120 , [RT]CHINANET
+  121.14.158.0    - 121.14.158.255  , 120 , [RT]dongguanshiweiyiwang, [L1]Detected AP2P on don
+  121.14.243.0    - 121.14.243.255  , 120 , [RT]CHINANET
+--- 105122,105155 ----
+  121.1.167.191   - 121.1.167.191   , 116 , [BD]gnufake
+  121.1.231.55    - 121.1.231.55    , 116 , [BD]ASAHI Net,Inc. gnu v
+  121.2.0.0       - 121.3.255.255   , 110 , [L3]So-net Entertainment, [BD]gnutella hitmorpher, [BD]gnufake, [L1]So-net Entertainment, [L2]So-net
+  121.6.25.163    - 121.6.25.163    , 116 , [BD]Macrovision Test
+  121.6.32.0      - 121.6.32.255    , 120 , [RT]SingNet test range, [BD]Macrovision Test
+  121.7.1.223     - 121.7.1.223     , 116 , [BD]gnutella hitmorpher
+  121.7.86.43     - 121.7.86.43     , 116 , [BD]gnufake
+  121.7.199.192   - 121.7.199.192   , 116 , [BD]SingNet Pte Ltd stat
++ 121.9.209.3     - 121.9.209.18    ,  60 , [EX](XunleiOffline)
++ 121.9.209.131   - 121.9.209.191   ,  60 , [EX](XunleiOffline)
++ 121.9.246.2     - 121.9.246.39    ,  60 , [EX](XunleiOffline)
+  121.9.253.15    - 121.9.253.15    , 100 , [L2]Abuse
++ 121.10.24.65    - 121.10.24.75    ,  60 , [EX](XunleiOffline)
+  121.10.112.139  - 121.10.112.139  , 102 , [SW]down.kitmama.cn
+  121.10.112.154  - 121.10.112.154  , 102 , [SW]trojans
+  121.10.112.157  - 121.10.112.157  , 102 , [SW]down.51sf.com
+  121.10.117.18   - 121.10.117.18   , 102 , [SW]hi.814e.com-trojan
++ 121.10.120.136  - 121.10.120.164  ,  60 , [EX](XunleiOffline)
++ 121.10.120.179  - 121.10.120.179  ,  60 , [EX](XunleiOffline)
++ 121.10.120.235  - 121.10.120.241  ,  60 , [EX](XunleiOffline)
++ 121.10.137.25   - 121.10.137.59   ,  60 , [EX](XunleiOffline)
+  121.10.137.100  - 121.10.137.100  ,  92 , [FK]ZHANJIANG WANJIAN | Donkey Control Server
++ 121.10.137.131  - 121.10.137.140  ,  60 , [EX](XunleiOffline)
+  121.11.76.85    - 121.11.76.85    , 114 , [WE](Mass injection atta, [SW]www.plgou.com
+  121.12.125.85   - 121.12.125.85   , 102 , [SW]go.chajian01.cn
+  121.12.170.39   - 121.12.170.39   , 102 , [SW]sdfwe45.cn
+  121.12.170.230  - 121.12.170.230  , 102 , [SW]a.baidu-6661.com
+  121.14.37.196   - 121.14.37.196   , 100 , [L2]Abuse
+  121.14.51.6     - 121.14.51.6     , 102 , [SW]skype.tom.com
++ 121.14.82.2     - 121.14.82.50    ,  60 , [EX](XunleiOffline)
++ 121.14.82.130   - 121.14.82.157   ,  60 , [EX](XunleiOffline)
+  121.14.96.0     - 121.14.96.255   , 120 , [RT]CHINANET
+  121.14.158.0    - 121.14.158.255  , 120 , [RT]dongguanshiweiyiwang, [L1]Detected AP2P on don
+  121.14.243.0    - 121.14.243.255  , 120 , [RT]CHINANET
 ***************
-*** 146946,146952 ****
-  117.120.56.0    - 117.120.63.255  ,  60 , [BG]freespace-quads
-  117.121.214.88  - 117.121.214.95  ,  90 , [L1]Siam Premier International Law Office Ltd
-  117.121.248.0   - 117.121.255.255 ,  90 , [L1]Limelight Networks Asia Pacific
-- 117.135.137.108 - 117.135.137.108 ,  95 , [FK]Mobile Communications Co.,Ltd. | IA 1.8 ED2K SERVER NO.1
-  117.164.54.70   - 117.164.54.70   , 119 , [TL]China Mobile gnufakes
-  117.195.195.213 - 117.195.195.213 , 119 , [TL]Bharat Sanchar Nigam gnu spammer
-  117.197.209.30  - 117.197.209.30  , 119 , [TL]BSNL Internet broadband gnu viruses
---- 146960,146965 ----
-***************
-*** 147201,147206 ****
---- 147214,147220 ----
-  119.112.19.103  - 119.112.19.103  , 119 , [TL]CNC Group Liaoning province network gnufakes
-  119.116.127.133 - 119.116.127.133 , 119 , [TL]CNC Group Liaoning broadband gnu spammer
-  119.119.176.100 - 119.119.176.100 , 119 , [TL]gnutella hitmorpher
-+ 119.120.94.200  - 119.120.94.210  ,  60 , [EX](XunleiOffline)
-  119.147.116.67  - 119.147.116.67  , 107 , [PT]Proxy
-  119.147.116.164 - 119.147.116.164 , 107 , [PT]Proxy
-  119.148.88.0    - 119.148.95.255  ,  60 , [BG]freespace-quads
-***************
-*** 147268,147285 ****
-  121.1.231.55    - 121.1.231.55    , 119 , [TL]ASAHI Net,Inc. gnu viruses
-  121.2.37.250    - 121.2.37.250    , 119 , [TL]gnutella hitmorpher
-  121.2.69.0      - 121.2.79.255    , 109 , [L2]So-net Entertainment Corporation
-- 121.4.0.0       - 121.5.255.255   ,  90 , [L1]Beijing Founder Broadband Network Technology Co.,Ltd
-  121.6.25.163    - 121.6.25.163    , 119 , [TL]Macrovision Test
-  121.6.32.97     - 121.6.32.97     , 119 , [TL]Macrovision Test
-  121.6.32.193    - 121.6.32.193    , 119 , [TL]Macrovision Test
-  121.7.1.223     - 121.7.1.223     , 119 , [TL]gnutella hitmorpher
-  121.8.124.42    - 121.8.124.42    , 107 , [PT]Proxy
-  121.9.253.15    - 121.9.253.15    , 109 , [L2]Abuse
-  121.10.112.139  - 121.10.112.139  , 111 , [SW]down.kitmama.cn
-  121.10.112.154  - 121.10.112.154  , 111 , [SW]trojans
-  121.10.112.157  - 121.10.112.157  , 111 , [SW]down.51sf.com
-  121.10.117.18   - 121.10.117.18   , 111 , [SW]hi.814e.com - trojan
-  121.10.137.100  - 121.10.137.100  ,  95 , [FK]ZHANJIANG WANJIAN | Donkey Control Server
-  121.11.76.85    - 121.11.76.85    , 111 , [SW]www.plgou.com
-  121.11.80.142   - 121.11.80.142   , 107 , [PT]Proxy
-  121.12.125.85   - 121.12.125.85   , 111 , [SW]go.chajian01.cn
---- 147282,147305 ----
-  121.1.231.55    - 121.1.231.55    , 119 , [TL]ASAHI Net,Inc. gnu viruses
-  121.2.37.250    - 121.2.37.250    , 119 , [TL]gnutella hitmorpher
-  121.2.69.0      - 121.2.79.255    , 109 , [L2]So-net Entertainment Corporation
-  121.6.25.163    - 121.6.25.163    , 119 , [TL]Macrovision Test
-  121.6.32.97     - 121.6.32.97     , 119 , [TL]Macrovision Test
-  121.6.32.193    - 121.6.32.193    , 119 , [TL]Macrovision Test
-  121.7.1.223     - 121.7.1.223     , 119 , [TL]gnutella hitmorpher
-  121.8.124.42    - 121.8.124.42    , 107 , [PT]Proxy
-+ 121.9.209.3     - 121.9.209.3     ,  60 , [EX](XunleiOffline)
-+ 121.9.209.7     - 121.9.209.7     ,  60 , [EX](XunleiOffline)
-+ 121.9.209.15    - 121.9.209.15    ,  60 , [EX](XunleiOffline)
-  121.9.253.15    - 121.9.253.15    , 109 , [L2]Abuse
-+ 121.10.105.151  - 121.10.105.152  ,  60 , [EX](XunleiOffline)
-  121.10.112.139  - 121.10.112.139  , 111 , [SW]down.kitmama.cn
-  121.10.112.154  - 121.10.112.154  , 111 , [SW]trojans
-  121.10.112.157  - 121.10.112.157  , 111 , [SW]down.51sf.com
-  121.10.117.18   - 121.10.117.18   , 111 , [SW]hi.814e.com - trojan
-+ 121.10.120.140  - 121.10.120.149  ,  60 , [EX](XunleiOffline)
-+ 121.10.137.40   - 121.10.137.70   ,  60 , [EX](XunleiOffline)
-  121.10.137.100  - 121.10.137.100  ,  95 , [FK]ZHANJIANG WANJIAN | Donkey Control Server
-+ 121.11.69.108   - 121.11.69.108   ,  60 , [EX](XunleiOffline)
-  121.11.76.85    - 121.11.76.85    , 111 , [SW]www.plgou.com
-  121.11.80.142   - 121.11.80.142   , 107 , [PT]Proxy
-  121.12.125.85   - 121.12.125.85   , 111 , [SW]go.chajian01.cn
-***************
-*** 147287,147292 ****
---- 147307,147313 ----
-  121.12.170.230  - 121.12.170.230  , 111 , [SW]a.baidu-6661.com
-  121.14.37.196   - 121.14.37.196   , 109 , [L2]Abuse
-  121.14.51.6     - 121.14.51.6     , 111 , [SW]skype.tom.com
-+ 121.14.76.213   - 121.14.76.213   ,  60 , [EX](XunleiOffline)
-  121.14.158.75   - 121.14.158.76   , 107 , [PT]Proxy
-  121.15.221.107  - 121.15.221.107  , 111 , [SW]www.kangk.cn - trojan
-  121.17.28.32    - 121.17.28.44    , 109 , [L2]CNCGROUP HeBei HengShui Network
-***************
-*** 147323,147330 ****
---- 147344,147354 ----
-  121.28.147.128  - 121.28.147.135  ,  90 , [L1]The Hebei Province army non-military roll retired worker serves administrati
-  121.28.149.208  - 121.28.149.215  ,  90 , [L1]Hebei Radio and Television University
-  121.28.169.72   - 121.28.169.79   ,  90 , [L1]The city Chang An dream factory film and television specializes in school
+*** 105241,105246 ****
+--- 105186,105192 ----
+  121.28.147.128  - 121.28.147.135  ,  90 , [L1]The Hebei Province a
+  121.28.149.208  - 121.28.149.215  ,  90 , [L1]Hebei Radio and Tele
+  121.28.169.72   - 121.28.169.79   ,  90 , [L1]The city Chang An dr
 + 121.30.203.180  - 121.30.203.180  ,  60 , [EX](LEO AbuseReQ)CNCGROUP China169 Backbone datong shanxi
-  121.31.56.0     - 121.31.56.15    ,  90 , [L1]Nanning-police  nanning  GuangXi Province
-  121.31.126.93   - 121.31.126.93   , 107 , [PT]Proxy
-+ 121.32.155.52   - 121.32.155.52   ,  60 , [EX](XunleiOffline)
-+ 121.33.246.172  - 121.33.246.172  ,  60 , [EX](XunleiOffline)
-  121.40.0.0      - 121.40.255.255  , 109 , [L2]YITAIFENG
-  121.44.6.55     - 121.44.6.55     , 119 , [TL]Internode ed2k viruses
-  121.44.24.138   - 121.44.24.138   , 119 , [TL]Internode gnu spammer
+  121.31.56.0     - 121.31.56.15    ,  90 , [L1]Nanning-police  nann
+  121.40.0.0      - 121.40.255.255  , 100 , [L2]YITAIFENG
+  121.44.6.55     - 121.44.6.55     , 116 , [BD]Internode ed2k virus
 ***************
-*** 147454,147459 ****
---- 147478,147484 ----
-  121.200.240.0   - 121.200.255.255 ,  60 , [BG]freespace-quads
-  121.203.78.213  - 121.203.78.213  , 119 , [TL]SmarTone Mobile static gnu viruses
-  121.204.22.121  - 121.204.22.121  ,  95 , [FK]Chinanet Fujian Province Network
-+ 121.205.192.202 - 121.205.192.202 ,  60 , [EX](XunleiOffline)
-  121.208.1.137   - 121.208.1.137   , 119 , [TL]Telstra Internet broadband gnu viruses
-  121.208.16.212  - 121.208.16.212  , 119 , [TL]Telstra Internet gnu spammer
-  121.208.74.81   - 121.208.74.81   , 119 , [TL]Telstra Internet gnu viruses
+*** 105951,105956 ****
+--- 105897,105903 ----
+  122.129.216.0   - 122.129.223.255 ,  60 , [BG]FreeSP
+  122.130.0.0     - 122.135.255.255 , 110 , [L3]NEC BIGLOBE Ltd, [BD]gnufake
+  122.136.32.100  - 122.136.32.100  , 104 , [AD]netetrader.com
++ 122.141.227.130 - 122.141.227.161 ,  60 , [EX](XunleiOffline)
+  122.144.28.28   - 122.144.28.31   ,  94 , [MS]Microsoft [ TIG-Glob
+  122.144.28.36   - 122.144.28.43   , 106 , [SD]Google at PAIX
+  122.144.28.44   - 122.144.28.47   ,  90 , [L1]Limelight at PAIX
 ***************
-*** 147465,147470 ****
---- 147490,147496 ----
-  121.219.15.10   - 121.219.15.10   , 119 , [TL]Telstra Internet gnu malware
-  121.223.32.36   - 121.223.32.36   , 119 , [TL]Telstra Internet gnu spammer
-  121.227.132.226 - 121.227.132.226 , 119 , [TL]gnutella hitmorpher
-+ 121.229.149.54  - 121.229.149.54  ,  60 , [EX](XunleiOffline)
-  121.230.129.147 - 121.230.129.147 , 119 , [TL]gnutella hitmorpher
-  121.241.184.162 - 121.241.184.162 , 109 , [L2]Abuse
-  121.243.72.4    - 121.243.72.7    ,  90 , [L1]SOFTWARE_TECHNOLOGY_PARKS_OF_INDIA
+*** 106304,106309 ****
+--- 106251,106257 ----
+  122.227.66.0    - 122.227.66.3    ,  90 , [L1]Quzhoushi Wenzhou Ch
+  122.227.78.152  - 122.227.78.155  ,  90 , [L1]Zhejiang helps the b
+  122.227.164.0   - 122.227.164.255 , 112 , [DS][DShield block] Unkn
++ 122.228.241.2   - 122.228.241.46  ,  60 , [EX](XunleiOffline)
+  122.248.16.0    - 122.248.19.255  , 100 , [L2]Emerson Electric Asi
+  122.248.32.0    - 122.248.47.255  ,  60 , [BG]FreeSP
+  122.248.96.0    - 122.248.127.255 ,  60 , [BG]FreeSP
 ***************
-*** 148350,148355 ****
---- 148376,148382 ----
-  124.39.182.72   - 124.39.182.79   ,  90 , [L1]DainipponPrintingCo.,Ltd
-  124.40.54.0     - 124.40.63.255   , 109 , [L2]Allied Telesyn Capital Corp
-  124.40.112.0    - 124.40.127.255  , 109 , [L2]BeiJing FeiHuaLingHang Technology Development Co.,Ltd
-+ 124.40.134.114  - 124.40.134.114  ,  60 , [EX](XunleiOffline)
-  124.40.192.0    - 124.40.223.255  ,  60 , [BG]freespace-quads
-  124.40.244.0    - 124.40.247.255  ,  60 , [BG]freespace-quads
-  124.42.0.0      - 124.42.127.255  , 109 , [L2]XiYuan Hospital of China Herbalist Doctor Academy, Huarui Xintong Network T
+*** 106381,106386 ****
+--- 106329,106337 ----
+  123.127.246.176 - 123.127.246.191 , 100 , [L2]TEREXBJ-CO
+  123.127.250.64  - 123.127.250.127 , 100 , [L2]LANGCHAODIANZI
+  123.129.209.0   - 123.129.210.255 , 120 , [RT]grey ranges on gnute
++ 123.129.242.131 - 123.129.242.229 ,  60 , [EX](XunleiOffline)
++ 123.129.242.245 - 123.129.242.245 ,  60 , [EX](XunleiOffline)
++ 123.129.242.253 - 123.129.242.253 ,  60 , [EX](XunleiOffline)
+  123.130.213.232 - 123.130.213.232 , 116 , [BD]CNCGROUP Shandong Pr
+  123.136.48.0    - 123.136.63.255  ,  60 , [BG]FreeSP
+  123.136.128.0   - 123.136.255.255 , 110 , [L3]HCL INFINET LTD,  E-
 ***************
-*** 148360,148365 ****
---- 148387,148393 ----
-  124.62.80.19    - 124.62.80.19    ,  90 , [L1]Bittorrent fakes
-  124.64.43.210   - 124.64.43.210   , 119 , [TL]p2p Corrupt Data Sender
-  124.66.208.0    - 124.66.223.255  ,  60 , [BG]freespace-quads
-+ 124.72.193.116  - 124.72.193.116  ,  60 , [EX](XunleiOffline)
-  124.74.239.144  - 124.74.239.159  ,  90 , [L1]SAP (BEIJING) SOFTWARE SYSTEM CO., LTD. SHANGHAI BRANCH
-  124.74.252.0    - 124.74.252.7    ,  90 , [L1]Shanghai Hewlett-Packard Co., Ltd
-  124.79.125.8    - 124.79.125.8    , 119 , [TL]CHINANET Shanghai fake files
+*** 107115,107121 ****
+  124.110.198.237 - 124.110.198.237 , 116 , [BD]gnufake
+  124.110.207.3   - 124.110.207.3   , 116 , [BD]gnufake
+  124.115.0.14    - 124.115.0.37    , 106 , [SD]Sosospider
+! 124.115.1.0     - 124.115.1.255   , 120 , [RT]CHINANET
+  124.119.65.242  - 124.119.65.242  , 116 , [BD]gnutella hitmorpher
+  124.120.221.195 - 124.120.221.195 , 116 , [BD]p2p Corrupt Data Sen
+  124.123.85.29   - 124.123.85.29   , 116 , [BD]gnufake
+--- 107066,107072 ----
+  124.110.198.237 - 124.110.198.237 , 116 , [BD]gnufake
+  124.110.207.3   - 124.110.207.3   , 116 , [BD]gnufake
+  124.115.0.14    - 124.115.0.37    , 106 , [SD]Sosospider
+! 124.115.1.0     - 124.115.2.255   ,  60 , [EX](QQOffline)
+  124.119.65.242  - 124.119.65.242  , 116 , [BD]gnutella hitmorpher
+  124.120.221.195 - 124.120.221.195 , 116 , [BD]p2p Corrupt Data Sen
+  124.123.85.29   - 124.123.85.29   , 116 , [BD]gnufake
 ***************
-*** 148706,148717 ****
-  124.109.160.0   - 124.109.160.255 ,  90 , [L1]Konami Digital Entertainment Co., Ltd
-  124.109.168.0   - 124.109.171.255 ,  90 , [L1]NEC Corporation
-  124.110.2.46    - 124.110.2.46    , 119 , [TL]Vectant Ltd. gnu viruses
-  124.119.65.242  - 124.119.65.242  , 119 , [TL]gnutella hitmorpher
-  124.120.221.195 - 124.120.221.195 , 119 , [TL]p2p Corrupt Data Sender
-  124.120.241.3   - 124.120.241.3   , 107 , [PT]Tor
-  124.125.15.14   - 124.125.15.14   , 119 , [TL]RELIANCE broadband gnu viruses
-  124.125.234.149 - 124.125.234.149 , 119 , [TL]gnutella hitmorpher
-! 124.126.0.0     - 124.127.255.255 , 109 , [L2]Research Institution of Telecom
-  124.128.33.208  - 124.128.33.223  ,  90 , [L1]CNC Group CHINA169 Shandong Province Network
-  124.128.34.96   - 124.128.34.127  ,  90 , [L1]shandong People\'s government
-  124.128.36.24   - 124.128.36.31   ,  90 , [L1]CNC Group CHINA169 Shandong Province Network
---- 148734,148746 ----
-  124.109.160.0   - 124.109.160.255 ,  90 , [L1]Konami Digital Entertainment Co., Ltd
-  124.109.168.0   - 124.109.171.255 ,  90 , [L1]NEC Corporation
-  124.110.2.46    - 124.110.2.46    , 119 , [TL]Vectant Ltd. gnu viruses
-+ 124.115.1.0     - 124.115.2.255   ,  60 , [EX](QQOffline)
-  124.119.65.242  - 124.119.65.242  , 119 , [TL]gnutella hitmorpher
-  124.120.221.195 - 124.120.221.195 , 119 , [TL]p2p Corrupt Data Sender
-  124.120.241.3   - 124.120.241.3   , 107 , [PT]Tor
-  124.125.15.14   - 124.125.15.14   , 119 , [TL]RELIANCE broadband gnu viruses
-  124.125.234.149 - 124.125.234.149 , 119 , [TL]gnutella hitmorpher
+*** 107124,107130 ****
+  124.125.15.14   - 124.125.15.14   , 116 , [BD]RELIANCE broadband g
+  124.125.18.32   - 124.125.18.32   , 116 , [BD]gnufake
+  124.125.234.149 - 124.125.234.149 , 116 , [BD]gnutella hitmorpher
+! 124.126.0.0     - 124.127.255.255 , 100 , [L2]Research Institution, [SP]Detected spambot on
+  124.128.33.208  - 124.128.33.223  ,  90 , [L1]CNC Group CHINA169 S
+  124.128.34.96   - 124.128.34.127  ,  90 , [L1]shandong People\'s g
+  124.128.36.24   - 124.128.36.31   ,  90 , [L1]CNC Group CHINA169 S
+--- 107075,107081 ----
+  124.125.15.14   - 124.125.15.14   , 116 , [BD]RELIANCE broadband g
+  124.125.18.32   - 124.125.18.32   , 116 , [BD]gnufake
+  124.125.234.149 - 124.125.234.149 , 116 , [BD]gnutella hitmorpher
 ! 124.126.0.0     - 124.127.255.255 ,  60 , [EX](LEO AbuseReQ)Research Institution of Telecom
-  124.128.33.208  - 124.128.33.223  ,  90 , [L1]CNC Group CHINA169 Shandong Province Network
-  124.128.34.96   - 124.128.34.127  ,  90 , [L1]shandong People\'s government
-  124.128.36.24   - 124.128.36.31   ,  90 , [L1]CNC Group CHINA169 Shandong Province Network
+  124.128.33.208  - 124.128.33.223  ,  90 , [L1]CNC Group CHINA169 S
+  124.128.34.96   - 124.128.34.127  ,  90 , [L1]shandong People\'s g
+  124.128.36.24   - 124.128.36.31   ,  90 , [L1]CNC Group CHINA169 S
 ***************
-*** 148850,148855 ****
---- 148879,148887 ----
-  124.217.251.212 - 124.217.251.212 ,  90 , [L1]moviex.info|p2p abusers
-  124.217.252.88  - 124.217.252.89  ,  95 , [FK]Lumpur Piradius Net
-  124.217.254.69  - 124.217.254.69  , 109 , [L2]Abuse
-+ 124.227.192.180 - 124.227.192.180 ,  60 , [EX](XunleiOffline)
-+ 124.232.148.140 - 124.232.148.180 ,  60 , [EX](XunleiOffline)
-+ 124.236.92.176  - 124.236.92.176  ,  60 , [EX](XunleiOffline)
-  124.240.126.0   - 124.240.126.255 ,  90 , [L1]GuangDong YingXin information Investment co.ltd
-  124.240.224.0   - 124.240.255.255 ,  60 , [BG]freespace-quads
-  124.241.122.16  - 124.241.122.23  , 109 , [L2]Osaka University Research Institu for Sustainability Science
+*** 107311,107316 ****
+--- 107262,107268 ----
+  124.213.136.238 - 124.213.136.238 , 116 , [BD]gnufake
+  124.215.192.0   - 124.215.255.255 , 110 , [L3]KDDI CORPORATION, [L2]CDNetworks Japan Co., [L1]Sony Ericsson Mobile, [L1]Konami Digital Enter, 
+  124.217.224.0   - 124.217.255.255 , 110 , [L3]PIRADIUS NET, [L1]moviex.info|p2p abus, [L1]fake emule servers, [L2]sshtunnelhost.com, [L2]mail.
++ 124.232.148.131 - 124.232.148.200 ,  60 , [EX](XunleiOffline)
+  124.240.126.0   - 124.240.126.255 ,  90 , [L1]GuangDong YingXin in
+  124.240.224.0   - 124.240.255.255 ,  60 , [BG]FreeSP
+  124.241.122.16  - 124.241.122.23  , 100 , [L2]Osaka University Res
 ***************
-*** 149553,149565 ****
---- 149585,149602 ----
-  125.66.128.88   - 125.66.128.91   ,  90 , [L1]SC-ZG-POLICE-NET
-  125.66.130.16   - 125.66.130.31   ,  90 , [L1]SC-ZG-STATISTIC-BUREAU
-  125.68.57.154   - 125.68.57.154   , 111 , [SW]ASPROX-SQL injections
-+ 125.71.23.136   - 125.71.23.136   ,  60 , [EX](XunleiOffline)
-  125.72.29.8     - 125.72.29.11    ,  90 , [L1]XiNing City,county government,QingHai Province
-  125.72.128.0    - 125.72.128.15   ,  90 , [L1]QH probince xinghai country  police the seven seas eyes
-+ 125.77.153.47   - 125.77.153.47   ,  60 , [EX](XunleiOffline)
-  125.85.18.176   - 125.85.18.176   , 107 , [PT]Proxy
-  125.85.85.244   - 125.85.85.244   , 119 , [TL]gnutella hitmorpher
-  125.87.2.198    - 125.87.2.198    , 111 , [SW]Zeus bot Command & Control server
-  125.89.64.242   - 125.89.64.242   , 107 , [PT]Proxy
-  125.90.204.49   - 125.90.204.49   , 111 , [SW]swf hijacks
-+ 125.91.93.157   - 125.91.93.157   ,  60 , [EX](XunleiOffline)
-+ 125.91.133.252  - 125.91.133.252  ,  60 , [EX](XunleiOffline)
-+ 125.91.203.86   - 125.91.203.86   ,  60 , [EX](XunleiOffline)
-  125.93.48.0     - 125.93.48.7     ,  90 , [L1]HUIDONG BUREAU OF INFORMATION INDUSTRY
-  125.99.45.200   - 125.99.45.200   , 119 , [TL]Hathway IP Over Cable gnu viruses
-  125.100.25.24   - 125.100.25.31   , 109 , [L2]FUJIFILM SIMPLE PRODUCTS CO.,LTD
+*** 107451,107461 ****
+--- 107403,107419 ----
+  125.35.7.56     - 125.35.7.63     , 100 , [L2]Nortel Communication
+  125.35.7.64     - 125.35.7.95     ,  90 , [L1]United Nations Devel
+  125.35.10.128   - 125.35.10.255   , 100 , [L2]Nortel Communication
++ 125.39.72.11    - 125.39.72.208   ,  60 , [EX](XunleiOffline)
++ 125.39.148.88   - 125.39.148.89   ,  60 , [EX](XunleiOffline)
++ 125.39.149.2    - 125.39.149.100  ,  60 , [EX](XunleiOffline)
++ 125.39.150.2    - 125.39.150.31   ,  60 , [EX](XunleiOffline)
+  125.45.61.0     - 125.45.61.255   , 120 , [RT]CNCGROUP Henan provi
+  125.45.133.75   - 125.45.133.76   ,  90 , [L1]Municipal Party Comm
+  125.45.141.25   - 125.45.141.25   ,  90 , [L1]Public Security Bure
+  125.45.141.106  - 125.45.141.106  ,  90 , [L1]Public Security Bure
+  125.46.1.229    - 125.46.1.229    , 102 , [SW]trojans
++ 125.46.42.130   - 125.46.42.130   ,  60 , [EX](XunleiOffline)
++ 125.46.42.143   - 125.46.42.153   ,  60 , [EX](XunleiOffline)
+  125.46.57.157   - 125.46.57.157   , 114 , [WE](Mass injection atta
+  125.46.65.72    - 125.46.65.72    ,  92 , [FK]Cncgroup Henan Province Network | flashget
+  125.46.72.148   - 125.46.72.151   , 110 , [L3]Shangqu Net Bar,
 ***************
-*** 149594,149601 ****
---- 149631,149641 ----
-  125.102.255.0   - 125.102.255.7   , 109 , [L2]pokemonra-ningu
-  125.102.255.56  - 125.102.255.63  , 109 , [L2]pokemonra-ningu
-  125.113.211.16  - 125.113.211.16  , 119 , [TL]gnutella hitmorpher
-+ 125.115.86.151  - 125.115.86.151  ,  60 , [EX](XunleiOffline)
-  125.117.36.182  - 125.117.36.182  , 119 , [TL]CHINANET Zhejiang province network gnufakes
-+ 125.119.26.125  - 125.119.26.125  ,  60 , [EX](XunleiOffline)
-  125.120.96.103  - 125.120.96.103  , 119 , [TL]gnutella hitmorpher
-+ 125.126.172.156 - 125.126.172.156 ,  60 , [EX](XunleiOffline)
-  125.128.25.151  - 125.128.25.151  , 107 , [PT]Proxy
-  125.128.64.0    - 125.128.64.255  ,  90 , [L1]Government Computer Center (GCC)
-  125.128.66.0    - 125.128.67.255  ,  90 , [L1]Government Computer Center (GCC)
+*** 107708,107713 ****
+--- 107666,107672 ----
+  125.215.128.0   - 125.215.255.255 , 120 , [RT]PCCW Business Intern, [L2]SWIRE PROPERTIES MAN, [L2]GARTNER STUDIOS INTE, [L1]ALICE AND LAW CO L
+  125.219.136.0   - 125.219.139.255 ,  90 , [L1]Railway Police Insti
+  125.220.32.0    - 125.220.47.255  ,  90 , [L1]Military Economics A
++ 125.221.46.131  - 125.221.46.138  ,  60 , [EX](XunleiOffline)
+  125.224.80.237  - 125.224.80.237  , 116 , [BD]gnutella hitmorpher
+  125.236.52.0    - 125.236.52.255  , 100 , [L2]ANZ National Bank
+  125.236.53.8    - 125.236.53.15   ,  90 , [L1]Harmans Lawyers
 ***************
-*** 159413,159418 ****
---- 159453,159459 ----
-  192.110.223.0   - 192.110.250.255 ,  90 , [L1]ADP
-  192.110.253.0   - 192.110.254.255 ,  90 , [L1]MITRE CORPORATION
-  192.110.255.0   - 192.111.0.255   ,  60 , [BG]freespace-quads
-+ 192.111.4.26    - 192.111.4.26    ,  60 , [EX](XunleiOffline)
-  192.111.32.0    - 192.111.34.255  ,  90 , [L1]CSIRO IT Services
-  192.111.37.0    - 192.111.38.255  ,  60 , [BG]freespace-quads
-  192.111.40.0    - 192.111.43.255  , 109 , [L2]Mitsubishi Semiconductor America Incorporated
-***************
-*** 170459,170467 ****
-  194.126.156.0   - 194.126.157.255 , 109 , [L2]Hosted Server bloc for Mediametrie Estat
-  194.126.158.123 - 194.126.158.123 ,  90 , [L1]Chaos Computer Club
-  194.126.174.124 - 194.126.174.124 , 111 , [SW]themymoviessite.com
-! 194.126.175.106 - 194.126.175.106 ,  95 , [FK] | Sharing Kingdom 3
-! 194.126.175.170 - 194.126.175.170 ,  95 , [FK] | Sharing Kingdom 4
-! 194.126.175.202 - 194.126.175.202 ,  95 , [FK] | Sharing Kingdom 5
-  194.126.193.152 - 194.126.193.152 , 111 , [SW]Malware Host|MDL
-  194.126.213.0   - 194.126.213.255 ,  90 , [L1]Ministry of Defence
-  194.126.215.0   - 194.126.215.255 ,  90 , [L1]INDRA SISTEMAS S.A
---- 170500,170508 ----
-  194.126.156.0   - 194.126.157.255 , 109 , [L2]Hosted Server bloc for Mediametrie Estat
-  194.126.158.123 - 194.126.158.123 ,  90 , [L1]Chaos Computer Club
-  194.126.174.124 - 194.126.174.124 , 111 , [SW]themymoviessite.com
-! 194.126.175.106 - 194.126.175.106 , 109 , [L2](ef) | Sharing Kingdom 3
-! 194.126.175.170 - 194.126.175.170 , 109 , [L2](ef) | Sharing Kingdom 4
-! 194.126.175.202 - 194.126.175.202 , 109 , [L2](ef) | Sharing Kingdom 5
-  194.126.193.152 - 194.126.193.152 , 111 , [SW]Malware Host|MDL
-  194.126.213.0   - 194.126.213.255 ,  90 , [L1]Ministry of Defence
-  194.126.215.0   - 194.126.215.255 ,  90 , [L1]INDRA SISTEMAS S.A
-***************
-*** 181143,181149 ****
-  195.228.214.64  - 195.228.214.95  ,  90 , [L1]Ster Century Ltd. Campona
+*** 138082,138088 ****
+  195.228.214.64  - 195.228.214.95  ,  90 , [L1]Ster Century Ltd. Ca
   195.228.214.176 - 195.228.214.191 ,  90 , [L1]DDB Ltd., Budapest
   195.228.238.32  - 195.228.238.39  ,  90 , [L1]Editio Musica Ltd
-- 195.229.0.0     - 195.230.31.255  ,  90 , [L1]Emirates Telecommunications Corporation
-  195.230.35.0    - 195.230.35.255  , 109 , [L2]Softwarehaus, Provider
-  195.230.39.24   - 195.230.39.31   ,  90 , [L1]TRW Integrated Supply Chain Solutions EDV GmbH
+- 195.229.0.0     - 195.230.31.255  ,  90 , [L1]Emirates Telecommuni, [L2]City Heart Cafe, [L3]L.C. CONSULTING ENGI
+  195.230.35.0    - 195.230.35.255  , 100 , [L2]Softwarehaus, Provid
+  195.230.39.24   - 195.230.39.31   ,  90 , [L1]TRW Integrated Suppl
   195.230.39.160  - 195.230.39.175  ,  90 , [L1]Synchro Film + Video
---- 181184,181189 ----
+--- 138041,138046 ----
 ***************
-*** 181425,181433 ****
-  195.242.106.0   - 195.242.107.255 ,  90 , [L1]Bulgarian National TV
-  195.242.136.0   - 195.242.137.255 ,  90 , [L1]Ministerio de Sanidad y Consumo
-  195.242.150.0   - 195.242.151.255 ,  90 , [L1]Nikitova
-! 195.242.152.138 - 195.242.152.138 ,  95 , [FK] | Sharing Kingdom 6
-  195.242.152.250 - 195.242.152.250 , 107 , [PT]Tor
-! 195.242.153.66  - 195.242.153.67  ,  95 , [FK]Eureka Solutions Sp Z O.o | Sharing Kingdom 1-2
-  195.242.153.81  - 195.242.153.82  ,  90 , [L1]gnutella spammer on Eureka Solutions
-  195.242.158.0   - 195.242.159.255 , 109 , [L2]SC ALPHA BANK ROMANIA SA
-  195.242.162.208 - 195.242.162.223 ,  90 , [L1]Mairied de Dunkerque
---- 181465,181473 ----
-  195.242.106.0   - 195.242.107.255 ,  90 , [L1]Bulgarian National TV
-  195.242.136.0   - 195.242.137.255 ,  90 , [L1]Ministerio de Sanidad y Consumo
-  195.242.150.0   - 195.242.151.255 ,  90 , [L1]Nikitova
-! 195.242.152.138 - 195.242.152.138 , 109 , [L2](ef) | Sharing Kingdom 6
-  195.242.152.250 - 195.242.152.250 , 107 , [PT]Tor
-! 195.242.153.66  - 195.242.153.67  , 109 , [L2](ef)Eureka Solutions Sp Z O.o | Sharing Kingdom 1-2
-  195.242.153.81  - 195.242.153.82  ,  90 , [L1]gnutella spammer on Eureka Solutions
-  195.242.158.0   - 195.242.159.255 , 109 , [L2]SC ALPHA BANK ROMANIA SA
-  195.242.162.208 - 195.242.162.223 ,  90 , [L1]Mairied de Dunkerque
+*** 148163,148169 ****
+  202.103.179.176 - 202.103.179.183 ,  90 , [L1]MAOMING MAOMINGLIBRA
+  202.103.179.192 - 202.103.179.195 ,  90 , [L1]MAOMING HUAZHOU POLI
+  202.103.187.64  - 202.103.187.79  , 100 , [L2]DONGGUAN HUABANG ECO
+- 202.103.192.0   - 202.103.255.255 , 120 , [RT]CHINANET Guangxi pro, [L1]Nanning, NO.160 info, Power suppl, [L2]Nanning, Guangxi ban, [L1]Nanni
+  202.104.2.88    - 202.104.2.159   ,  90 , [L1]QINGYUAN LIANZHOU IN
+  202.104.3.64    - 202.104.3.79    ,  90 , [L1]QINGYUAN QYYUANJIAGN
+  202.104.3.128   - 202.104.3.143   ,  90 , [L1]QINGYUAN QYNATIONALR
+--- 148121,148126 ----
 ***************
-*** 188656,188661 ****
---- 188696,188702 ----
-  202.38.16.0     - 202.38.31.255   ,  90 , [L1]Trade and Industry Department
-  202.38.32.0     - 202.38.47.255   , 109 , [L2]Northern Telecom
-  202.38.48.0     - 202.38.63.255   ,  60 , [BG]freespace-quads
-+ 202.38.64.8     - 202.38.64.8     ,  60 , [EX](XunleiOffline)
-  202.38.125.0    - 202.38.125.7    , 109 , [L2]ApanBio sites at Centre of Bioinformatics of Peking University
-  202.38.136.0    - 202.38.136.255  , 109 , [L2]Canon Inc, Beijing Office
-  202.38.139.0    - 202.38.139.255  ,  60 , [L1]Thales telematics Australia
+*** 148384,148390 ****
+  202.106.168.124 - 202.106.168.126 , 104 , [AD]ads
+  202.106.171.0   - 202.106.171.255 , 100 , [L2]Development Research
+  202.106.173.0   - 202.106.174.127 ,  90 , [L1]The State Council In
+- 202.106.175.128 - 202.106.176.255 ,  90 , [L1]Information & Commun
+  202.106.180.64  - 202.106.180.127 , 106 , [SD]Google Beijing
+  202.106.180.192 - 202.106.181.255 ,  90 , [L1]National Education E
+  202.106.183.64  - 202.106.183.127 ,  90 , [L1]China Securities Reg
+--- 148341,148346 ----
 ***************
-*** 191365,191371 ****
-  202.103.237.96  - 202.103.237.111 , 109 , [L2]Nanning, Nanning China Telecoms Sales Department
-  202.103.238.0   - 202.103.238.63  ,  90 , [L1]Liuzhou, Liuzhou Trade Iformation Center, governm, government organization
-  202.103.240.32  - 202.103.240.127 ,  90 , [L1]Nanning, Guangxi Agricluture Administration, gove
-- 202.103.240.224 - 202.103.241.31  ,  90 , [L1]Nanning, Guangxi Static Bureau, government organi
-  202.103.241.128 - 202.103.241.143 ,  90 , [L1]Guilin, Government of Guilin city
-  202.103.241.166 - 202.103.241.166 ,  90 , [L1]CHINANET|Anti-p2p
-  202.103.241.224 - 202.103.241.255 ,  90 , [L1]Guilin, Guilin Tour Administration, government or
---- 191406,191411 ----
-***************
-*** 191595,191601 ****
-  202.106.168.124 - 202.106.168.126 , 113 , [AD]ads
-  202.106.171.0   - 202.106.171.255 , 109 , [L2]Development Research Center of the
-  202.106.173.0   - 202.106.174.127 ,  90 , [L1]The State Council Information Office
-- 202.106.175.128 - 202.106.176.255 ,  90 , [L1]Information & Communication Department
-  202.106.180.64  - 202.106.180.127 , 115 , [SD]Google Beijing
-  202.106.180.192 - 202.106.181.255 ,  90 , [L1]National Education Examinations Anthority
-  202.106.183.64  - 202.106.183.127 ,  90 , [L1]China Securities Regulatory Commission
---- 191635,191640 ----
-***************
-*** 191798,191804 ****
-  202.108.156.62  - 202.108.156.62  ,  95 , [FK]Beijing Guanghuan Xinwang
-  202.108.188.88  - 202.108.188.95  ,  90 , [L1]Avid North Asia Ltd Beijing Rep Office
-  202.108.189.0   - 202.108.189.255 , 109 , [L2]Bank of China Head office
-! 202.108.211.0   - 202.108.212.255 , 109 , [L2]Beijing Netparent Information Technology Co.Ltd
-  202.108.225.32  - 202.108.225.63  ,  90 , [L1]Beijing Kelian Entertainment
-  202.108.229.0   - 202.108.229.255 , 109 , [L2]Research & Development Center of Beijing Telecom
-  202.108.246.0   - 202.108.246.255 ,  90 , [L1]The First Department Of The Ministry
---- 191837,191845 ----
-  202.108.156.62  - 202.108.156.62  ,  95 , [FK]Beijing Guanghuan Xinwang
-  202.108.188.88  - 202.108.188.95  ,  90 , [L1]Avid North Asia Ltd Beijing Rep Office
-  202.108.189.0   - 202.108.189.255 , 109 , [L2]Bank of China Head office
-! 202.108.211.0   - 202.108.211.140 , 109 , [L2]Beijing Netparent Information Technology Co.Ltd
-! 202.108.211.141 - 202.108.211.155 ,  60 , [EX](LEO AbuseReQ)Beijing Netparent Information Technology Co.Ltd
-! 202.108.211.156 - 202.108.212.255 , 109 , [L2]Beijing Netparent Information Technology Co.Ltd
-  202.108.225.32  - 202.108.225.63  ,  90 , [L1]Beijing Kelian Entertainment
-  202.108.229.0   - 202.108.229.255 , 109 , [L2]Research & Development Center of Beijing Telecom
-  202.108.246.0   - 202.108.246.255 ,  90 , [L1]The First Department Of The Ministry
-***************
-*** 192315,192321 ****
-  202.131.3.128   - 202.131.3.159   ,  90 , [L1]Parliament of Mongolia
-  202.131.8.0     - 202.131.15.255  ,  90 , [L1]FUJITSU NAGANO SYSTEMS ENGINEERING LIMITED
+*** 149087,149093 ****
+  202.131.3.128   - 202.131.3.159   ,  90 , [L1]Parliament of Mongol
+  202.131.8.0     - 202.131.15.255  ,  90 , [L1]FUJITSU NAGANO SYSTE
   202.131.24.0    - 202.131.31.255  ,  90 , [L1]NHN-NET
-- 202.131.48.0    - 202.131.63.255  ,  90 , [L1]Eastchina Broadcasting network Co.,Ltd
-  202.131.123.82  - 202.131.123.82  , 113 , [AD]Comment spammer
-  202.131.141.0   - 202.131.141.3   ,  90 , [L1]Software company ,delhi india
-  202.131.141.8   - 202.131.141.11  ,  90 , [L1]software company, delhi india
---- 192356,192361 ----
+- 202.131.48.0    - 202.131.63.255  ,  90 , [L1]Eastchina Broadcasti
+  202.131.123.82  - 202.131.123.82  , 104 , [AD]Comment spammer
+  202.131.141.0   - 202.131.141.3   ,  90 , [L1]Software company ,de
+  202.131.141.8   - 202.131.141.11  ,  90 , [L1]software company, de
+--- 149043,149048 ----
 ***************
-*** 196738,196743 ****
---- 196778,196784 ----
-  203.90.124.160  - 203.90.124.175  ,  90 , [L1]The above block will be used for LAN block of ACS
-  203.90.124.248  - 203.90.124.255  ,  90 , [L1]COLLEGE OF DEFENCE MANAGEMENT,
-  203.90.125.40   - 203.90.125.43   , 109 , [L2]LG ELECTRONICS,
-+ 203.91.44.162   - 203.91.44.162   ,  60 , [EX](XunleiOffline)
-  203.91.97.202   - 203.91.97.202   , 119 , [TL]P2P Fake files
-  203.91.120.0    - 203.91.127.255  , 109 , [L2]Network Technology Experiment Validation and Demonstration Center
-  203.91.192.0    - 203.91.223.255  ,  90 , [L1]Wipro Technologies
+*** 169327,169333 ****
+  210.12.212.192  - 210.12.212.255  , 100 , [L2]Around Bosea Area Ec
+  210.12.213.32   - 210.12.213.63   ,  90 , [L1]Tianjin Ruijie Syste
+  210.12.225.32   - 210.12.225.63   ,  90 , [L1]Beijing Haize Entert
+- 210.12.226.0    - 210.12.226.255  ,  90 , [L1]Beijing Haidian Broa
+  210.12.228.0    - 210.12.231.127  ,  90 , [L1]Wulumuqi Broadcastin
+  210.12.232.0    - 210.12.232.127  ,  90 , [L1]Qualcomm Internation
+  210.12.241.8    - 210.12.241.15   ,  90 , [L1]Beijing Hong Chang E
+--- 169282,169287 ----
 ***************
-*** 222141,222147 ****
-  210.12.212.192  - 210.12.212.255  , 109 , [L2]Around Bosea Area Economic Information Service Co
-  210.12.213.32   - 210.12.213.63   ,  90 , [L1]Tianjin Ruijie System Software Development Co.,Lt
-  210.12.225.32   - 210.12.225.63   ,  90 , [L1]Beijing Haize Entertainment Center
-- 210.12.226.0    - 210.12.226.255  ,  90 , [L1]Beijing Haidian Broadcasting & TV Network Co.,Ltd
-  210.12.228.0    - 210.12.231.127  ,  90 , [L1]Wulumuqi Broadcasting & TV Net Co.,Ltd
-  210.12.232.0    - 210.12.232.127  ,  90 , [L1]Qualcomm International Beijing Office
-  210.12.241.8    - 210.12.241.15   ,  90 , [L1]Beijing Hong Chang Entertainment Club Co. Ltd
---- 222182,222187 ----
+*** 173146,173152 ****
+  211.63.91.0     - 211.63.91.127   ,  90 , [L1]TAE SUNG SOFTWARE AN
+  211.64.8.0      - 211.64.15.255   ,  90 , [L1]Shandong Politico-le
+  211.68.23.0     - 211.68.23.255   , 100 , [L2]Center of Science and Technology Development Ministry of Education
+- 211.68.71.81    - 211.68.71.81    ,  92 , [FK]Xianghua Zhu
+  211.68.92.0     - 211.68.94.255   ,  90 , [L1]Bell Labs Research C, [L1]Bell Labs Research China, [L1]The World Bank Offic, [L1]The State Inte
+  211.68.136.0    - 211.68.137.255  ,  90 , [L1]Hebei Ministry Of Ex, [L1]Hebei Ministry Of Examination
+  211.71.160.0    - 211.71.175.255  ,  90 , [L1]Central Conservatory
+--- 173100,173105 ----
 ***************
-*** 226973,226979 ****
-  211.63.91.0     - 211.63.91.127   ,  90 , [L1]TAE SUNG SOFTWARE AND ENGINEERING
-  211.64.8.0      - 211.64.15.255   ,  90 , [L1]Shandong Politico-legality Management Cadre Institute
-  211.68.23.0     - 211.68.23.255   , 109 , [L2]Center of Science and Technology Development Ministry of Education
-- 211.68.71.81    - 211.68.71.81    ,  95 , [FK]
-  211.68.92.0     - 211.68.94.255   ,  90 , [L1]Bell Labs Research China
-  211.68.136.0    - 211.68.137.255  ,  90 , [L1]Hebei Ministry Of Examination
-  211.71.160.0    - 211.71.175.255  ,  90 , [L1]Central Conservatory Of Music
---- 227013,227018 ----
+*** 173336,173342 ****
+  211.97.213.64   - 211.97.213.79   ,  90 , [L1]Laizhou City Governm
+  211.97.213.136  - 211.97.213.143  ,  90 , [L1]Yantai Zhifu Distric
+  211.97.213.160  - 211.97.213.191  , 100 , [L2]Yantai Industry and
+! 211.98.0.0      - 211.98.255.255  , 110 , [L3]CHINA RAILWAY TELECO, [L2]Tianjin Railways Cen, [L2]Dongyue Textile Prod, [L2]Foreign Economics 
+  211.99.4.238    - 211.99.4.238    , 114 , [WE](Mass injection atta
+  211.99.75.0     - 211.99.75.255   , 110 , [L3]Wisdom Network Techn
+  211.99.84.0     - 211.99.94.255   , 110 , [L3]Wisdom Network Techn
+--- 173289,173297 ----
+  211.97.213.64   - 211.97.213.79   ,  90 , [L1]Laizhou City Governm
+  211.97.213.136  - 211.97.213.143  ,  90 , [L1]Yantai Zhifu Distric
+  211.97.213.160  - 211.97.213.191  , 100 , [L2]Yantai Industry and
+! 211.98.0.0      - 211.98.169.225  , 110 , [L3]CHINA RAILWAY TELECO, [L2]Tianjin Railways Cen, [L2]Dongyue Textile Prod, [L2]Foreign Economics 
+! 211.98.169.226  - 211.98.169.233  ,  60 , [EX](XunleiOffline)
+! 211.98.169.234  - 211.98.255.255  , 110 , [L3]CHINA RAILWAY TELECO, [L2]Tianjin Railways Cen, [L2]Dongyue Textile Prod, [L2]Foreign Economics 
+  211.99.4.238    - 211.99.4.238    , 114 , [WE](Mass injection atta
+  211.99.75.0     - 211.99.75.255   , 110 , [L3]Wisdom Network Techn
+  211.99.84.0     - 211.99.94.255   , 110 , [L3]Wisdom Network Techn
 ***************
-*** 227700,227706 ****
-  211.144.128.0   - 211.144.159.255 , 109 , [L2]Development & Research Center of State Council Ne, Beijing Economic Informa
-  211.147.16.144  - 211.147.16.159  ,  90 , [L1]BEIJING FENG-TAI-BROADCASTING CO.LTD
-  211.147.250.53  - 211.147.250.53  , 107 , [PT]Proxy
-- 211.148.160.0   - 211.148.191.255 ,  90 , [L1]TIANJIN BROADCAST &TV NETWORK CO.~~LTD
-  211.152.9.184   - 211.152.9.184   ,  90 , [L1]umusic.com.cn
-  211.152.46.192  - 211.152.46.255  ,  90 , [L1]Beijing SK group network corp
-  211.152.75.0    - 211.152.75.255  ,  90 , [L1]Asia movie information corp
---- 227739,227744 ----
+*** 173678,173684 ****
+  211.135.40.120  - 211.135.40.127  , 100 , [L2]Daihatu Motor Compan
+  211.135.108.88  - 211.135.108.88  , 116 , [BD]gnufake
+  211.135.128.0   - 211.135.255.255 , 110 , [L3]NEC Corporation
+! 211.136.0.0     - 211.143.255.255 , 120 , [RT]China Mobile Communi, [L2]Federal Express-DTW., [L2]SHENYANG NORTEL COMM, [L1]HuBei Communicatio
+  211.144.0.64    - 211.144.4.127   ,  90 , [L1]beijing saidi movie
+  211.144.6.160   - 211.144.6.191   ,  90 , [L1]France embassy
+  211.144.7.0     - 211.144.7.63    , 100 , [L2]zhongyuan internatio
+--- 173633,173641 ----
+  211.135.40.120  - 211.135.40.127  , 100 , [L2]Daihatu Motor Compan
+  211.135.108.88  - 211.135.108.88  , 116 , [BD]gnufake
+  211.135.128.0   - 211.135.255.255 , 110 , [L3]NEC Corporation
+! 211.136.0.0     - 211.137.100.85  , 120 , [RT]China Mobile Communi, [L2]Federal Express-DTW., [L2]SHENYANG NORTEL COMM, [L1]HuBei Communicatio
+! 211.137.100.86  - 211.137.100.87  ,  60 , [EX](XunleiOffline)
+! 211.137.100.88  - 211.143.255.255 , 120 , [RT]China Mobile Communi, [L2]Federal Express-DTW., [L2]SHENYANG NORTEL COMM, [L1]HuBei Communicatio
+  211.144.0.64    - 211.144.4.127   ,  90 , [L1]beijing saidi movie
+  211.144.6.160   - 211.144.6.191   ,  90 , [L1]France embassy
+  211.144.7.0     - 211.144.7.63    , 100 , [L2]zhongyuan internatio
 ***************
-*** 227718,227724 ****
-  211.155.63.0    - 211.155.63.255  ,  90 , [L1]State Intellectual Property Office of the People
-  211.155.252.16  - 211.155.252.31  ,  90 , [L1]BEIJING ZHONG-XUN-HUAN-YU SOFTWARE DEVELOP CO.LED
-  211.155.252.64  - 211.155.252.127 ,  90 , [L1]BEIJING MO-JIE SOFTWARE TECHNOLOGY DEVELOP CO.LED
-- 211.156.128.0   - 211.156.159.255 ,  90 , [L1]China Broadcasting TV Net
-  211.156.192.0   - 211.156.223.255 ,  90 , [L1]CHINA STATE POST BUREAU
-  211.157.110.226 - 211.157.110.226 , 109 , [L2]Abuse
-  211.157.118.96  - 211.157.118.127 ,  90 , [L1]Jingjikexue Publishing Company
---- 227756,227761 ----
+*** 173688,173694 ****
+  211.144.32.0    - 211.144.63.255  , 100 , [L2]Development & Resear
+  211.144.128.0   - 211.144.159.255 , 100 , [L2]Development & Resear, [L1]Beijing Xiao Xiang C, [L2]Beijing Economic Inf, [L2]China National Deb
+  211.147.16.144  - 211.147.16.159  ,  90 , [L1]BEIJING FENG-TAI-BRO
+- 211.148.160.0   - 211.148.191.255 ,  90 , [L1]TIANJIN BROADCAST &T
+  211.151.0.0     - 211.152.31.255  , 110 , [L3]Abitcool(China) Inc, [L1]umusic.com.cn
+  211.152.46.192  - 211.152.46.255  ,  90 , [L1]Beijing SK group net
+  211.152.51.63   - 211.152.51.63   , 114 , [WE]www.ptjsq.cn
+--- 173645,173650 ----
 ***************
-*** 228160,228166 ****
+*** 173705,173711 ****
+  211.155.63.0    - 211.155.63.255  ,  90 , [L1]State Intellectual P
+  211.155.252.16  - 211.155.252.31  ,  90 , [L1]BEIJING ZHONG-XUN-HU
+  211.155.252.64  - 211.155.252.127 ,  90 , [L1]BEIJING MO-JIE SOFTW
+- 211.156.128.0   - 211.156.159.255 ,  90 , [L1]China Broadcasting T
+  211.156.192.0   - 211.156.223.255 ,  90 , [L1]CHINA STATE POST BUR
+  211.157.110.226 - 211.157.110.226 , 100 , [L2]Abuse
+  211.157.115.52  - 211.157.115.52  , 114 , [WE]www.0464cn.com
+--- 173661,173666 ----
+***************
+*** 173724,173729 ****
+--- 173679,173685 ----
+  211.158.31.180  - 211.158.31.183  ,  90 , [L1]Chongqing Committee
+  211.161.1.0     - 211.161.1.255   ,  90 , [L1] VisionNEXT eefilter
+  211.161.159.0   - 211.161.159.255 , 120 , [RT]Greatwall Broadband
++ 211.162.73.113  - 211.162.73.113  ,  60 , [EX](XunleiOffline)
+  211.162.224.0   - 211.162.227.255 ,  70 , [BG]AS-4777 2516 4134 17638
+  211.167.64.0    - 211.167.95.255  , 100 , [L2]Development & Resear, [L2]Beijing Astronomical, [L1]Cs&c cyber resource, [L1]hua dong tong softw
+  211.167.158.0   - 211.167.159.255 , 100 , [L2]Shanghai Jianyang Me
+***************
+*** 174125,174131 ****
   211.242.89.0    - 211.242.89.63   ,  90 , [L1]CYBERPATROL
-  211.242.160.128 - 211.242.160.191 , 109 , [L2]samsungmulsan
-  211.242.171.192 - 211.242.171.255 , 109 , [L2]CGVSAMSUNG
-- 211.245.230.0   - 211.245.252.255 ,  90 , [L1]Thrunet Co., Ltd (THRUNET)
-  211.247.57.192  - 211.247.57.255  , 113 , [AD]DOUBLECLICK PCROOM
-  211.247.71.192  - 211.247.71.255  , 115 , [SD]Yahoo PCROOM
+  211.242.160.128 - 211.242.160.191 , 100 , [L2]samsungmulsan
+  211.242.171.192 - 211.242.171.255 , 100 , [L2]CGVSAMSUNG
+- 211.245.230.0   - 211.245.252.255 ,  90 , [L1]Thrunet Co., Ltd (TH
+  211.247.57.192  - 211.247.57.255  , 104 , [AD]DOUBLECLICK PCROOM
+  211.247.71.192  - 211.247.71.255  , 106 , [SD]Yahoo PCROOM
   211.248.61.0    - 211.248.61.191  ,  90 , [L1]CHUNGJOO CITY HALL
---- 228197,228202 ----
+--- 174081,174086 ----
 ***************
-*** 248999,249005 ****
-  216.95.146.44   - 216.95.146.47   ,  90 , [L1]Ubisoft
-  216.95.152.0    - 216.95.152.63   ,  90 , [L1]The Reader\
-  216.95.158.208  - 216.95.158.223  ,  90 , [L1]Ministere des Relations Internationales
-- 216.95.160.0    - 216.95.160.255  ,  90 , [L1]Coop Tel
-  216.95.172.128  - 216.95.172.143  , 109 , [L2]Kasten Chase Applied Research
-  216.95.175.96   - 216.95.175.127  ,  90 , [L1]AIC Ltd
-  216.95.176.0    - 216.95.176.255  ,  90 , [L1]3 Way Publications Corporation
---- 249035,249040 ----
+*** 199793,199798 ****
+--- 199748,199754 ----
+  218.5.229.128   - 218.5.229.255   ,  90 , [L1]Local Fax bureau of
+  218.6.2.85      - 218.6.2.85      , 118 , [SP]SEOGlobal.org +7
+  218.6.9.138     - 218.6.9.138     , 112 , [DS][DShield top10] Unkn
++ 218.6.13.101    - 218.6.13.124    ,  60 , [EX](XunleiOffline)
+  218.6.128.0     - 218.6.128.95    ,  90 , [L1]nanchong shiwei gov
+  218.6.144.224   - 218.6.144.239   ,  90 , [L1]deyang government ne
+  218.6.168.0     - 218.6.175.0     , 100 , [L2]Western Data Center
 ***************
-*** 263111,263116 ****
---- 263146,263152 ----
-  218.0.5.140     - 218.0.5.143     ,  90 , [L1]Ningbo People\'s Government Reception Office
-  218.0.7.0       - 218.0.7.7       , 109 , [L2]ZHENGHAI FINANCE BUREAU
-  218.0.7.48      - 218.0.7.63      , 109 , [L2]The center of ZhenZhai economic services
-+ 218.0.130.247   - 218.0.130.247   ,  60 , [EX](XunleiOffline)
-  218.1.46.80     - 218.1.46.95     , 109 , [L2]Shanghai Alcatel-sbell Co., Ltd
-  218.1.72.65     - 218.1.72.123    , 109 , [L2]null
-  218.1.96.44     - 218.1.96.47     , 109 , [L2]ZhongDa Chemical Development Co., Ltd
+*** 199924,199929 ****
+--- 199880,199886 ----
+  218.20.244.32   - 218.20.244.63   ,  90 , [L1]GUANGZHOU LIWANG COU
+  218.21.32.240   - 218.21.32.255   ,  90 , [L1]ITONG GOVERMENT
+  218.21.39.160   - 218.21.39.191   ,  90 , [L1]Ling wu ji wei-GOV
++ 218.21.68.2     - 218.21.68.9     ,  60 , [EX](XunleiOffline)
+  218.21.97.216   - 218.21.97.223   , 100 , [L2]Guangxi,Yulin Financ
+  218.21.240.0    - 218.21.240.31   ,  90 , [L1]The Government OF Wu
+  218.22.9.118    - 218.22.9.118    , 100 , [L2]Abuse
 ***************
-*** 263470,263476 ****
-  218.5.98.216    - 218.5.98.223    , 109 , [L2]RuQiao Consultation
-  218.5.99.128    - 218.5.99.143    ,  90 , [L1]People procuratorial work
-  218.5.229.128   - 218.5.229.255   ,  90 , [L1]Local Fax bureau of Ningde
-! 218.6.128.0     - 218.6.128.95    ,  90 , [L1]nanchong shiwei gov
-  218.6.144.218   - 218.6.144.218   , 107 , [PT]Proxy
-  218.6.144.224   - 218.6.144.239   ,  90 , [L1]deyang government network
-  218.6.168.0     - 218.6.175.0     , 109 , [L2]Western Data Center
---- 263506,263514 ----
-  218.5.98.216    - 218.5.98.223    , 109 , [L2]RuQiao Consultation
-  218.5.99.128    - 218.5.99.143    ,  90 , [L1]People procuratorial work
-  218.5.229.128   - 218.5.229.255   ,  90 , [L1]Local Fax bureau of Ningde
-! 218.6.128.0     - 218.6.128.31    ,  90 , [L1]nanchong shiwei gov
-! 218.6.128.32    - 218.6.128.32    ,  60 , [EX](XunleiOffline)
-! 218.6.128.33    - 218.6.128.95    ,  90 , [L1]nanchong shiwei gov
-  218.6.144.218   - 218.6.144.218   , 107 , [PT]Proxy
-  218.6.144.224   - 218.6.144.239   ,  90 , [L1]deyang government network
-  218.6.168.0     - 218.6.175.0     , 109 , [L2]Western Data Center
+*** 200608,200613 ****
+--- 200565,200572 ----
+  218.59.36.238   - 218.59.36.238   ,  90 , [L1]JIMO ADMINISTRATION
+  218.59.37.157   - 218.59.37.157   ,  90 , [L1]HUANGDAO POLICE STAT
+  218.59.136.88   - 218.59.136.91   ,  90 , [L1]Weifang Department o
++ 218.59.144.2    - 218.59.144.13   ,  60 , [EX](XunleiOffline)
++ 218.59.144.34   - 218.59.144.62   ,  60 , [EX](XunleiOffline)
+  218.59.234.128  - 218.59.234.135  ,  90 , [L1]Zaozhuang-Tengzhou P
+  218.59.234.176  - 218.59.234.191  ,  90 , [L1]Zaozhuang-Tengzhou G
+  218.59.237.201  - 218.59.237.201  ,  90 , [L1]Zaozhuang-Xuecheng T
 ***************
-*** 263584,263593 ****
---- 263622,263633 ----
-  218.18.7.196    - 218.18.7.199    , 109 , [L2]INDUSTRY AND COMMERCE BANK OF CHINA INFORMATION BU
-  218.18.8.8      - 218.18.8.11     ,  90 , [L1]KINGDEE SOFTWARE CO.LTD
-  218.18.8.92     - 218.18.8.95     ,  90 , [L1]SHENZHEN ADMINISRATION BUREAU OF INDUSTRY AND COMM
-+ 218.18.17.48    - 218.18.17.48    ,  60 , [EX](XunleiOffline)
-  218.18.102.56   - 218.18.102.63   , 109 , [L2]SHENZHEN TIANXIA INFORMATION CONSULTATION CO.,LTD
-  218.18.103.128  - 218.18.103.143  , 109 , [L2]ZHONGYUAN MATTER-PROPERTY ADVISER LTD.CO
-  218.18.104.96   - 218.18.104.99   , 109 , [L2]SHIDAIZHIGUANG ELECTRONIC DEVELOPMENT & RESEARCH C
-  218.18.111.104  - 218.18.111.107  ,  90 , [L1]SHENZHEN ADMINISTRATION BUREAU OF INDUSTRY AND COM
-+ 218.18.113.239  - 218.18.113.239  ,  60 , [EX](XunleiOffline)
-  218.19.99.243   - 218.19.99.243   ,  90 , [L1]fake emule servers
-  218.19.134.128  - 218.19.134.255  ,  90 , [L1]LIWAN DISTRICT JUDICATORY BUREAU
-  218.19.144.8    - 218.19.144.15   , 109 , [L2]NGN EXPERIMENT??ERICSSON
+*** 201038,201043 ****
+--- 200997,201004 ----
+  218.75.127.232  - 218.75.127.235  ,  90 , [L1]Hangzhou Eray Softwa
+  218.75.127.248  - 218.75.127.251  ,  90 , [L1]Zhejiang Road Transp
+  218.75.128.0    - 218.75.159.255  ,  90 , [L1]CHINANET-HN changde, [HJ]Hijacked IP Block(SH, [AD]mailspam images.bluk
++ 218.75.172.139  - 218.75.172.139  ,  60 , [EX](XunleiOffline)
++ 218.75.172.156  - 218.75.172.158  ,  60 , [EX](XunleiOffline)
+  218.75.253.237  - 218.75.253.237  , 116 , [BD]Fake p2p Clients
+  218.77.97.163   - 218.77.97.163   , 100 , [L2]Abuse
+  218.77.215.0    - 218.77.215.7    ,  90 , [L1]LEADER OF HAINAN GOV
 ***************
-*** 263604,263609 ****
---- 263644,263650 ----
-  218.21.240.0    - 218.21.240.31   ,  90 , [L1]The Government OF Wu Hai
-  218.22.7.107    - 218.22.7.107    , 107 , [PT]Proxy
-  218.22.9.118    - 218.22.9.118    , 109 , [L2]Abuse
-+ 218.22.71.166   - 218.22.71.166   ,  60 , [EX](XunleiOffline)
-  218.24.137.96   - 218.24.137.107  ,  90 , [L1]Dalian Software Park Co.,Ltd
-  218.25.99.135   - 218.25.99.135   , 107 , [PT]Proxy
-  218.26.45.92    - 218.26.45.95    , 109 , [L2]FEITIANWB
+*** 201737,201743 ****
+  218.97.190.116  - 218.97.190.119  ,  90 , [L1]Dentsu Young &Rubica
+  218.97.191.0    - 218.97.191.15   ,  90 , [L1]Dentsu Young &Rubica
+  218.97.240.0    - 218.97.255.255  , 110 , [L3]Langfang university, [L2]Beijing Ruide Online, [L1]Supervise Office Adm, [L2]Xinhua Caitong Inve
+- 218.98.0.0      - 218.98.223.255  ,  90 , [L1]Shandong Beelink Inf
+  218.100.18.0    - 218.100.18.255  ,  90 , [L1]Malaysia Internet Ex
+  218.100.44.0    - 218.100.44.255  , 100 , [L2]Malaysia Internet Ex
+  218.100.48.0    - 218.100.49.255  , 100 , [L2]National Internet Ex
+--- 201698,201703 ----
 ***************
-*** 264274,264279 ****
---- 264315,264321 ----
-  218.59.234.176  - 218.59.234.191  ,  90 , [L1]Zaozhuang-Tengzhou Government Infomation Center
-  218.59.237.201  - 218.59.237.201  ,  90 , [L1]Zaozhuang-Xuecheng Tao Village Government
-  218.59.237.206  - 218.59.237.206  ,  90 , [L1]Zaozhuang-Xuecheng NO.4 Department of Police Station
-+ 218.60.11.2     - 218.60.11.2     ,  60 , [EX](XunleiOffline)
-  218.61.16.8     - 218.61.16.8     ,  90 , [L1]Dictionary attacker
-  218.61.202.63   - 218.61.202.64   , 107 , [PT]Proxy
-  218.61.224.192  - 218.61.224.207  , 109 , [L2]Panjin Economic Development Zone Committee
-***************
-*** 264703,264708 ****
---- 264745,264751 ----
-  218.77.97.163   - 218.77.97.163   , 109 , [L2]Abuse
-  218.77.129.97   - 218.77.129.97   , 107 , [PT]Proxy
-  218.77.215.0    - 218.77.215.7    ,  90 , [L1]LEADER OF HAINAN GOVERNMENT,Haikou city
-+ 218.78.192.166  - 218.78.192.166  ,  60 , [EX](XunleiOffline)
-  218.78.208.0    - 218.78.208.127  ,  90 , [L1]UBI  SOFT  ENTERTAINMENT
-  218.78.216.156  - 218.78.216.159  ,  90 , [L1]Shanghai Wicresoft Software Company, Ltd
-  218.78.216.216  - 218.78.216.219  , 109 , [L2]Zhejiang Biomet Medical Product Co., Ltd
-***************
-*** 265211,265216 ****
---- 265254,265260 ----
-  218.92.205.184  - 218.92.205.187  ,  90 , [L1]dafeng police bureau
-  218.92.206.156  - 218.92.206.159  ,  90 , [L1]dafeng Judicial bureau
-  218.92.207.240  - 218.92.207.247  ,  90 , [L1]YanCheng Public Security Bureau
-+ 218.92.216.59   - 218.92.216.59   ,  60 , [EX](XunleiOffline)
-  218.92.240.112  - 218.92.240.115  ,  90 , [L1]sheyang TV university
-  218.92.240.192  - 218.92.240.255  ,  90 , [L1]SY fuyu gov
-  218.92.241.52   - 218.92.241.55   ,  90 , [L1]sheyang court house
-***************
-*** 265309,265314 ****
---- 265353,265359 ----
-  218.94.31.104   - 218.94.31.111   ,  90 , [L1]Economic and Trade Commission of Jiangsu Province
-  218.94.31.152   - 218.94.31.159   ,  90 , [L1]East district office
-  218.94.31.224   - 218.94.31.231   ,  90 , [L1]Ministry of Finance in Jiangsu Finance Monitor Commissioner Office
-+ 218.94.36.224   - 218.94.36.224   ,  60 , [EX](XunleiOffline)
-  218.94.37.24    - 218.94.37.27    , 109 , [L2]Technological import and export corporation of Na
-  218.94.37.36    - 218.94.37.39    ,  90 , [L1]The audit bureau of Nanjing
-  218.94.37.64    - 218.94.37.71    ,  90 , [L1]The State Administration of Taxation of Jiangsu P
-***************
-*** 265386,265392 ****
-  218.97.250.192  - 218.97.250.255  ,  90 , [L1]descr The library of Dongcheng Districtdescr Na
-  218.97.252.0    - 218.97.252.255  ,  90 , [L1]descr The Second Engineering Bureau of China Wat
-  218.97.254.0    - 218.97.254.127  ,  90 , [L1]descr Treasury Department Investment Comment Cen
-- 218.98.0.0      - 218.98.223.255  ,  90 , [L1]Shandong Beelink Information Technology Co., Ltd
-  218.100.18.0    - 218.100.18.255  ,  90 , [L1]Malaysia Internet Exchange (MIX)
-  218.100.44.0    - 218.100.44.255  , 109 , [L2]Malaysia Internet Exchange
-  218.100.48.0    - 218.100.49.255  , 109 , [L2]National Internet Exchange of India has two operations
---- 265431,265436 ----
-***************
-*** 266272,266280 ****
-  219.83.83.80    - 219.83.83.95    ,  90 , [L1]Sofrei World Bank
-  219.83.84.96    - 219.83.84.103   , 109 , [L2]Ubud Music Shop
+*** 202425,202431 ****
+  219.83.84.96    - 219.83.84.103   , 100 , [L2]Ubud Music Shop
   219.83.84.224   - 219.83.84.239   ,  90 , [L1]Hotspot Conrad
-- 219.84.160.0    - 219.84.175.255  ,  90 , [L1]Sony Network Taiwan Limited
-- 219.84.192.0    - 219.84.219.255  ,  90 , [L1]Sony Network Taiwan Limited
-- 219.85.64.0     - 219.85.255.255  ,  90 , [L1]Sony Network Taiwan Limited
-  219.88.102.176  - 219.88.102.191  , 109 , [L2]Fonterra Research Centre
+  219.83.128.0    - 219.83.255.255  ,  60 , [BG]FreeSP
+- 219.84.0.0      - 219.85.255.255  , 110 , [L3]Sony Network Taiwan, [L1]Sony Network Taiwan, [DS][DShield top10] Unkn
+  219.88.102.176  - 219.88.102.191  , 100 , [L2]Fonterra Research Ce
   219.88.107.64   - 219.88.107.79   ,  90 , [L1]Royal NZ Air Force
   219.88.107.192  - 219.88.107.207  ,  90 , [L1]software Images
---- 266316,266321 ----
+--- 202385,202390 ----
 ***************
-*** 266439,266445 ****
-  219.105.48.0    - 219.105.63.255  ,  90 , [L1]Gamania Digital Entertainment co.,ltd, GAMANIA DIGITAL ENTERTAINMENT [JAPAN
-  219.105.88.169  - 219.105.88.169  , 119 , [TL]p2p Fake
-  219.106.177.200 - 219.106.177.200 ,  90 , [L1]DDoS_ap2p
+*** 202559,202565 ****
+  219.105.217.192 - 219.105.217.192 , 116 , [BD]gnufake
+  219.106.177.200 - 219.106.177.200 ,  90 , [L1]DDoS/ap2p
+  219.106.217.210 - 219.106.217.210 , 116 , [BD]gnufake
 - 219.106.224.0   - 219.106.255.255 ,  90 , [L1]SONY Corporation
-  219.108.127.88  - 219.108.127.88  ,  90 , [L1]DDoS_ap2p
-  219.108.199.134 - 219.108.199.134 , 119 , [TL]KDDI CORPORATION gnu viruses
-  219.109.0.0     - 219.109.15.255  , 109 , [L2]Hitachi Software Services Co., Ltd
---- 266480,266485 ----
+  219.107.0.0     - 219.107.255.255 , 110 , [L3]NEC Corporation
+  219.108.127.88  - 219.108.127.88  ,  90 , [L1]DDoS/ap2p
+  219.108.199.134 - 219.108.199.134 , 116 , [BD]KDDI CORPORATION gnu
+--- 202518,202523 ----
 ***************
-*** 266662,266674 ****
---- 266702,266717 ----
-  219.128.255.16  - 219.128.255.23  ,  90 , [L1]Nanhai District of Foshan City Hotel justice China
-  219.129.71.64   - 219.129.71.95   ,  90 , [L1]SUIXI PEOPLE GOVERNMENT
-  219.129.71.208  - 219.129.71.215  ,  90 , [L1]ZHANJIANG PEOPLE GOVERNMENT
-+ 219.129.83.2    - 219.129.83.2    ,  60 , [EX](XunleiOffline)
-  219.129.141.136 - 219.129.141.139 ,  90 , [L1]HEYUAN ZIJIN POLICE BUREAU
-  219.129.141.156 - 219.129.141.159 ,  90 , [L1]HEYUAN POLICE ADMINSTRATION SERVICE CENTER
-  219.129.141.200 - 219.129.141.207 ,  90 , [L1]LIANPING POLICE BUREAU NETWORK MONITOR
-  219.129.164.200 - 219.129.164.207 ,  90 , [L1]SHANWEI POLICE OFFICE
-  219.129.216.39  - 219.129.216.39  , 111 , [SW]y3y.net/555y.com
-+ 219.129.229.252 - 219.129.229.252 ,  60 , [EX](XunleiOffline)
-  219.129.244.11  - 219.129.244.11  , 119 , [TL]gnutella hitmorpher
-  219.130.135.188 - 219.130.135.191 ,  90 , [L1]JIANGMEN GLOBAL EYES POLICE BUREAU
-+ 219.130.213.20  - 219.130.213.20  ,  60 , [EX](XunleiOffline)
-  219.130.221.0   - 219.130.221.255 ,  90 , [L1]FOSHAN CITY GOVERMENT MESSAGES CENTER
-  219.130.222.192 - 219.130.222.207 ,  90 , [L1]ZHANGCHA COMMERCIAL CHAMBER
-  219.130.223.124 - 219.130.223.127 , 109 , [L2]CHINA TELECOM YELLOW PAGE INFORMATION CO.LTD FOSHAN BRANCH
+*** 202786,202792 ****
+  219.128.255.16  - 219.128.255.23  ,  90 , [L1]Nanhai District of F
+  219.129.71.64   - 219.129.71.95   ,  90 , [L1]SUIXI PEOPLE GOVERNM
+  219.129.71.208  - 219.129.71.215  ,  90 , [L1]ZHANJIANG PEOPLE GOV
+! 219.129.83.0    - 219.129.83.255  , 110 , [L3]SHAOGUAN DAWENG NETB
+  219.129.141.136 - 219.129.141.139 ,  90 , [L1]HEYUAN ZIJIN POLICE
+  219.129.141.156 - 219.129.141.159 ,  90 , [L1]HEYUAN POLICE ADMINS
+  219.129.141.200 - 219.129.141.207 ,  90 , [L1]LIANPING POLICE BURE
+--- 202744,202752 ----
+  219.128.255.16  - 219.128.255.23  ,  90 , [L1]Nanhai District of F
+  219.129.71.64   - 219.129.71.95   ,  90 , [L1]SUIXI PEOPLE GOVERNM
+  219.129.71.208  - 219.129.71.215  ,  90 , [L1]ZHANJIANG PEOPLE GOV
+! 219.129.83.0    - 219.129.83.1    , 110 , [L3]SHAOGUAN DAWENG NETB
+! 219.129.83.2    - 219.129.83.31   ,  60 , [EX](XunleiOffline)
+! 219.129.83.32   - 219.129.83.255  , 110 , [L3]SHAOGUAN DAWENG NETB
+  219.129.141.136 - 219.129.141.139 ,  90 , [L1]HEYUAN ZIJIN POLICE
+  219.129.141.156 - 219.129.141.159 ,  90 , [L1]HEYUAN POLICE ADMINS
+  219.129.141.200 - 219.129.141.207 ,  90 , [L1]LIANPING POLICE BURE
 ***************
-*** 266707,266715 ****
---- 266750,266760 ----
-  219.134.187.80  - 219.134.187.95  ,  90 , [L1]CHINESE LIMITED COMPANY IN TECHNOLOGY IN VIDEO
-  219.134.240.192 - 219.134.240.255 ,  90 , [L1]SHENZHEN STATISTICS BUREAU
-  219.134.242.0   - 219.134.242.127 , 109 , [L2]BIG CUSTOMER DEPARTMENT IN COMPANY
-+ 219.134.255.45  - 219.134.255.45  ,  60 , [EX](XunleiOffline)
-  219.135.191.152 - 219.135.191.159 ,  90 , [L1]GUANGZHOU HUADU POLICE BUREAU
-  219.136.71.56   - 219.136.71.63   ,  90 , [L1]GUANGZHOU COUNTRY JUDICATURE TEST OFFICE
-  219.136.125.96  - 219.136.125.127 , 109 , [L2]GUANGZHOU YUEDE ENTERPRISE MANAGEMENT CONSULTING I
-+ 219.136.244.101 - 219.136.244.101 ,  60 , [EX](XunleiOffline)
-  219.137.2.24    - 219.137.2.31    ,  90 , [L1]GUANGZHOU LIBARY GOV
-  219.137.19.0    - 219.137.19.255  ,  90 , [L1]GUANGZHOU GOVERMENT ANJU XIAOQU
-  219.137.26.96   - 219.137.26.103  ,  90 , [L1]GUANGZHOU HUANANLIGONG UNIVERSITY SOFTWARE CENTER
+*** 202831,202836 ****
+--- 202791,202799 ----
+  219.134.98.104  - 219.134.98.107  ,  90 , [L1]SHENZHEN CITY SOUTH
+  219.134.129.192 - 219.134.129.223 ,  90 , [L1]THE TELEVISION STATI
+  219.134.130.0   - 219.134.130.255 , 100 , [L2]SHENZHEN HUAWEI TECH
++ 219.134.132.39  - 219.134.132.39  ,  60 , [EX](XunleiOffline)
++ 219.134.132.56  - 219.134.132.57  ,  60 , [EX](XunleiOffline)
++ 219.134.132.80  - 219.134.132.80  ,  60 , [EX](XunleiOffline)
+  219.134.134.128 - 219.134.134.135 ,  90 , [L1]THE HORIZONTAL IN TH
+  219.134.187.80  - 219.134.187.95  ,  90 , [L1]CHINESE LIMITED COMP
+  219.134.240.192 - 219.134.240.255 ,  90 , [L1]SHENZHEN STATISTICS
 ***************
-*** 266726,266732 ****
-  219.138.163.15  - 219.138.163.15  , 111 , [SW]d.wuc8.com
-  219.138.207.34  - 219.138.207.34  , 109 , [L2]Abuse
-  219.139.35.67   - 219.139.35.67   , 107 , [PT]Proxy
-! 219.139.192.0   - 219.140.255.255 ,  90 , [L1]Chinanet network in Wuhan city Hubei province
-  219.142.40.192  - 219.142.40.223  ,  90 , [L1]China-Siemens-Company
-  219.142.43.0    - 219.142.43.255  ,  90 , [L1]Informantion-Center-of-General-Administration-of-Customs-of-China
-  219.142.53.0    - 219.142.53.127  ,  97 , [MS]6 Buildings Xigema Center No.49 Zhichun Road,Haidian District, Beijing,P.R.C
---- 266771,266777 ----
-  219.138.163.15  - 219.138.163.15  , 111 , [SW]d.wuc8.com
-  219.138.207.34  - 219.138.207.34  , 109 , [L2]Abuse
-  219.139.35.67   - 219.139.35.67   , 107 , [PT]Proxy
+*** 202856,202862 ****
+  219.138.163.12  - 219.138.163.12  , 102 , [SW]333.8585le.com
+  219.138.163.15  - 219.138.163.15  , 102 , [SW]d.wuc8.com
+  219.138.207.34  - 219.138.207.34  , 100 , [L2]Abuse
+! 219.139.192.0   - 219.140.255.255 ,  90 , [L1]Chinanet network in
+  219.142.40.192  - 219.142.40.223  ,  90 , [L1]China-Siemens-Compan
+  219.142.43.0    - 219.142.43.255  ,  90 , [L1]Informantion-Center-
+  219.142.53.0    - 219.142.53.127  ,  94 , [MS]6 Buildings Xigema C
+--- 202819,202825 ----
+  219.138.163.12  - 219.138.163.12  , 102 , [SW]333.8585le.com
+  219.138.163.15  - 219.138.163.15  , 102 , [SW]d.wuc8.com
+  219.138.207.34  - 219.138.207.34  , 100 , [L2]Abuse
 ! 219.141.210.160 - 219.141.210.179 ,  60 , [EX](LEO AbuseReQ)CCIDConsulting CNNIC beijing
-  219.142.40.192  - 219.142.40.223  ,  90 , [L1]China-Siemens-Company
-  219.142.43.0    - 219.142.43.255  ,  90 , [L1]Informantion-Center-of-General-Administration-of-Customs-of-China
-  219.142.53.0    - 219.142.53.127  ,  97 , [MS]6 Buildings Xigema Center No.49 Zhichun Road,Haidian District, Beijing,P.R.C
+  219.142.40.192  - 219.142.40.223  ,  90 , [L1]China-Siemens-Compan
+  219.142.43.0    - 219.142.43.255  ,  90 , [L1]Informantion-Center-
+  219.142.53.0    - 219.142.53.127  ,  94 , [MS]6 Buildings Xigema C
 ***************
-*** 266738,266743 ****
---- 266783,266791 ----
-  219.142.88.0    - 219.142.88.255  ,  90 , [L1]NO2,Fuxingmenwai Road,Xichen District,Beijing,China
-  219.142.229.243 - 219.142.229.243 , 119 , [TL]p2p Corrupt Data Sender
-  219.143.35.4    - 219.143.35.7    ,  90 , [L1]Sony-China-LIMITED-COMPANY
-+ 219.143.87.173  - 219.143.87.173  ,  60 , [EX](LEO AbuseReQ)China Networks Inter-Exchange beijing
-+ 219.143.88.8    - 219.143.88.8    ,  60 , [EX](LEO AbuseReQ)China Networks Inter-Exchange beijing
-+ 219.143.95.204  - 219.143.95.204  ,  60 , [EX](LEO AbuseReQ)China Networks Inter-Exchange beijing
-  219.144.130.136 - 219.144.130.139 , 109 , [L2]XI\
-  219.144.161.104 - 219.144.161.107 ,  90 , [L1]XI'AN FUJITSU TELECOM EQUIPMENT LTD
-  219.144.162.64  - 219.144.162.67  ,  90 , [L1]XI'AN SOFTWARE GARDON CENTER
+*** 202868,202874 ****
+  219.142.88.0    - 219.142.88.255  ,  90 , [L1]NO2,Fuxingmenwai Roa
+  219.142.229.243 - 219.142.229.243 , 116 , [BD]p2p Corrupt Data Sen
+  219.143.35.4    - 219.143.35.7    ,  90 , [L1]Sony-China-LIMITED-C
+! 219.143.80.0    - 219.143.95.255  , 120 , [RT]CHINANET
+  219.144.130.136 - 219.144.130.139 , 100 , [L2]XI\
+  219.144.161.104 - 219.144.161.107 ,  90 , [L1]XI'AN FUJITSU TELECO
+  219.144.162.64  - 219.144.162.67  ,  90 , [L1]XI'AN SOFTWARE GARDO
+--- 202831,202843 ----
+  219.142.88.0    - 219.142.88.255  ,  90 , [L1]NO2,Fuxingmenwai Roa
+  219.142.229.243 - 219.142.229.243 , 116 , [BD]p2p Corrupt Data Sen
+  219.143.35.4    - 219.143.35.7    ,  90 , [L1]Sony-China-LIMITED-C
+! 219.143.80.0    - 219.143.87.172  , 120 , [RT]CHINANET
+! 219.143.87.173  - 219.143.87.173  ,  60 , [EX](LEO AbuseReQ)China Networks Inter-Exchange beijing
+! 219.143.87.174  - 219.143.88.7    , 120 , [RT]CHINANET
+! 219.143.88.8    - 219.143.88.8    ,  60 , [EX](LEO AbuseReQ)China Networks Inter-Exchange beijing
+! 219.143.88.9    - 219.143.95.203  , 120 , [RT]CHINANET
+! 219.143.95.204  - 219.143.95.204  ,  60 , [EX](LEO AbuseReQ)China Networks Inter-Exchange beijing
+! 219.143.95.205  - 219.143.95.255  , 120 , [RT]CHINANET
+  219.144.130.136 - 219.144.130.139 , 100 , [L2]XI\
+  219.144.161.104 - 219.144.161.107 ,  90 , [L1]XI'AN FUJITSU TELECO
+  219.144.162.64  - 219.144.162.67  ,  90 , [L1]XI'AN SOFTWARE GARDO
 ***************
-*** 267167,267173 ****
-  219.218.181.47  - 219.218.181.47  , 119 , [TL]Tsinghua University virus gnufakes
-  219.232.9.0     - 219.232.9.255   ,  90 , [L1]CCPIT Patent and Trademark Law Office
-  219.232.38.0    - 219.232.38.255  , 109 , [L2]huixingbeili
-- 219.232.48.0    - 219.232.63.255  ,  90 , [L1]Beijing Founder Broadband Network Technology Co.,Ltd
-  219.232.192.0   - 219.232.223.255 , 109 , [L2]capinfo company limited
-  219.234.83.96   - 219.234.83.255  ,  90 , [L1]Square Enix
-  219.235.1.104   - 219.235.1.104   , 119 , [TL]Gnucleus Spammer QianWan, gnutella hitmorpher
---- 267215,267220 ----
+*** 203309,203315 ****
+  219.218.181.47  - 219.218.181.47  , 116 , [BD]Tsinghua University
+  219.232.9.0     - 219.232.9.255   ,  90 , [L1]CCPIT Patent and Tra
+  219.232.32.0    - 219.232.47.255  , 120 , [RT]Beijing Primezone Te, [L2]huixingbeili
+- 219.232.48.0    - 219.232.63.255  ,  90 , [L1]Beijing Founder Broa
+  219.232.192.0   - 219.232.223.255 , 100 , [L2]capinfo company limi
+  219.232.240.0   - 219.232.255.255 , 120 , [RT]Beijing Primezone Te, [DS][DShield block] Sohu
+  219.234.80.0    - 219.234.95.255  , 120 , [RT]Beijng ZhongGuanCun, [L1]Square Enix
+--- 203278,203283 ----
 ***************
-*** 267689,267700 ****
---- 267736,267751 ----
-  220.165.248.112 - 220.165.248.119 ,  90 , [L1]Yunnan-government-state-asset-supervising-committee-office
-  220.165.251.0   - 220.165.251.7   ,  90 , [L1]Customer-Net in CHINANET YunNan province
-  220.165.251.192 - 220.165.251.255 ,  90 , [L1]Customer-Net in CHINANET YunNan province
-+ 220.166.36.18   - 220.166.36.18   ,  60 , [EX](XunleiOffline)
-  220.166.85.128  - 220.166.85.131  ,  90 , [L1]neijiang tv station
-  220.166.85.176  - 220.166.85.183  ,  90 , [L1]neijiang broadcast tv university
-  220.167.138.160 - 220.167.138.167 ,  90 , [L1]QH province  Law and order
-  220.167.255.0   - 220.167.255.3   ,  90 , [L1]Xining city,public security part,QingHai Province
-  220.168.97.129  - 220.168.97.129  , 107 , [PT]Proxy
-  220.171.48.133  - 220.171.48.164  ,  90 , [L1]Xinjiang Coal Security Bureau,Urumqi,Xinjiang
-+ 220.173.136.250 - 220.173.136.250 ,  60 , [EX](XunleiOffline)
-+ 220.173.136.252 - 220.173.136.252 ,  60 , [EX](XunleiOffline)
-+ 220.173.222.202 - 220.173.222.202 ,  60 , [EX](XunleiOffline)
-  220.175.154.135 - 220.175.154.135 , 109 , [L2]Tor.Carrot
-  220.175.154.163 - 220.175.154.163 , 109 , [L2]Tor.YaLu
-  220.175.239.81  - 220.175.239.81  , 119 , [TL]p2p Corrupt Data Senders
+*** 203758,203763 ****
+--- 203726,203732 ----
+  220.110.255.128 - 220.110.255.159 ,  90 , [L1]Nagasaki Prefectural
+  220.112.39.254  - 220.112.39.254  , 118 , [SP]trademic.com
+  220.112.40.229  - 220.112.40.229  ,  90 , [L1]Fake Torrents
++ 220.113.9.85    - 220.113.9.85    ,  60 , [EX](XunleiOffline)
+  220.113.33.0    - 220.113.34.255  ,  90 , [L1]Medical library of P
+  220.116.194.236 - 220.116.194.236 , 100 , [L2]Daewoo Information S
+  220.118.44.0    - 220.118.44.63   ,  90 , [L1](ju)marines
 ***************
-*** 267702,267708 ****
---- 267753,267761 ----
-  220.178.41.50   - 220.178.41.50   , 107 , [PT]Proxy
-  220.178.47.82   - 220.178.47.82   , 107 , [PT]Proxy
-  220.178.252.43  - 220.178.252.43  ,  90 , [L1]fake emule servers
-+ 220.181.12.208  - 220.181.12.209  ,  60 , [EX](XunleiOffline)
-  220.181.67.229  - 220.181.67.229  , 119 , [TL]p2p Corrupt Data Senders
-+ 220.184.188.39  - 220.184.188.39  ,  60 , [EX](XunleiOffline)
-  220.184.190.54  - 220.184.190.54  , 119 , [TL]p2p Corrupt Data Senders
-  220.189.193.0   - 220.189.193.15  ,  90 , [L1]NINGBO TV STATION
-  220.189.193.20  - 220.189.193.23  ,  90 , [L1]HAISHU PEOPLE\\
+*** 204068,204073 ****
+--- 204037,204043 ----
+  220.249.88.176  - 220.249.88.179  ,  90 , [L1]No.1 Guanshan road,E
+  220.249.88.224  - 220.249.88.255  , 100 , [L2]F3 Network institute
+  220.249.89.8    - 220.249.89.15   , 100 , [L2]Communications schoo
++ 220.249.103.131 - 220.249.103.138 ,  60 , [EX](XunleiOffline)
+  220.249.111.136 - 220.249.111.139 ,  90 , [L1]Zhengdian,Jiangxia D
+  220.249.120.136 - 220.249.120.139 ,  90 , [L1]ShanHe-Law-office
+  220.253.66.147  - 220.253.66.147  , 116 , [BD]Netspace Online DSL
 ***************
-*** 268326,268332 ****
-  221.128.166.109 - 221.128.166.109 , 119 , [TL]IOL NETCOM LTD gnu viruses
-  221.128.212.0   - 221.128.212.255 ,  90 , [L1]UNIVERSAL-ENT-INET-PPPOE-POOL
-  221.128.230.22  - 221.128.230.22  , 113 , [AD]Comment spammer
-- 221.129.0.0     - 221.129.255.255 ,  90 , [L1]TIANJIN BROADCAST & TV NETWORK CO. LTD
-  221.130.7.72    - 221.130.7.72    , 107 , [PT]Proxy
-  221.130.7.74    - 221.130.7.74    , 107 , [PT]Proxy
-  221.130.7.83    - 221.130.7.83    , 107 , [PT]Proxy
---- 268379,268384 ----
+*** 204171,204176 ****
+--- 204141,204149 ----
+  221.4.43.96     - 221.4.43.111    , 100 , [L2]ERICSSON
+  221.4.43.112    - 221.4.43.127    ,  90 , [L1]guangzhou city
+  221.4.52.16     - 221.4.52.31     , 100 , [L2]PUBLICIS-GROUPE-GZ
++ 221.4.246.66    - 221.4.246.111   ,  60 , [EX](XunleiOffline)
++ 221.5.8.25      - 221.5.8.41      ,  60 , [EX](XunleiOffline)
++ 221.5.8.111     - 221.5.8.122     ,  60 , [EX](XunleiOffline)
+  221.6.7.89      - 221.6.7.89      ,  92 , [FK]Cnc Group Jiangsu Province Network
+  221.6.14.224    - 221.6.14.239    ,  90 , [L1]Nanjing Fujitsu Nand
+  221.6.15.32     - 221.6.15.63     , 100 , [L2]Ruihua-MANSION,NANJI
 ***************
-*** 268838,268843 ****
---- 268890,268896 ----
-  221.224.127.40  - 221.224.127.43  ,  90 , [L1]Party Committee of ZhangQiao Town
-  221.224.137.80  - 221.224.137.95  ,  90 , [L1]SUZHOU-WJ-POLICE-BUREAU
-  221.224.161.168 - 221.224.161.175 ,  90 , [L1]Su Zhou broadcast&television STATION
-+ 221.225.154.48  - 221.225.154.48  ,  60 , [EX](XunleiOffline)
-  221.229.115.24  - 221.229.115.31  ,  90 , [L1]weiyangquzhengfawei
-  221.229.118.56  - 221.229.118.63  ,  90 , [L1]weiyangpolice
-  221.229.119.61  - 221.229.119.61  , 107 , [PT]Proxy
+*** 204394,204400 ****
+  221.128.72.240  - 221.128.72.255  ,  90 , [L1]SAP Thailand Co. Ltd
+  221.128.74.48   - 221.128.74.63   ,  90 , [L1]Virgin Bec-Tero Radi
+  221.128.128.0   - 221.128.255.255 ,  60 , [BG]FreeSP, [L1]Ganpath Bhaban,4 th, [L1]Globcast.com,Pradhan, [BD]IOL NETCOM LTD gnu v, [L1]UNIVERS
+- 221.129.0.0     - 221.129.255.255 ,  90 , [L1]TIANJIN BROADCAST &
+  221.130.72.142  - 221.130.72.142  , 116 , [BD]p2p corrupt data sen
+  221.130.168.0   - 221.130.168.255 ,  90 , [L1]AP2P (KAD flooding)
+  221.130.176.0   - 221.130.207.255 , 120 , [RT]China Mobile Communi, [WE]www.luogankongyaji.c, [WE](Mass injection atta, [L2]Abuse, [FK]no2.ese
+--- 204367,204372 ----
 ***************
-*** 268916,268921 ****
---- 268969,268976 ----
-  221.238.210.80  - 221.238.210.83  , 109 , [L2]CHUANGXIN-NETBAR
-  221.239.62.96   - 221.239.62.127  , 109 , [L2]HENGHUADASHA-BUIDING
-  221.239.91.240  - 221.239.91.247  ,  90 , [L1]MOTOROLA-LTD
-+ 221.239.147.215 - 221.239.147.215 ,  60 , [EX](XunleiOffline)
-+ 221.239.153.203 - 221.239.153.203 ,  60 , [EX](XunleiOffline)
-  221.240.80.192  - 221.240.80.199  ,  90 , [L1]sonoda kobayashitokkyozimusyo
-  221.240.124.184 - 221.240.124.191 ,  90 , [L1]DOREMI
-  221.240.166.56  - 221.240.166.63  , 109 , [L2]flipside
+*** 204680,204685 ****
+--- 204652,204658 ----
+  221.192.199.35  - 221.192.199.35  , 102 , [SW]Detected hacking in
+  221.195.49.245  - 221.195.49.245  , 114 , [WE]www.sjzp.com
+  221.199.14.0    - 221.199.14.63   , 100 , [L2]IDC Vlan
++ 221.203.179.3   - 221.203.179.21  ,  60 , [EX](XunleiOffline)
+  221.206.20.141  - 221.206.20.141  , 114 , [WE](Mass injection atta
+  221.206.121.10  - 221.206.121.10  , 112 , [DS][DShield top10] Unkn
+  221.206.121.53  - 221.206.121.54  , 112 , [DS][DShield top10] Unkn
 ***************
-*** 269385,269390 ****
---- 269440,269446 ----
-  222.66.235.168  - 222.66.235.175  ,  90 , [L1]Shanghai Municipal Public Security Bureau Baoshan Branch
-  222.66.235.184  - 222.66.235.191  ,  90 , [L1]SONY (China) Ltd. Shanghai Branch
-  222.66.239.144  - 222.66.239.159  ,  90 , [L1]USA Sea Land International Lawyer Office Shanghai Rep. Office
-+ 222.67.138.89   - 222.67.138.89   ,  60 , [EX](XunleiOffline)
-  222.68.16.0     - 222.68.16.63    ,  90 , [L1]THE CHINESE PEOPLES LIBERATION ARMY
-  222.68.178.40   - 222.68.178.47   ,  90 , [L1]SHANGHAI POLICE HIGH COLLEGE
-  222.68.179.212  - 222.68.179.215  ,  90 , [L1]Shanghai Guangda Lawyer Place
+*** 204883,204888 ****
+--- 204856,204862 ----
+  221.236.9.5     - 221.236.9.7     ,  90 , [L1]cheng du bps nm gove
+  221.236.12.32   - 221.236.12.63   , 110 , [L3]us akamai telecom co
+  221.236.167.192 - 221.236.167.192 , 102 , [SW]Dabber.B|BT
++ 221.238.25.109  - 221.238.25.109  ,  60 , [EX](XunleiOffline)
+  221.238.133.144 - 221.238.133.155 ,  90 , [L1]SIEMENS-LTD
+  221.238.193.32  - 221.238.193.63  ,  90 , [L1]WAGNSUKEJI-NETBAR
+  221.238.198.22  - 221.238.198.22  ,  90 , [L1]Spammer
 ***************
-*** 269423,269428 ****
---- 269479,269486 ----
-  222.68.248.204  - 222.68.248.207  ,  90 , [L1]Shanghai UBI Computer Co.,Ltd
-  222.68.248.240  - 222.68.248.247  ,  90 , [L1]Capgemini (Shanghai) Co.,Ltd
-  222.69.10.112   - 222.69.10.112   , 109 , [L2]Tor.Unnamed
-+ 222.69.172.211  - 222.69.172.211  ,  60 , [EX](XunleiOffline)
+*** 205389,205394 ****
+--- 205363,205369 ----
+  222.68.248.204  - 222.68.248.207  ,  90 , [L1]Shanghai UBI Compute
+  222.68.248.240  - 222.68.248.247  ,  90 , [L1]Capgemini (Shanghai)
+  222.69.10.112   - 222.69.10.112   , 100 , [L2]Tor.Unnamed
 + 222.70.180.108  - 222.70.180.108  ,  60 , [EX](LEO AbuseReQ)China Telecom (Group) Shanghai
-  222.71.27.170   - 222.71.27.170   , 119 , [TL]p2p Corrupt Data Senders
-  222.72.132.166  - 222.72.132.166  , 107 , [PT]Proxy
-  222.73.4.46     - 222.73.4.62     , 109 , [L2]null
+  222.71.27.170   - 222.71.27.170   , 116 , [BD]p2p Corrupt Data Sen
+  222.73.0.0      - 222.73.255.255  , 120 , [RT]CHINANET, [L2]null, [L1]CHINANET|Anti-p2p, [FK], [FK]Sharing Kingdom 3, [SW]traffcount.cn, [L1]f
+  222.74.224.0    - 222.74.229.255  ,  70 , [BG]AS-4608 1221 4637 4134
 ***************
-*** 269462,269474 ****
-  222.77.179.240  - 222.77.179.255  ,  90 , [L1]CHINANET|Anti-p2p
-  222.77.187.134  - 222.77.187.134  , 107 , [PT]Proxy
-  222.77.187.157  - 222.77.187.157  , 107 , [PT]Proxy
+*** 205399,205405 ****
+  222.77.60.0     - 222.77.191.255  , 120 , [RT]CHINANET, [L1]CHINANET|Anti-p2p, [FK]Global Server 3, [FK]Global Server 1, [FK]Global Server 2, 
   222.82.233.25   - 222.82.233.27   ,  90 , [L1]WLMQ-NETENFORCE
-  222.83.255.116  - 222.83.255.119  ,  90 , [L1]Guangxi,Nanning ,municipality Party committee
-  222.85.94.20    - 222.85.94.20    ,  95 , [FK]eserver 17.15
-! 222.88.0.0      - 222.89.255.255  ,  90 , [L1]CHINANET henan province network
-  222.90.2.241    - 222.90.2.241    , 109 , [L2]Tor.Unnamed
-  222.90.117.89   - 222.90.117.89   , 109 , [L2]Tor.spaceccf2be5b6
-  222.90.144.166  - 222.90.144.166  , 109 , [L2]Tor.Unnamed
-  222.92.2.160    - 222.92.2.167    ,  90 , [L1]SUZHOU ENTRY-EXIT INSPECTION AND QUARANTINE BUREAU
-  222.92.3.0      - 222.92.3.7      ,  90 , [L1]Suzhou NOKIA CO.,LTD
-  222.92.5.16     - 222.92.5.31     ,  90 , [L1]Sunzhou yilian netwok science technology co.,LTD
---- 269520,269536 ----
-  222.77.179.240  - 222.77.179.255  ,  90 , [L1]CHINANET|Anti-p2p
-  222.77.187.134  - 222.77.187.134  , 107 , [PT]Proxy
-  222.77.187.157  - 222.77.187.157  , 107 , [PT]Proxy
-+ 222.78.213.143  - 222.78.213.143  ,  60 , [EX](XunleiOffline)
-+ 222.82.118.17   - 222.82.118.17   ,  60 , [EX](XunleiOffline)
-  222.82.233.25   - 222.82.233.27   ,  90 , [L1]WLMQ-NETENFORCE
-  222.83.255.116  - 222.83.255.119  ,  90 , [L1]Guangxi,Nanning ,municipality Party committee
-  222.85.94.20    - 222.85.94.20    ,  95 , [FK]eserver 17.15
-! 222.85.135.35   - 222.85.135.35   ,  60 , [EX](XunleiOffline)
-! 222.85.179.28   - 222.85.179.28   ,  60 , [EX](XunleiOffline)
-  222.90.2.241    - 222.90.2.241    , 109 , [L2]Tor.Unnamed
-  222.90.117.89   - 222.90.117.89   , 109 , [L2]Tor.spaceccf2be5b6
-  222.90.144.166  - 222.90.144.166  , 109 , [L2]Tor.Unnamed
-+ 222.90.252.37   - 222.90.252.37   ,  60 , [EX](XunleiOffline)
-  222.92.2.160    - 222.92.2.167    ,  90 , [L1]SUZHOU ENTRY-EXIT INSPECTION AND QUARANTINE BUREAU
-  222.92.3.0      - 222.92.3.7      ,  90 , [L1]Suzhou NOKIA CO.,LTD
-  222.92.5.16     - 222.92.5.31     ,  90 , [L1]Sunzhou yilian netwok science technology co.,LTD
+  222.83.255.116  - 222.83.255.119  ,  90 , [L1]Guangxi,Nanning ,mun
+- 222.88.0.0      - 222.89.255.255  ,  90 , [L1]CHINANET henan provi, [L2]LUOYANG AGRICULTURE, [L2]SHANGQIU MINQUANGUOD
+  222.90.2.241    - 222.90.2.241    , 100 , [L2]Tor.Unnamed
+  222.90.117.89   - 222.90.117.89   , 100 , [L2]Tor.spaceccf2be5b6
+  222.90.144.166  - 222.90.144.166  , 100 , [L2]Tor.Unnamed
+--- 205374,205379 ----
 ***************
-*** 269525,269530 ****
---- 269587,269593 ----
-  222.92.126.232  - 222.92.126.239  ,  90 , [L1]Suzhou TRW Automotive Electronics Co., Ltd
-  222.92.127.176  - 222.92.127.183  , 109 , [L2]MSI ELECRTONICS CO.,LTD
-  222.92.208.225  - 222.92.208.225  , 111 , [SW]MS Word Exploit|BT
-+ 222.93.131.121  - 222.93.131.121  ,  60 , [EX](XunleiOffline)
-  222.96.33.218   - 222.96.33.218   , 109 , [L2]Daewoo Information System Co., Ltd
-  222.97.189.4    - 222.97.189.4    , 113 , [AD]okcounter.com
-  222.103.77.195  - 222.103.77.197  , 109 , [L2]Daewoo Information System Co., Ltd
-***************
-*** 269716,269725 ****
---- 269779,269790 ----
-  222.134.218.48  - 222.134.218.63  , 109 , [L2]laiwu agricultural bank of china laiwu branch
+*** 205643,205649 ****
+  222.134.218.48  - 222.134.218.63  , 100 , [L2]laiwu agricultural b
   222.134.218.160 - 222.134.218.191 ,  90 , [L1]Laiwu police station
-  222.135.146.173 - 222.135.146.173 , 109 , [L2]Abuse
-+ 222.137.116.12  - 222.137.116.12  ,  60 , [EX](XunleiOffline)
-  222.138.178.245 - 222.138.178.245 ,  90 , [L1]POLICE GOV,
-  222.138.178.252 - 222.138.178.252 ,  90 , [L1]SYQPOLICE GOV,
-  222.139.6.65    - 222.139.6.65    ,  90 , [L1]AnYang Police SCHOOL,
-  222.141.37.24   - 222.141.37.24   , 119 , [TL]CNCGROUP Henan province fake files
-+ 222.141.53.40   - 222.141.53.70   ,  60 , [EX](XunleiOffline)
-  222.145.148.19  - 222.145.148.19  ,  90 , [L1]DDoS_ap2p
-  222.146.193.241 - 222.146.193.241 ,  90 , [L1]DDoS_ap2p
-  222.149.250.245 - 222.149.250.245 , 119 , [TL]Open Computer Network broadband gnu viruses
-***************
-*** 269888,269893 ****
---- 269953,269960 ----
-  222.179.53.28   - 222.179.53.31   ,  90 , [L1]Ge Lan Government
-  222.179.70.129  - 222.179.70.129  ,  90 , [L1]Qijiang telecommunications service branches film
-  222.180.83.156  - 222.180.83.159  ,  90 , [L1]Procuratorate
-+ 222.181.117.80  - 222.181.117.80  ,  60 , [EX](XunleiOffline)
-+ 222.182.82.239  - 222.182.82.239  ,  60 , [EX](XunleiOffline)
-  222.183.80.170  - 222.183.80.170  , 107 , [PT]Proxy
-  222.184.2.4     - 222.184.2.7     ,  90 , [L1]HuaiAn LS  Prosecutors office
-  222.184.2.172   - 222.184.2.175   ,  90 , [L1]HuaiAn LS  The Lian city law serve
-***************
-*** 269928,269933 ****
---- 269995,270001 ----
-  222.185.238.200 - 222.185.238.207 ,  90 , [L1]changzhou univercity build command center
-  222.185.241.144 - 222.185.241.151 ,  90 , [L1]changzhou yaxiya film Co.,Ltd
-  222.185.246.64  - 222.185.246.71  ,  90 , [L1]wujin technology industry development area charge council
-+ 222.185.248.36  - 222.185.248.36  ,  60 , [EX](XunleiOffline)
-  222.185.248.192 - 222.185.248.199 ,  90 , [L1]changzhou xinbeiqu people prosecute academy
-  222.185.249.112 - 222.185.249.119 ,  90 , [L1]jiangsu boaixing lawyer office
-  222.185.250.128 - 222.185.250.135 ,  90 , [L1]changzhou gongan bureau traffic police branch
-***************
-*** 269988,269993 ****
---- 270056,270062 ----
-  222.187.120.64  - 222.187.120.79  ,  90 , [L1]XuZhou Public Security BUREAU
-  222.187.193.32  - 222.187.193.39  ,  90 , [L1]SUQIAN BROADCAST AND TV STATION
-  222.187.193.212 - 222.187.193.215 ,  90 , [L1]SUQIAN BROADCAST AND TV STATION
-+ 222.187.198.2   - 222.187.198.2   ,  60 , [EX](XunleiOffline)
-  222.187.198.16  - 222.187.198.23  ,  90 , [L1]Suqian  Public Security Bureau
-  222.188.10.1    - 222.188.10.1    , 107 , [PT]Proxy
-  222.188.94.208  - 222.188.94.215  ,  90 , [L1]yancheng ministry of personnel
-***************
-*** 270019,270024 ****
---- 270088,270094 ----
-  222.191.240.4   - 222.191.240.7   ,  90 , [L1]Wuxi Software Park,Wuxi System Co.,Ltd
-  222.191.240.60  - 222.191.240.63  ,  90 , [L1]wuxi sony electr co,.ltd
-  222.191.240.196 - 222.191.240.199 ,  90 , [L1]wuxi  development  district  procurator office
-+ 222.191.242.60  - 222.191.242.60  ,  60 , [EX](XunleiOffline)
-  222.191.247.176 - 222.191.247.183 ,  90 , [L1]Wuxi Bureau of foreign Trade economic cooperation
-  222.191.248.80  - 222.191.248.87  ,  90 , [L1]wuxi binhu goverment informationg network management center
-  222.191.254.64  - 222.191.254.67  ,  90 , [L1]WUXI JINHUIREN lawyer OFFICE
-***************
-*** 270030,270037 ****
---- 270100,270110 ----
-  222.208.125.192 - 222.208.125.195 ,  90 , [L1]SC-ZG-POLICE
-  222.208.126.140 - 222.208.126.143 ,  90 , [L1]SC-ZG-LAW-OFFICE
-  222.208.126.160 - 222.208.126.167 ,  90 , [L1]SC-ZG-YT-LAW-OFFICE
-+ 222.209.42.121  - 222.209.42.121  ,  60 , [EX](XunleiOffline)
-  222.211.75.19   - 222.211.75.19   , 109 , [L2]Abuse
-+ 222.212.55.88   - 222.212.55.88   ,  60 , [EX](XunleiOffline)
-  222.215.66.84   - 222.215.66.87   , 109 , [L2]SC-ZG-SAFE-NETBAR
-+ 222.216.3.245   - 222.216.3.245   ,  60 , [EX](XunleiOffline)
-  222.216.28.25   - 222.216.28.25   , 111 , [SW]SWF hijacks
-  222.216.43.16   - 222.216.43.16   , 119 , [TL]p2p Corrupt Data Senders
-  222.219.223.79  - 222.219.223.79  , 119 , [TL]gnutella hitmorpher
-***************
-*** 270062,270067 ****
---- 270135,270144 ----
-  222.237.77.33   - 222.237.77.33   , 109 , [L2]Abuse
-  222.239.76.142  - 222.239.76.142  ,  90 , [L1]www.riak.or.kr
-  222.239.76.168  - 222.239.76.168  ,  90 , [L1]www.miak.or.kr
-+ 222.240.178.20  - 222.240.178.20  ,  60 , [EX](XunleiOffline)
-+ 222.240.205.187 - 222.240.205.187 ,  60 , [EX](XunleiOffline)
-+ 222.244.207.20  - 222.244.207.20  ,  60 , [EX](XunleiOffline)
-+ 222.244.227.118 - 222.244.227.118 ,  60 , [EX](XunleiOffline)
-  222.253.170.188 - 222.253.170.188 , 119 , [TL]p2p corrupt data sender
-  222.255.32.0    - 222.255.33.255  , 109 , [L2]IP Range assigned for VPN Service of VDC
-  222.255.77.64   - 222.255.77.79   ,  90 , [L1]Cong ty Sony Vietnam
-***************
-*** 270069,270072 ****
---- 270146,270150 ----
-  222.255.160.0   - 222.255.160.255 , 109 , [L2]IP Range assigned for VPN Service of VDC
-  223.0.0.0       - 223.255.255.255 ,  80 , [BG]AS38639 HANABI NTT Communications Corporation
-  238.209.5.182   - 238.209.5.182   , 111 , [SW]protection-manager.com
-+ 239.255.255.250 - 239.255.255.250 ,  60 , [EX](XunleiOffline)
-  240.0.0.0       - 255.255.255.25  , 160 , [LN]IANA Reserved for private use FNLC
+  222.135.146.173 - 222.135.146.173 , 100 , [L2]Abuse
+! 222.136.0.0     - 222.143.255.255 , 110 , [L3]CNCGROUP Henan provi, [L1]POLICE GOV,, [L1]SYQPOLICE GOV,, [L1]AnYang Police SCHOOL, [BD]CNCGROU
+  222.145.148.19  - 222.145.148.19  ,  90 , [L1]DDoS/ap2p
+  222.146.193.241 - 222.146.193.241 ,  90 , [L1]DDoS/ap2p
+  222.149.250.245 - 222.149.250.245 , 116 , [BD]Open Computer Networ
+--- 205617,205625 ----
+  222.134.218.48  - 222.134.218.63  , 100 , [L2]laiwu agricultural b
+  222.134.218.160 - 222.134.218.191 ,  90 , [L1]Laiwu police station
+  222.135.146.173 - 222.135.146.173 , 100 , [L2]Abuse
+! 222.136.0.0     - 222.141.53.1    , 110 , [L3]CNCGROUP Henan provi, [L1]POLICE GOV,, [L1]SYQPOLICE GOV,, [L1]AnYang Police SCHOOL, [BD]CNCGROU
+! 222.141.53.2    - 222.141.53.74   ,  60 , [EX](XunleiOffline)
+! 222.141.53.75   - 222.143.255.255 , 110 , [L3]CNCGROUP Henan provi, [L1]POLICE GOV,, [L1]SYQPOLICE GOV,, [L1]AnYang Police SCHOOL, [BD]CNCGROU
+  222.145.148.19  - 222.145.148.19  ,  90 , [L1]DDoS/ap2p
+  222.146.193.241 - 222.146.193.241 ,  90 , [L1]DDoS/ap2p
+  222.149.250.245 - 222.149.250.245 , 116 , [BD]Open Computer Networ
