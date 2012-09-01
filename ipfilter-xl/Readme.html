@@ -1,109 +1,16 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-<meta charset="UTF-8">
+<!DOCTYPE HTML><html lang="en-US"><head><meta charset="UTF-8">
 <title>迅雷与旋风离线及资源服务器IP过滤列表使用说明</title>
-<style>
-body {
-    color: #000000;
-    font-size: 14px;
-	line-height: 1.6em;
-	width: 96%;
-	margin: 1.2em auto;
-}
-p {
-    margin: 0.3em 0;
-}
-abbr {
-    border-bottom: 1px dotted #000000;
-    cursor: help;
-}
-a, a:link, a:visited {
-    color: #0000E6;
-    text-decoration: none;
-}
-a:hover {
-    color: #000;
-    text-decoration: underline;
-}
-.i18n-main {
-    border-top: 1px solid #000;
-}
-</style>
-<script>
-function $(id) {
-	return document.getElementById(id);
-}
-function $c(classname, tag, parentEl) {
-	parentEl = parentEl || document;
-	tag = tag || "*";
-	var clsels = [];
-	if (document.getElementsByClassName && Array.filter){
-		if (tag == "*") {
-			return parentEl.getElementsByClassName(classname);
-		} else {
-			clsels = Array.filter(parentEl.getElementsByClassName(classname), function(els){
-				return els.tagName == tag.toUpperCase();
-			});
-		}
-	} else {
-		var allels = parentEl.getElementsByTagName(tag);
-		var pattern = new RegExp("(^|\\s)" + classname + "(\\s|$)");
-		for (i = 0, j = 0, l = allels.length; i < l; i++) {
-			if ( pattern.test(allels[i].className) ) {
-				clsels[j] = allels[i];
-				j++;
-			}
-		}
-	}
-	return clsels;
-}
-function addEventCompatible(obj, evtType, fn) {
-	if (obj.addEventListener) {
-		obj.addEventListener(evtType, fn, false);
-	} else if (obj.attachEvent) {
-		obj.attachEvent("on" + evtType, function (e) {
-			fn.call(obj, e);
-		});
-	}
-}
-var defaultLang = "zh-cn";
-var i18nTitle = {
+<!-- http://code.google.com/p/tom8/downloads/detail?name=I18N-Doc-Template.7z -->
+<style>body{color:#000;font-size:14px;line-height:1.6em;width:96%;margin:1.2em 2%}p{margin:.3em 0}acronym{border-bottom:1px dashed #000;border-bottom:1px dotted #000;cursor:help}a,a:link,a:visited{color:#0000e6;text-decoration:none}a:hover{color:#000;text-decoration:underline}.i18n-main{border-top:1px solid #000}</style><script>
+var defaultLang = "zh-cn",
+i18nTitle = {
 "zh-cn": "迅雷与旋风离线及资源服务器IP过滤列表使用说明",
 "zh-tw": "迅雷與旋風離線及資源伺服器IP過濾列表使用說明",
 "en": "Xunlei (Thunder) & QQ (Xuanfeng) Offline Server IP List Usage"
 };
-function translate(e) {
-	var url = window.location.href, urlArr, lang, mains = $c("i18n-main", "div"), i = 0, l = mains.length;
-	if (e.type == "click") {
-		url = this.href;
-	}
-	urlArr = url.split("#");
-	if (urlArr.length > 1 && urlArr[1]) {
-		lang = urlArr[1];
-	} else {
-		lang = defaultLang;
-	}
-	for (; i < l; i++) {
-		mains[i].style.display = "none";
-	}
-	$(lang + "-main").style.display = "block";
-	document.title = i18nTitle[lang];
-}
-addEventCompatible(window, "load", translate);
-addEventCompatible(window, "hashchange", translate);
-addEventCompatible(window, "popstate", translate);
-addEventCompatible(window, "load", function() {
-	var buttons = $c("i18n-button", "a"), i = 0, l = buttons.length;
-	for (; i < l; i++) {
-		addEventCompatible(buttons[i], "click", translate);
-	}
-});
-</script>
-</head>
-<body>
-<div id="i18n-button-div"><a href="#" id="zh-cn-button" class="i18n-button">简体中文</a>；<a href="#zh-tw" id="zh-tw-button" class="i18n-button">繁體中文</a>；<a href="#en" id="en-button" class="i18n-button">English</a></div>
-<div id="zh-cn-main" class="i18n-main">
+function $(b){return document.getElementById(b)}function c(h,b,f){f=f||document;b=b||"*";var d=[];if(document.getElementsByClassName&&Array.filter){if(b=="*"){return f.getElementsByClassName(h)}else{d=Array.filter(f.getElementsByClassName(h),function(k){return k.tagName==b.toUpperCase()})}}else{var e=f.getElementsByTagName(b);var g=new RegExp("(^|\\s)"+h+"(\\s|$)");for(i=0,j=0,l=e.length;i<l;i++){if(g.test(e[i].className)){d[j]=e[i];j++}}}return d}function a(d,e,b){if(d.addEventListener){d.addEventListener(e,b,false)}else{if(d.attachEvent){d.attachEvent("on"+e,function(f){b.call(d,f)})}}}function t(h){var f=window.location.href,m,k,d=c("i18n-main","div"),g=0,b=d.length;if(h.type=="click"){f=this.href}m=f.split("#");if(m.length>1&&m[1]&&$(m[1]+"-main")){k=m[1]}else{k=defaultLang}for(;g<b;g++){d[g].style.display="none"}$(k+"-main").style.display="block";document.title=i18nTitle[k];scroll(0,0)}a(window,"hashchange",t);a(window,"popstate",t);a(window,"load",function(n){var m=c("i18n-button","a"),h=0,b=m.length,g=c("i18n-main","div"),f=0,d=g.length;for(;h<b;h++){a(m[h],"click",t)}for(;f<d;f++){g[f].id+="-main"}t(n)});</script></head><body>
+<div id="i18n-button-div"><a href="#zh-cn" id="zh-cn-button" class="i18n-button">简体中文</a> | <a href="#zh-tw" id="zh-tw-button" class="i18n-button">繁體中文</a> | <a href="#en" id="en-button" class="i18n-button">English</a></div>
+<div id="zh-cn" class="i18n-main">
 <h2><a href="http://emulefans.com/news/plugin/ipfilter/ipfilter-xunlei/">迅雷与旋风离线及资源服务器IP过滤列表</a>使用说明</h2>
 <p>by <a href="http://emulefans.com/news/plugin/ipfilter/ipfilter-xunlei/">eMuleFans.com</a></p>
 <h3>eMule、aMule使用ipfilter.dat</h3>
@@ -120,7 +27,7 @@ addEventCompatible(window, "load", function() {
 <p>如想直接使用这里的过滤列表，那么直接把ipfilter.dat放到相应文件夹下即可。具体文件夹位置见下。</p>
 <p>上述软件均可兼容使用不分级的、ipfilter.dat格式的IPFilter（但有的不支持“#”号开头的行注释，我们这里提供的ipfilter.dat已不再有行注释）。具体每个软件ipfilter.dat放置的位置列举如下（仅供参考，一般还需要视你的操作系统、Win用户名（“Administrator”或其他）、软件安装位置（C:\Program Files\???或其他位置）、软件版本等而定。鼠标悬停在下文中虚下划线文字上看注释）：</p>
 <ul>
-<li>eMule：<code><abbr title="视软件安装位置而定">C:\Program Files\eMule</abbr>\config\</code>（WinXP）或<code>C:\Users\<abbr title="视Windows用户名而定">Administrator</abbr>\AppData\Local\eMule\config\</code>（Vista、Win7以上默认，但可以设置）</li>
+<li>eMule：<code><acronym title="视软件安装位置而定">C:\Program Files\eMule</acronym>\config\</code>（WinXP）或<code>C:\Users\<abbr title="视Windows用户名而定">Administrator</abbr>\AppData\Local\eMule\config\</code>（Vista、Win7以上默认，但可以设置）</li>
 <li>aMule：<code>~/.aMule/ipfilter.dat</code></li>
 <li>MLDonkey：在设置中将ip_blocking设置为IP过滤列表文件的位置，或用<a href="http://mldonkey.sourceforge.net/Block_list">block_list</a>命令加载文件</li>
 <li>μTorrent：<code>C:\Users\<abbr title="视Windows用户名而定">Administrator</abbr>\AppData\Roaming\uTorrent\</code></li>
@@ -135,7 +42,7 @@ addEventCompatible(window, "load", function() {
 <h3>guarding.p2p</h3>
 <p><a href="http://en.wikipedia.org/wiki/PeerGuardian">PeerGuardian</a>和<a href="http://en.wikipedia.org/wiki/PeerBlock">PeerBlock</a>等专业IP过滤程序的guarding.p2p格式IP过滤列表，MLDonkey等部分电驴与BT软件也兼容。如果要用，请参考这些软件的文档。</p>
 </div>
-<div id="zh-tw-main" class="i18n-main">
+<div id="zh-tw" class="i18n-main">
 <h2><a href="http://emulefans.com/news/plugin/ipfilter/ipfilter-xunlei/zh-tw/">迅雷與旋風離線及資源伺服器IP過濾列表</a>使用說明</h2>
 <p>by <a href="http://emulefans.com/news/plugin/ipfilter/ipfilter-xunlei/zh-tw/">eMuleFans.com</a></p>
 <h3>eMule、aMule使用ipfilter.dat</h3>
@@ -167,7 +74,7 @@ addEventCompatible(window, "load", function() {
 <h3>guarding.p2p</h3>
 <p><a href="http://en.wikipedia.org/wiki/PeerGuardian">PeerGuardian</a>和<a href="http://en.wikipedia.org/wiki/PeerBlock">PeerBlock</a>等專業IP過濾程式的guarding.p2p格式IP過濾列表，MLDonkey等部分電驢與BT軟體也兼容。如果要用，請參考這些軟體的文檔。</p>
 </div>
-<div id="en-main" class="i18n-main">
+<div id="en" class="i18n-main">
 <h2><a href="http://emulefans.com/news/plugin/ipfilter/ipfilter-xunlei/">Xunlei (Thunder) & QQ (Xuanfeng) Offline Server IP List</a> Usage</h2>
 <p>by <a href="http://emulefans.com/news/plugin/ipfilter/ipfilter-xunlei/">eMuleFans.com</a></p>
 <p>This list blocks IPs from Xunlei (Thunder) & QQ (Xuanfeng) offline server.</p>
@@ -185,5 +92,4 @@ addEventCompatible(window, "load", function() {
 <li>Halite: <code><abbr title="depends on the installation path of your client">C:\Program Files\Halite</abbr>\</code></li>
 </ul>
 </div>
-</body>
-</html>
+</body></html>
