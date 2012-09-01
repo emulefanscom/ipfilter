@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>迅雷與旋風離線及資源伺服器IP過濾列表使用說明</title>
+</head>
+<body>
+<h2><a href="http://emulefans.com/news/plugin/ipfilter/ipfilter-xunlei/zh-tw/">迅雷與旋風離線及資源伺服器IP過濾列表</a>使用說明</h2>
+by <a href="http://emulefans.com/news/plugin/ipfilter/ipfilter-xunlei/zh-tw/">eMuleFans.com</a>
+<h3>eMule、aMule使用ipfilter.dat</h3>
+<h4>導入</h4>
+針對eMule以及其Mod使用者的ipfilter.dat導入方法（aMule大概也類似）：
+
+下載並解壓出ipfilter.dat檔案；打開eMule的「工具」（Tools）->「IP過濾…」（IP Filter…），點擊「附加…」（Append…）按鈕，找到並打開解壓好的迅雷伺服器ipfilter.dat檔案，即可在你原來存在的ipfilter基礎上導入此迅雷伺服器IP列表。
+
+<h4>直接使用</h4>
+如果你只想禁止迅雷和旋風離線而其他IP地址都不需要禁止的話，那麼可以直接將離線IP過濾列表用於eMule：
+
+把解壓出來的檔案拷貝到config目錄里（config目錄：Win XP，eMule的config目錄在eMule安裝目錄下；Win Vista、Win 7以上，config目錄預設在C:\Users\你的使用者名稱\AppData\Local\eMule\config\，這取決於你的設定，<a href="http://emulefans.com/shared-usage/zh-tw/">詳細請見這裡</a>），然後啟動eMule即可。
+
+或者，你也可以打開eMule的「選項」=>「安全」視窗，粘貼<a href="http://ed2k.im/ipxl">http://ed2k.im/ipxl</a>地址（其指向直接的.dat），點擊「載入」按鈕即可下載並載入最新離線IP過濾列表。
+
+<h3>其他電驢、BT軟體使用ipfilter.dat</h3>
+可以使用IPFilter的不僅僅只有eMule（或其Mod）一種，aMule、MLDonkey等許多電驢軟體，和μTorrent、Vuze、BitTorrent、BitSpirit（比特精靈）、BitComet（比特彗星）、Halite等各大主流BitTorrent協定軟體都可以使用IPFilter。
+
+如想在原有基礎上導入本IP過濾列表，請參見各個軟體的幫助文檔；也可以用純文字檔案編輯器打開你原有的，和這裡下載了的ipfilter.dat，在前者的末尾換一行后，將後者複製粘貼到前者末尾，即可（因為一般ipfilter.dat中出現重複的IP沒有關係，程式都能識別，有的運行時也能自動轉換為不重複的正常IP列表）。
+
+如想直接使用這裡的過濾列表，那麼直接把ipfilter.dat放到相應資料夾下即可。具體資料夾位置見下。
+
+上述軟體均可兼容使用不分級的、ipfilter.dat格式的IPFilter（但有的不支援「#」號開頭的行註解，我們這裡提供的ipfilter.dat已不再有行註解）。具體每個軟體ipfilter.dat放置的位置列舉如下（僅供參考，一般還需要視你的作業系統、Win使用者名稱（「Administrator」或其他）、軟體安裝位置（C:\Program Files\???或其他位置）、軟體版本等而定。滑鼠懸停在下文中虛下劃線文字上看註解）：
+<ul>
+<li>eMule：<code><abbr title="視軟體安裝位置而定">C:\Program Files\eMule</abbr>\config\</code>（WinXP）或<code>C:\Users\<abbr title="視Windows使用者名稱而定">Administrator</abbr>\AppData\Local\eMule\config\</code>（Vista、Win7以上預設，但可以設定）</li>
+<li>aMule：<code>~/.aMule/ipfilter.dat</code></li>
+<li>MLDonkey：在設定中將ip_blocking設定為IP過濾列表檔案的位置，或用<a href="http://mldonkey.sourceforge.net/Block_list">block_list</a>命令載入檔案</li>
+<li>μTorrent：<code>C:\Users\<abbr title="視Windows使用者名稱而定">Administrator</abbr>\AppData\Roaming\uTorrent\</code></li>
+<li>Vuze：<code><abbr title="視軟體安裝位置而定">C:\Program Files\Vuze</abbr>\</code></li>
+<li>BitTorrent：<code>C:\Users\<abbr title="視Windows使用者名稱而定">Administrator</abbr>\AppData\Roaming\BitTorrent\</code></li>
+<li>BitSpirit：<code><abbr title="視軟體安裝位置而定">C:\Program Files\BitSpirit</abbr>\config\</code></li>
+<li>BitComet：<code><abbr title="視軟體安裝位置而定">C:\Program Files\BitComet</abbr>\rules\</code></li>
+<li>Halite：<code><abbr title="視軟體安裝位置而定">C:\Program Files\Halite</abbr>\</code></li>
+</ul>
+
+<h3>Apache的.htaccess</h3>
+<a href="http://en.wikipedia.org/wiki/.htaccess">.htaccess</a>是Apache HTTP 伺服器的配置檔案。打開你的站點頂層目錄下的.htaccess，將這裡的.htaccess中的內容複製粘貼到你的.htaccess的最後；如果你的站點頂層目錄下沒有.htaccess，那麼可以直接把這裡的.htaccess放在該目錄下。這樣即可阻止列表中的迅雷資源伺服器和離線IP訪問、搜集、下載你的網站上的所有檔案。
+
+<h3>guarding.p2p</h3>
+<a href="http://en.wikipedia.org/wiki/PeerGuardian">PeerGuardian</a>和<a href="http://en.wikipedia.org/wiki/PeerBlock">PeerBlock</a>等專業IP過濾程式的guarding.p2p格式IP過濾列表，MLDonkey等部分電驢與BT軟體也兼容。如果要用，請參考這些軟體的文檔。
+</body>
+</html>
