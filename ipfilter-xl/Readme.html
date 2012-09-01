@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>迅雷与旋风离线及资源服务器IP过滤列表使用说明</title>
+<style>
+body {
+    color: #000000;
+    font-size: 14px;
+	line-height: 1.6em;
+	width: 96%;
+	margin: 1.2em auto;
+}
+p {
+    margin: 0.3em 0;
+}
+abbr {
+    border-bottom: 1px dotted #000000;
+    cursor: help;
+}
+a, a:link, a:visited {
+    color: #0000E6;
+    text-decoration: none;
+}
+a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+.i18n-main {
+    border-top: 1px solid #000;
+}
+</style>
+<script>
+function $(id) {
+	return document.getElementById(id);
+}
+function $c(classname, tag, parentEl) {
+	parentEl = parentEl || document;
+	tag = tag || "*";
+	var clsels = [];
+	if (document.getElementsByClassName && Array.filter){
+		if (tag == "*") {
+			return parentEl.getElementsByClassName(classname);
+		} else {
+			clsels = Array.filter(parentEl.getElementsByClassName(classname), function(els){
+				return els.tagName == tag.toUpperCase();
+			});
+		}
+	} else {
+		var allels = parentEl.getElementsByTagName(tag);
+		var pattern = new RegExp("(^|\\s)" + classname + "(\\s|$)");
+		for (i = 0, j = 0, l = allels.length; i < l; i++) {
+			if ( pattern.test(allels[i].className) ) {
+				clsels[j] = allels[i];
+				j++;
+			}
+		}
+	}
+	return clsels;
+}
+function addEventCompatible(obj, evtType, fn) {
+	if (obj.addEventListener) {
+		obj.addEventListener(evtType, fn, false);
+	} else if (obj.attachEvent) {
+		obj.attachEvent("on" + evtType, function (e) {
+			fn.call(obj, e);
+		});
+	}
+}
+var defaultLang = "zh-cn";
+var i18nTitle = {
+"zh-cn": "迅雷与旋风离线及资源服务器IP过滤列表使用说明",
+"zh-tw": "迅雷與旋風離線及資源伺服器IP過濾列表使用說明",
+"en": "Xunlei (Thunder) & QQ (Xuanfeng) Offline Server IP List Usage"
+};
+function translate(e) {
+	var url = window.location.href, urlArr, lang, mains = $c("i18n-main", "div"), i = 0, l = mains.length;
+	if (e.type == "click") {
+		url = this.href;
+	}
+	urlArr = url.split("#");
+	if (urlArr.length > 1 && urlArr[1]) {
+		lang = urlArr[1];
+	} else {
+		lang = defaultLang;
+	}
+	for (; i < l; i++) {
+		mains[i].style.display = "none";
+	}
+	$(lang + "-main").style.display = "block";
+	document.title = i18nTitle[lang];
+}
+addEventCompatible(window, "load", translate);
+addEventCompatible(window, "hashchange", translate);
+addEventCompatible(window, "popstate", translate);
+addEventCompatible(window, "load", function() {
+	var buttons = $c("i18n-button", "a"), i = 0, l = buttons.length;
+	for (; i < l; i++) {
+		addEventCompatible(buttons[i], "click", translate);
+	}
+});
+</script>
+</head>
+<body>
+<div id="i18n-button-div"><a href="#" id="zh-cn-button" class="i18n-button">简体中文</a>；<a href="#zh-tw" id="zh-tw-button" class="i18n-button">繁體中文</a>；<a href="#en" id="en-button" class="i18n-button">English</a></div>
+<div id="zh-cn-main" class="i18n-main">
+<h2><a href="http://emulefans.com/news/plugin/ipfilter/ipfilter-xunlei/">迅雷与旋风离线及资源服务器IP过滤列表</a>使用说明</h2>
+<p>by <a href="http://emulefans.com/news/plugin/ipfilter/ipfilter-xunlei/">eMuleFans.com</a></p>
+<h3>eMule、aMule使用ipfilter.dat</h3>
+<h4>导入</h4>
+<p>针对eMule以及其Mod用户的ipfilter.dat导入方法（aMule大概也类似）：</p>
+<p>下载并解压出ipfilter.dat文件；打开eMule的“工具”（Tools）->“IP过滤…”（IP Filter…），点击“附加…”（Append…）按钮，找到并打开解压好的迅雷服务器ipfilter.dat文件，即可在你原来存在的ipfilter基础上导入此迅雷服务器IP列表。</p>
+<h4>直接使用</h4>
+<p>如果你只想屏蔽迅雷和旋风离线而其他IP地址都不需要屏蔽的话，那么可以直接将离线IP过滤列表用于eMule：</p>
+<p>把解压出来的文件拷贝到config目录里（config目录：Win XP，eMule的config目录在eMule安装目录下；Win Vista、Win 7以上，config目录默认在C:\Users\你的用户名\AppData\Local\eMule\config\，这取决于你的设置，<a href="http://emulefans.com/shared-usage/">详细请见这里</a>），然后启动eMule即可。</p>
+<p>或者，你也可以打开eMule的“选项”=>“安全”窗口，粘贴<a href="http://ed2k.im/ipxl">http://ed2k.im/ipxl</a>地址（其指向直接的.dat），点击“加载”按钮即可下载并加载最新离线IP过滤列表。</p>
+<h3>其他电驴、BT软件使用ipfilter.dat</h3>
+<p>可以使用IPFilter的不仅仅只有eMule（或其Mod）一种，aMule、MLDonkey等许多电驴软件，和μTorrent、Vuze、BitTorrent、BitSpirit（比特精灵）、BitComet（比特彗星）、Halite等各大主流BitTorrent协议软件都可以使用IPFilter。</p>
+<p>如想在原有基础上导入本IP过滤列表，请参见各个软件的帮助文档；也可以用文本编辑器打开你原有的，和这里下载了的ipfilter.dat，在前者的末尾换一行后，将后者复制粘贴到前者末尾，即可（因为一般ipfilter.dat中出现重复的IP没有关系，程序都能识别，有的运行时也能自动转换为不重复的正常IP列表）。</p>
+<p>如想直接使用这里的过滤列表，那么直接把ipfilter.dat放到相应文件夹下即可。具体文件夹位置见下。</p>
+<p>上述软件均可兼容使用不分级的、ipfilter.dat格式的IPFilter（但有的不支持“#”号开头的行注释，我们这里提供的ipfilter.dat已不再有行注释）。具体每个软件ipfilter.dat放置的位置列举如下（仅供参考，一般还需要视你的操作系统、Win用户名（“Administrator”或其他）、软件安装位置（C:\Program Files\???或其他位置）、软件版本等而定。鼠标悬停在下文中虚下划线文字上看注释）：</p>
+<ul>
+<li>eMule：<code><abbr title="视软件安装位置而定">C:\Program Files\eMule</abbr>\config\</code>（WinXP）或<code>C:\Users\<abbr title="视Windows用户名而定">Administrator</abbr>\AppData\Local\eMule\config\</code>（Vista、Win7以上默认，但可以设置）</li>
+<li>aMule：<code>~/.aMule/ipfilter.dat</code></li>
+<li>MLDonkey：在设置中将ip_blocking设置为IP过滤列表文件的位置，或用<a href="http://mldonkey.sourceforge.net/Block_list">block_list</a>命令加载文件</li>
+<li>μTorrent：<code>C:\Users\<abbr title="视Windows用户名而定">Administrator</abbr>\AppData\Roaming\uTorrent\</code></li>
+<li>Vuze：<code><abbr title="视软件安装位置而定">C:\Program Files\Vuze</abbr>\</code></li>
+<li>BitTorrent：<code>C:\Users\<abbr title="视Windows用户名而定">Administrator</abbr>\AppData\Roaming\BitTorrent\</code></li>
+<li>BitSpirit：<code><abbr title="视软件安装位置而定">C:\Program Files\BitSpirit</abbr>\config\</code></li>
+<li>BitComet：<code><abbr title="视软件安装位置而定">C:\Program Files\BitComet</abbr>\rules\</code></li>
+<li>Halite：<code><abbr title="视软件安装位置而定">C:\Program Files\Halite</abbr>\</code></li>
+</ul>
+<h3>Apache的.htaccess</h3>
+<p><a href="http://en.wikipedia.org/wiki/.htaccess">.htaccess</a>是Apache HTTP 服务器的配置文件。打开你的站点顶层目录下的.htaccess，将这里的.htaccess中的内容复制粘贴到你的.htaccess的最后；如果你的站点顶层目录下没有.htaccess，那么可以直接把这里的.htaccess放在该目录下。这样即可阻止列表中的迅雷资源服务器和离线IP访问、搜集、下载你的网站上的所有文件。</p>
+<h3>guarding.p2p</h3>
+<p><a href="http://en.wikipedia.org/wiki/PeerGuardian">PeerGuardian</a>和<a href="http://en.wikipedia.org/wiki/PeerBlock">PeerBlock</a>等专业IP过滤程序的guarding.p2p格式IP过滤列表，MLDonkey等部分电驴与BT软件也兼容。如果要用，请参考这些软件的文档。</p>
+</div>
+<div id="zh-tw-main" class="i18n-main">
+<h2><a href="http://emulefans.com/news/plugin/ipfilter/ipfilter-xunlei/zh-tw/">迅雷與旋風離線及資源伺服器IP過濾列表</a>使用說明</h2>
+<p>by <a href="http://emulefans.com/news/plugin/ipfilter/ipfilter-xunlei/zh-tw/">eMuleFans.com</a></p>
+<h3>eMule、aMule使用ipfilter.dat</h3>
+<h4>導入</h4>
+<p>針對eMule以及其Mod使用者的ipfilter.dat導入方法（aMule大概也類似）：</p>
+<p>下載並解壓出ipfilter.dat檔案；打開eMule的「工具」（Tools）->「IP過濾…」（IP Filter…），點擊「附加…」（Append…）按鈕，找到並打開解壓好的迅雷伺服器ipfilter.dat檔案，即可在你原來存在的ipfilter基礎上導入此迅雷伺服器IP列表。</p>
+<h4>直接使用</h4>
+<p>如果你只想禁止迅雷和旋風離線而其他IP地址都不需要禁止的話，那麼可以直接將離線IP過濾列表用於eMule：</p>
+<p>把解壓出來的檔案拷貝到config目錄里（config目錄：Win XP，eMule的config目錄在eMule安裝目錄下；Win Vista、Win 7以上，config目錄預設在C:\Users\你的使用者名稱\AppData\Local\eMule\config\，這取決於你的設定，<a href="http://emulefans.com/shared-usage/zh-tw/">詳細請見這裡</a>），然後啟動eMule即可。</p>
+<p>或者，你也可以打開eMule的「選項」=>「安全」視窗，粘貼<a href="http://ed2k.im/ipxl">http://ed2k.im/ipxl</a>地址（其指向直接的.dat），點擊「載入」按鈕即可下載並載入最新離線IP過濾列表。</p>
+<h3>其他電驢、BT軟體使用ipfilter.dat</h3>
+<p>可以使用IPFilter的不僅僅只有eMule（或其Mod）一種，aMule、MLDonkey等許多電驢軟體，和μTorrent、Vuze、BitTorrent、BitSpirit（比特精靈）、BitComet（比特彗星）、Halite等各大主流BitTorrent協定軟體都可以使用IPFilter。</p>
+<p>如想在原有基礎上導入本IP過濾列表，請參見各個軟體的幫助文檔；也可以用純文字檔案編輯器打開你原有的，和這裡下載了的ipfilter.dat，在前者的末尾換一行后，將後者複製粘貼到前者末尾，即可（因為一般ipfilter.dat中出現重複的IP沒有關係，程式都能識別，有的運行時也能自動轉換為不重複的正常IP列表）。</p>
+<p>如想直接使用這裡的過濾列表，那麼直接把ipfilter.dat放到相應資料夾下即可。具體資料夾位置見下。</p>
+<p>上述軟體均可兼容使用不分級的、ipfilter.dat格式的IPFilter（但有的不支援「#」號開頭的行註解，我們這裡提供的ipfilter.dat已不再有行註解）。具體每個軟體ipfilter.dat放置的位置列舉如下（僅供參考，一般還需要視你的作業系統、Win使用者名稱（「Administrator」或其他）、軟體安裝位置（C:\Program Files\???或其他位置）、軟體版本等而定。滑鼠懸停在下文中虛下劃線文字上看註解）：</p>
+<ul>
+<li>eMule：<code><abbr title="視軟體安裝位置而定">C:\Program Files\eMule</abbr>\config\</code>（WinXP）或<code>C:\Users\<abbr title="視Windows使用者名稱而定">Administrator</abbr>\AppData\Local\eMule\config\</code>（Vista、Win7以上預設，但可以設定）</li>
+<li>aMule：<code>~/.aMule/ipfilter.dat</code></li>
+<li>MLDonkey：在設定中將ip_blocking設定為IP過濾列表檔案的位置，或用<a href="http://mldonkey.sourceforge.net/Block_list">block_list</a>命令載入檔案</li>
+<li>μTorrent：<code>C:\Users\<abbr title="視Windows使用者名稱而定">Administrator</abbr>\AppData\Roaming\uTorrent\</code></li>
+<li>Vuze：<code><abbr title="視軟體安裝位置而定">C:\Program Files\Vuze</abbr>\</code></li>
+<li>BitTorrent：<code>C:\Users\<abbr title="視Windows使用者名稱而定">Administrator</abbr>\AppData\Roaming\BitTorrent\</code></li>
+<li>BitSpirit：<code><abbr title="視軟體安裝位置而定">C:\Program Files\BitSpirit</abbr>\config\</code></li>
+<li>BitComet：<code><abbr title="視軟體安裝位置而定">C:\Program Files\BitComet</abbr>\rules\</code></li>
+<li>Halite：<code><abbr title="視軟體安裝位置而定">C:\Program Files\Halite</abbr>\</code></li>
+</ul>
+<h3>Apache的.htaccess</h3>
+<p><a href="http://en.wikipedia.org/wiki/.htaccess">.htaccess</a>是Apache HTTP 伺服器的配置檔案。打開你的站點頂層目錄下的.htaccess，將這裡的.htaccess中的內容複製粘貼到你的.htaccess的最後；如果你的站點頂層目錄下沒有.htaccess，那麼可以直接把這裡的.htaccess放在該目錄下。這樣即可阻止列表中的迅雷資源伺服器和離線IP訪問、搜集、下載你的網站上的所有檔案。</p>
+<h3>guarding.p2p</h3>
+<p><a href="http://en.wikipedia.org/wiki/PeerGuardian">PeerGuardian</a>和<a href="http://en.wikipedia.org/wiki/PeerBlock">PeerBlock</a>等專業IP過濾程式的guarding.p2p格式IP過濾列表，MLDonkey等部分電驢與BT軟體也兼容。如果要用，請參考這些軟體的文檔。</p>
+</div>
+<div id="en-main" class="i18n-main">
+<h2><a href="http://emulefans.com/news/plugin/ipfilter/ipfilter-xunlei/">Xunlei (Thunder) & QQ (Xuanfeng) Offline Server IP List</a> Usage</h2>
+<p>by <a href="http://emulefans.com/news/plugin/ipfilter/ipfilter-xunlei/">eMuleFans.com</a></p>
+<p>This list blocks IPs from Xunlei (Thunder) & QQ (Xuanfeng) offline server.</p>
+<p>How to import this ipfilter.dat into your eMule? Answer: Open eMule -> Tools -> IP Filter… , click Append… button, find and open the ipfilter.dat file that you downloaded and unpacked, done.</p>
+<p>How to use ipfilter.dat with my eMule/eDonkey or BitTorrent client? Answer: put it in the right directory:</p>
+<ul>
+<li>eMule: <code><abbr title="depends on the installation path of your client">C:\Program Files\eMule</abbr>\config\</code> (WinXP) or <code>C:\Users\<abbr title="depends on Windows user name">Administrator</abbr>\AppData\Local\eMule\config\</code> (default for Vista, Win7 or higher, may be changed in your settings）</li>
+<li>aMule: <code>~/.aMule/ipfilter.dat</code></li>
+<li>MLDonkey: set "ip_blocking" to your ipfilter.dat path, or use <a href="http://mldonkey.sourceforge.net/Block_list">block_list</a> command</li>
+<li>μTorrent: <code>C:\Users\<abbr title="depends on Windows user name">Administrator</abbr>\AppData\Roaming\uTorrent\</code></li>
+<li>Vuze: <code><abbr title="depends on the installation path of your client">C:\Program Files\Vuze</abbr>\</code></li>
+<li>BitTorrent: <code>C:\Users\<abbr title="depends on Windows user name">Administrator</abbr>\AppData\Roaming\BitTorrent\</code></li>
+<li>BitSpirit: <code><abbr title="depends on the installation path of your client">C:\Program Files\BitSpirit</abbr>\config\</code></li>
+<li>BitComet: <code><abbr title="depends on the installation path of your client">C:\Program Files\BitComet</abbr>\rules\</code></li>
+<li>Halite: <code><abbr title="depends on the installation path of your client">C:\Program Files\Halite</abbr>\</code></li>
+</ul>
+</div>
+</body>
+</html>
