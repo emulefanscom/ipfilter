@@ -1,4 +1,4 @@
-# Xunlei (Thunder) & QQ (Xuanfeng) Offline Server IP list (2013-07-20)
+# Xunlei (Thunder) & QQ (Xuanfeng) Offline Server IP list (2013-07-28)
 <Limit GET POST PUT>
 Order allow,deny
 # Block Xunlei (Thunder) Offline Server IP
@@ -56,6 +56,8 @@ Deny from 118.122.36
 Deny from 118.122.87
 Deny from 118.122.88
 Deny from 119.84.114
+Deny from 119.97.178
+Deny from 119.97.183
 Deny from 119.120.94
 Deny from 119.144.9
 Deny from 119.147.41
@@ -66,6 +68,7 @@ Deny from 119.188.13
 Deny from 119.188.14
 Deny from 119.188.15
 Deny from 119.188.50
+Deny from 119.188.129
 Deny from 119.189.1
 Deny from 121.9.209
 Deny from 121.9.246
@@ -86,7 +89,11 @@ Deny from 122.228.241
 Deny from 122.228.255
 Deny from 123.129.219
 Deny from 123.129.242
+Deny from 123.183.223
 Deny from 124.95.156
+Deny from 124.95.172
+Deny from 124.95.173
+Deny from 124.95.174
 Deny from 124.232.148
 Deny from 125.39.72
 Deny from 125.39.148
@@ -109,6 +116,17 @@ Deny from 182.140.142
 Deny from 183.60.208
 Deny from 183.60.209
 Deny from 183.63.33
+Deny from 183.94.216
+Deny from 183.94.217
+Deny from 183.94.218
+Deny from 183.94.219
+Deny from 183.94.228
+Deny from 183.94.229
+Deny from 183.94.230
+Deny from 183.94.231
+Deny from 183.94.237
+Deny from 183.94.238
+Deny from 183.94.239
 Deny from 183.136.156
 Deny from 211.98.168
 Deny from 211.98.169
@@ -136,7 +154,9 @@ Deny from 221.235.189
 Deny from 221.235.205
 Deny from 221.238.25
 Deny from 222.73.49
+Deny from 222.73.133
 Deny from 222.141.53
+Deny from 222.186.19
 # Block QQ (Xuanfeng) Offline Server IP
 Deny from 58.61.39
 Deny from 58.61.152
