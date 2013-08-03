@@ -1,4 +1,4 @@
-# Xunlei (Thunder) & QQ (Xuanfeng) Offline Server IP list (2013-07-28)
+# Xunlei (Thunder) & QQ (Xuanfeng) Offline Server IP list (2013-08-03)
 <Limit GET POST PUT>
 Order allow,deny
 # Block Xunlei (Thunder) Offline Server IP
@@ -202,5 +202,25 @@ Deny from 114.80.184
 Deny from 114.80.185
 Deny from 114.80.186
 Deny from 114.80.187
+Deny from 114.80.188
+Deny from 114.80.189
+Deny from 114.80.245
+Deny from 114.112.202
+Deny from 116.55.230
+Deny from 117.34.91
+Deny from 118.122.36
+Deny from 118.122.87
+Deny from 118.122.88
+Deny from 119.84.114
+Deny from 119.97.178
+Deny from 119.97.183
+Deny from 119.120.94
+Deny from 119.144.9
+Deny from 119.147.41
+Deny from 119.178.12
+Deny from 119.188.11
+Deny from 119.188.12
+Deny from 119.188.13
+Deny from 119.188.14
 Allow from all
 </Limit>
